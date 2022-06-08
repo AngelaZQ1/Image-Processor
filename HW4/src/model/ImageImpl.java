@@ -9,17 +9,19 @@ import java.util.List;
  * and manipulate an image.
  */
 public class ImageImpl implements Image {
-  HashMap<String, Image> listOfImages;
-  List<List<Pixel>> image;
-  int numCols;
-  int numRows;
+  private List<List<Pixel>> image;
+  private int numCols;
+  private int numRows;
+  private int maxValue;
 
-  public ImageImpl(List<List<Pixel>> image) {
+  public ImageImpl(List<List<Pixel>> image, int maxValue) {
     this.image = image;
     this.numRows = image.size();
     this.numCols = image.get(0).size();
+    this.maxValue = maxValue;
   }
 
+  // TODO abstract these
   @Override
   public Image visualizeRedChannel() {
     List<List<Pixel>> newImage = new ArrayList<>();

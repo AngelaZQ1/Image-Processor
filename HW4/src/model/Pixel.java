@@ -6,10 +6,12 @@ package model;
 public interface Pixel {
 
   /**
-   * Changes the color of the pixel given the difference in rgb values.
+   * Returns a new pixel by adding the given values to the original pixel's color values.
+   * The original pixel does not change.
    * @param r red color value
    * @param g green color value
    * @param b blue color value
+   * @return the new pixel with the changed color
    */
   public Pixel changeColor(int r, int g, int b);
 

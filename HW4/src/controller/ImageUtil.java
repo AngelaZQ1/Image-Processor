@@ -23,6 +23,7 @@ public class ImageUtil {
    *
    * @param filename the path of the file.
    * @throws FileNotFoundException if the filename could not be found
+   * @return the image
    */
   public static Image readPPM(String filename) throws FileNotFoundException {
     Scanner sc;
@@ -62,27 +63,13 @@ public class ImageUtil {
         int r = sc.nextInt();
         int g = sc.nextInt();
         int b = sc.nextInt();
-        row.add(new PixelImpl(r, g, b));
-        System.out.println("Color of pixel (" + j + "," + i + "): " + r + "," + g + "," + b);
+        row.add(new PixelImpl(r, g, b, maxValue));
+        // System.out.println("Color of pixel (" + j + "," + i + "): " + r + "," + g + "," + b);
       }
       imageArrayList.add(row);
       throw new IllegalArgumentException();
     }
-    return new ImageImpl(imageArrayList);
+    return new ImageImpl(imageArrayList, maxValue);
   }
-
-  public static void main(String[] args) throws FileNotFoundException {
-    String filename;
-
-    if (args.length > 0) {
-      filename = args[0];
-    } else {
-      filename = "sample.ppm";
-    }
-
-    ImageUtil.readPPM(filename);
-
-  }
-
 }
 

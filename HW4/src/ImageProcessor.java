@@ -1,13 +1,16 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 import controller.Controller;
 import controller.ControllerImpl;
 import controller.ImageUtil;
 import model.Image;
+import view.TextView;
+import view.View;
 
 public class ImageProcessor {
-  public static void main(String[] args) throws FileNotFoundException {
+  public static void main(String[] args) throws FileNotFoundException, IOException {
     String filename;
 
     if (args.length > 0) {
@@ -16,10 +19,9 @@ public class ImageProcessor {
       filename = "sample.ppm";
     }
 
-    Image image = ImageUtil.readPPM(filename);
+    View view = new TextView();
 
-    Controller controller = new ControllerImpl(controller.ImageUtil.readPPM(filename),
-            view, new InputStreamReader(System.in));
+    Controller controller = new ControllerImpl(view, new InputStreamReader(System.in));
     controller.run();
   }
 }
