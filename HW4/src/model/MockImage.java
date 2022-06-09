@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Objects;
  */
 public class MockImage implements Image {
   private final StringBuilder log;
-
+  private final Image fakeImage;
   /**
    * Creates a MockImage object with the given StringBuilder.
    *
@@ -16,6 +18,13 @@ public class MockImage implements Image {
    */
   public MockImage(StringBuilder log) {
     this.log = Objects.requireNonNull(log);
+    List<Pixel> row = new ArrayList<>();
+    row.add(new PixelImpl(1,2,3, 255));
+    row.add(new PixelImpl(1,2,3, 255));
+    List<List<Pixel>> temp = new ArrayList<>();
+    temp.add(row);
+    temp.add(row);
+    this.fakeImage = new ImageImpl(temp, 255);
   }
 
   /**
@@ -25,7 +34,7 @@ public class MockImage implements Image {
   @Override
   public Image visualizeRedChannel() {
     log.append("visualize red\n");
-    return null;
+    return this;
   }
 
   /**
@@ -35,7 +44,7 @@ public class MockImage implements Image {
   @Override
   public Image visualizeGreenChannel() {
     log.append("visualize green\n");
-    return null;
+    return this;
   }
 
   /**
@@ -45,7 +54,7 @@ public class MockImage implements Image {
   @Override
   public Image visualizeBlueChannel() {
     log.append("visualize blue\n");
-    return null;
+    return this;
   }
 
   /**
@@ -55,7 +64,7 @@ public class MockImage implements Image {
   @Override
   public Image visualizeValue() {
     log.append("visualize value\n");
-    return null;
+    return this;
   }
 
   /**
@@ -65,7 +74,7 @@ public class MockImage implements Image {
   @Override
   public Image visualizeIntensity() {
     log.append("visualize intensity\n");
-    return null;
+    return this;
   }
 
   /**
@@ -75,7 +84,7 @@ public class MockImage implements Image {
   @Override
   public Image visualizeLuma() {
     log.append("visualize luma\n");
-    return null;
+    return this;
   }
 
   /**
@@ -85,7 +94,7 @@ public class MockImage implements Image {
   @Override
   public Image flipImageVertically() {
     log.append("flip vertically\n");
-    return null;
+    return this;
   }
 
   /**
@@ -95,7 +104,7 @@ public class MockImage implements Image {
   @Override
   public Image flipImageHorizontally() {
     log.append("flip horizontally\n");
-    return null;
+    return this;
   }
 
   /**
@@ -107,7 +116,7 @@ public class MockImage implements Image {
   @Override
   public Image brightenImage(int value) {
     log.append("brighten by " + value + "\n");
-    return null;
+    return this;
   }
 
   /**
@@ -119,7 +128,7 @@ public class MockImage implements Image {
   @Override
   public Image darkenImage(int value) {
     log.append("darken by " + value + "\n");
-    return null;
+    return fakeImage;
   }
 
   /**
@@ -129,7 +138,7 @@ public class MockImage implements Image {
   @Override
   public int getWidth() {
     log.append("get width\n");
-    return 0;
+    return 1;
   }
 
   /**
@@ -139,7 +148,7 @@ public class MockImage implements Image {
   @Override
   public int getHeight() {
     log.append("get height\n");
-    return 0;
+    return 1;
   }
 
   /**
@@ -149,7 +158,7 @@ public class MockImage implements Image {
   @Override
   public int getMaxValue() {
     log.append("get max value\n");
-    return 0;
+    return 1;
   }
 
   /**

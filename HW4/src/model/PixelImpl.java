@@ -5,12 +5,15 @@ import java.util.Objects;
 /**
  * This class represents a pixel on an image. This pixel has red, green, and blue values along
  * with a maxValue.
+ * INVARIANT: red is between 0 and maxValue (inclusive)
+ * INVARIANT: green is between 0 and maxValue (inclusive)
+ * INVARIANT: blue is between 0 and maxValue (inclusive)
  */
 public class PixelImpl implements Pixel {
-  private int red;
-  private int green;
-  private int blue;
-  private int maxValue;
+  private final int red;
+  private final int green;
+  private final int blue;
+  private final int maxValue;
 
   /**
    * Creates a pixel given its rgb values and max value.

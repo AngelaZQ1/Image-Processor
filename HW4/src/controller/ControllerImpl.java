@@ -14,6 +14,8 @@ import model.Pixel;
 /**
  * This class represents an implementation of the Controller interface.
  * It enables the user to enter several commands load, edit, and save an image.
+ * INVARIANT: view is not null
+ * INVARIANT: inputSource is not null
  */
 public class ControllerImpl implements Controller {
   private final View view;
@@ -24,14 +26,30 @@ public class ControllerImpl implements Controller {
    * Creates a ControllerImpl object with the given view and input source.
    * @param view the given view to output to
    * @param input the input source for commands
+   * @throws IllegalArgumentException if any of the given arguments are null
    */
-  public ControllerImpl(View view, Readable input) {
+  public ControllerImpl(View view, Readable input) throws IllegalArgumentException {
     if (view == null || input == null) {
       throw new IllegalArgumentException("The View and Readable cannot be null");
     }
     this.view = view;
     this.inputSource = input;
     this.listOfImages = new HashMap<>();
+  }
+
+  /**
+   * Creates a ControllerImpl object with the given view, input source,
+   * name of the starting image, and a starting image. Allows for creation of image processor
+   * with image preloaded.
+   * @param view the given view to output to
+   * @param input the input source for commands
+   * @param name the name to use to refer to the given image
+   * @param image the given image
+   */
+  public ControllerImpl(View view, Readable input, String name, Image image)
+          throws IllegalArgumentException {
+   this(view, input);
+   this.listOfImages.put(name, image);
   }
 
   @Override
@@ -64,13 +82,14 @@ public class ControllerImpl implements Controller {
           break;
         case "save":
           String filePath = sc.next();
-          Image image = this.getImageFromName(sc.next());
+          String fileName = sc.next();
+          Image image = this.getImageFromName(fileName);
           BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
           writer.write(writePPM(image).toString());
           writer.close();
-          this.view.renderMessage("Success! Image saved. \n");
+          this.view.renderMessage("Success! Image saved.\n");
           break;
-        case "visualize-red":
+        case "red-component":
           try {
             Image newImage = this.getImageFromName(sc.next()).visualizeRedChannel();
             // add the resulting image to the hashmap according to the given image name
@@ -78,7 +97,7 @@ public class ControllerImpl implements Controller {
           } catch (IOException e) {
             break; // tell the user and ask for more input
           }
-          this.view.renderMessage("Success! Image greyscsaled by red hue.\n");
+          this.view.renderMessage("Success! Image greyscaled by red hue.\n");
           break;
         case "green-component":
           try {
@@ -88,7 +107,7 @@ public class ControllerImpl implements Controller {
           } catch (IOException e) {
             break; // tell the user and ask for more input
           }
-          this.view.renderMessage("Success! Image greyscasdfaled by green hue.\n");
+          this.view.renderMessage("Success! Image grayscaled by green hue.\n");
           break;
         case "blue-component":
           try {
@@ -128,7 +147,7 @@ public class ControllerImpl implements Controller {
           } catch (IOException e) {
             break; // tell the user and ask for more input
           }
-          this.view.renderMessage("Success! Image greyscsaled by luma.\n");
+          this.view.renderMessage("Success! Image greyscaled by luma.\n");
           break;
         case "vertical-flip":
           try {
@@ -174,6 +193,8 @@ public class ControllerImpl implements Controller {
           }
           this.view.renderMessage("Success! Image darkened.\n");
           break;
+        case "menu":
+
         default:
           view.renderMessage("Unknown command. Please try again.\n");
       }
@@ -191,6 +212,7 @@ public class ControllerImpl implements Controller {
     return this.listOfImages.get(imageName);
   }
 
+  // helper method to turn an image into PPM format
   private StringBuilder writePPM(Image image) {
     StringBuilder fileString = new StringBuilder();
     fileString.append("P3 ");

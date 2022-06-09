@@ -3,11 +3,13 @@ import org.junit.Test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.HashMap;
 
 import controller.Controller;
 import controller.ControllerImpl;
 import controller.ImageUtil;
 import model.Image;
+import model.MockImage;
 import view.MockView;
 import view.TextView;
 import view.View;
@@ -21,10 +23,20 @@ import static org.junit.Assert.fail;
  */
 public class ControllerImplTest {
   @Test
-  public void testConstructor() {
+  public void testConstructors() {
     View view = new TextView();
     Readable in = new StringReader("q");
     Controller controller = new ControllerImpl(view, in);
+    try {
+      view.renderMessage("test");
+    } catch (IOException e) {
+      fail("An IOException should not have been thrown");
+    }
+    Image image = null;
+    try {
+      image = ImageUtil.readPPM("res/Koala.ppm");
+    } catch (FileNotFoundException ignore) { }
+    Controller otherController = new ControllerImpl(view, in, "name", image);
     try {
       view.renderMessage("test");
     } catch (IOException e) {
@@ -58,15 +70,39 @@ public class ControllerImplTest {
 
   @Test
   public void testRunMockModel() {
-    View view = new TextView();
-    Readable input = new StringReader("load res/Koala.ppm koala q");
-    Controller controller = new ControllerImpl(view, input);
-    // FIXME no way to input a model, how to test?
+    StringBuilder log = new StringBuilder();
+    MockImage mock = new MockImage(log);
     try {
+      View view = new TextView();
+      Readable input = new StringReader(
+              "red-component image image " +
+              "green-component image image " +
+              "blue-component image image " +
+              "value image image " +
+              "intensity image image " +
+              "luma image image " +
+              "vertical-flip image image " +
+              "horizontal-flip image image " +
+              "brighten 10 image image " +
+              "darken 10 image image " +
+              "save res/testMock.ppm image " +
+              "q");
+      Controller controller = new ControllerImpl(view, input, "image", mock);
       controller.run();
     } catch (IOException e) {
       fail("An IOException was thrown");
     }
+    String expected = "visualize red\n" +
+            "visualize green\n" +
+            "visualize blue\n" +
+            "visualize value\n" +
+            "visualize intensity\n" +
+            "visualize luma\n" +
+            "flip vertically\n" +
+            "flip horizontally\n" +
+            "brighten by 10\n" +
+            "darken by 10\n";
+    assertEquals(expected, log.toString());
   }
 
   @Test
@@ -90,4 +126,5 @@ public class ControllerImplTest {
             "message: Success! Image loaded.\n" +
             "message: Program Quit!", viewLog.toString());
   }
+
 }

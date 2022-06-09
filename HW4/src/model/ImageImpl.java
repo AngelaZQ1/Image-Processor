@@ -7,6 +7,7 @@ import java.util.function.Function;
 /**
  * This class represents an implementation of the Image interface. It offers ways to visualize
  * and manipulate an image.
+ * INVARIANT:
  */
 public class ImageImpl implements Image {
   private List<List<Pixel>> image;

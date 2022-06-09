@@ -1,10 +1,13 @@
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 import controller.ImageUtil;
 import model.Image;
+import model.ImageImpl;
 import model.Pixel;
 import model.PixelImpl;
 
@@ -17,10 +20,15 @@ import static org.junit.Assert.fail;
  * and methods work as intended.
  */
 public class ImageImplTest {
-  // TODO test ImageImpl methods and constructor
   @Test
   public void testConstructor() {
-
+    List<Pixel> row = new ArrayList<>();
+    row.add(new PixelImpl(1,2,3, 255));
+    row.add(new PixelImpl(1,2,3, 255));
+    List<List<Pixel>> temp = new ArrayList<>();
+    temp.add(row);
+    temp.add(row);
+    Image testImage = new ImageImpl(temp, 255);
   }
 
   // helper method that compares each component from each pixel from a given original image
@@ -105,13 +113,13 @@ public class ImageImplTest {
   // test visualizing an image in grayscale using its luma
   @Test
   public void testVisualizeLuma() {
-    try { // FIXME doesnt pass for some reason
+    try {
       Image originalImage = ImageUtil.readPPM("res/Koala.ppm");
       Image grayscaleImage = originalImage.visualizeLuma();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
           p -> (int) ((p.getRed() * 0.2126)
                       + (p.getGreen() * 0.7152)
-                      + (p.getBlue() * 0.0722) / 3)));
+                      + (p.getBlue() * 0.0722))));
     } catch (FileNotFoundException e) {
       fail("FileNotFoundException was thrown");
     }

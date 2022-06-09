@@ -1,0 +1,26 @@
+The structure of our program follows the MVC design.
+
+Controller:
+Our Controller interface consists of one public method called run that takes no arguments. The purpose of this interface is to control the flow of the program by handling user input. It delegates tasks to the view and model accordingly. This interface is implemented in the ControllerImpl class, which implements the run method. When called, this method runs the program.
+
+The Controller interface is implemented by the ControllerImpl class. Objects of this class have a View object, a Readable object as its input source, and a HashMap from String to Image representing the list of images and the name that is used to refer to them as a String. This class implements the run method which throws an IOException if output cannot be transmitted to the view. This class also have two private helper methods. One of them returns an image from the HashMap according to the String name it was passed, and the other one turns the given Image into a StringBuilder that represents the image in PPM format.
+
+Model:
+Our model is represented by the Image interface, which represents an image that can be manipulated using our program. This interface provides methods to visualize an image in grayscale using its red component, green component, blue component, value, intensity, and luma values. It also provides functionality to flip an image vertically or horizontally and to brighten or darken an image by a specific value. This interface also has methods to get the width, height, max value, and a specific pixel of the image.
+
+The ImageImpl class implements the Image interface and its methods. It has a 2D ArrayList of the Pixel interface to represent its image.
+
+The Pixel interface represents a pixel in an Image. This interface's methods that deal with changing a pixel return a new Pixel instead of changing the original pixel. This is because when manipulating images, users are never editing the contents of the image they are "editing," they are simply creating a new image with the edits applied. The original image always remains unchanged. The other methods in this interface are simply getter methods that return an int representing the component of the Pixel that is being obtained. Because they are simply ints, these getter methods also do not allow for any mutation. The only method that does not fall into the two categories is the equals method which overrides the corresponding method in the Object class.
+
+The PixelImpl class implements the Pixel interface. Objects of this class represent pixels that has 3 channels: red, green, and blue, along with a maxValue, which represents the maximum value of any channel. The 3 channels are always between 0 and maxValue, inclusive. This class implements the methods in the Pixel interface while upholding the immutability of this class's fields.
+
+View:
+Our view is represented by the View interface. This interface provides operations that deal with sending information to the user. It has two methods: renderMessage that takes in a String message and showOptions that takes in no arguments. renderMessage outputs the given message to the user and throws an IOException if the output was unable to be sent. showOptions shows a menu of possible commands to the user. This method also throws an IOException if the output could not be sent.
+
+The View interface is implemented in the TextView class, which represents a way of showing messages to the user using an Appendable. If not provided an Appendable, this class defaults to using System.out. This class implements renderMessage and showOptions in the View interface.
+
+
+The image "fourPixels.ppm" was created by Angela Zheng using Gimp. I authorize the use of this image for this project.
+
+
+How to use our program:

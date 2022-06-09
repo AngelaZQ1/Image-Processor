@@ -1,0 +1,19 @@
+No command line arguments needed
+
+Type this script when the program runs:
+load res/fourPixels.ppm fourPixels
+brighten 20 fourPixels fourPixels-brighter
+save fourPixels-brighter
+darken 20 fourPixels fourPixels-darken
+save fourPixels-darken
+flip-vertically fourPixels fourPixels-vFlipped
+save fourPixels-vFlipped
+flip-horizontally fourPixels fourPixels-hFlipped
+save fourPixels-hFlipped
+red-component fourPixels fourPixels-red
+save fourPixels-red
+green-component fourPixels fourPixels-green
+save fourPixels-green
+blue-component fourPixels fourPixels-blue
+save fourPixels-blue
+
