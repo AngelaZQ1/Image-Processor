@@ -20,7 +20,6 @@ import static org.junit.Assert.fail;
  * constructors and methods work as intended.
  */
 public class ControllerImplTest {
-  // TODO ControllerImpl tests
   @Test
   public void testConstructor() {
     View view = new TextView();
@@ -68,7 +67,6 @@ public class ControllerImplTest {
     } catch (IOException e) {
       fail("An IOException was thrown");
     }
-//    assertEquals();
   }
 
   @Test

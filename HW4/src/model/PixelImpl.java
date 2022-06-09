@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * This class represents a pixel on an image. This pixel has red, green, and blue values along
  * with a maxValue.
@@ -116,6 +118,11 @@ public class PixelImpl implements Pixel {
             && pixel.getGreen() == this.getGreen()
             && pixel.getBlue() == this.getBlue())
             && pixel.getMaxValue() == this.maxValue;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this);
   }
 
 }

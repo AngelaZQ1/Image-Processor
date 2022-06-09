@@ -1,25 +1,22 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import controller.Controller;
 import controller.ControllerImpl;
 import view.TextView;
-import view.View;
 
+/**
+ * This class represents an image processing program. It offers functionality that enables the
+ * user to edit images.
+ */
 public class ImageProcessor {
-  public static void main(String[] args) throws FileNotFoundException, IOException {
-    String filename;
-
-    if (args.length > 0) {
-      filename = args[0];
-    } else {
-      filename = "sample.ppm";
-    }
-
-    View view = new TextView();
-
-    Controller controller = new ControllerImpl(view, new InputStreamReader(System.in));
+  /**
+   * The main method that runs when the program is started.
+   * @param args the arguments used when starting the program
+   * @throws IOException if output cannot be transmitted
+   */
+  public static void main(String[] args) throws IOException {
+    Controller controller = new ControllerImpl(new TextView(), new InputStreamReader(System.in));
     controller.run();
   }
 }

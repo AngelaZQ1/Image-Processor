@@ -1,5 +1,8 @@
 import java.io.IOException;
 
+/**
+ * This class represents a corrupt Appendable. Every method throws an IOException.
+ */
 public class CorruptAppendable implements Appendable {
 
   @Override

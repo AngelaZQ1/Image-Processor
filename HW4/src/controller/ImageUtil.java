@@ -22,8 +22,8 @@ public class ImageUtil {
    * Read an image file in the PPM format and print the colors.
    *
    * @param filename the path of the file.
-   * @throws FileNotFoundException if the filename could not be found
    * @return the image
+   * @throws FileNotFoundException if the filename could not be found
    */
   public static Image readPPM(String filename) throws FileNotFoundException {
     Scanner sc;

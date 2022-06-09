@@ -14,6 +14,11 @@ public class ImageImpl implements Image {
   private int numRows;
   private int maxValue;
 
+  /**
+   * Creates an ImageImpl object with the given image and max value of the image's channels
+   * @param image the given image to use
+   * @param maxValue the max value of any channel
+   */
   public ImageImpl(List<List<Pixel>> image, int maxValue) {
     this.image = image;
     this.numRows = image.size();

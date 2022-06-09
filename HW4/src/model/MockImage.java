@@ -100,7 +100,7 @@ public class MockImage implements Image {
 
   /**
    * Tests that this method is called with the correct argument by appending the given value
-   * to this mock's log
+   * to this mock's log.
    * @param value the value to append
    * @return null
    */
@@ -112,7 +112,7 @@ public class MockImage implements Image {
 
   /**
    * Tests that this method is called with the correct argument by appending the given value
-   * to this mock's log
+   * to this mock's log.
    * @param value the value to append
    * @return null
    */
@@ -154,7 +154,7 @@ public class MockImage implements Image {
 
   /**
    * Tests that this method is called with the correct arguments by appending the given row and col
-   * to this mock's log
+   * to this mock's log.
    * @param row the row value to append
    * @param col the column value to append
    * @return null

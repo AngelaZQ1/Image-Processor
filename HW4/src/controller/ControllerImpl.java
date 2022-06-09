@@ -20,6 +20,11 @@ public class ControllerImpl implements Controller {
   private final Readable inputSource;
   private HashMap<String, Image> listOfImages;
 
+  /**
+   * Creates a ControllerImpl object with the given view and input source.
+   * @param view the given view to output to
+   * @param input the input source for commands
+   */
   public ControllerImpl(View view, Readable input) {
     if (view == null || input == null) {
       throw new IllegalArgumentException("The View and Readable cannot be null");
@@ -28,7 +33,6 @@ public class ControllerImpl implements Controller {
     this.inputSource = input;
     this.listOfImages = new HashMap<>();
   }
-
 
   @Override
   public void run() throws IOException {

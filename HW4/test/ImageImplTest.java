@@ -83,7 +83,7 @@ public class ImageImplTest {
       Image originalImage = ImageUtil.readPPM("res/Koala.ppm");
       Image grayscaleImage = originalImage.visualizeValue();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
-              p -> Math.max(p.getRed(), Math.max(p.getGreen(), p.getBlue()))));
+          p -> Math.max(p.getRed(), Math.max(p.getGreen(), p.getBlue()))));
     } catch (FileNotFoundException e) {
       fail("FileNotFoundException was thrown");
     }
@@ -96,7 +96,7 @@ public class ImageImplTest {
       Image originalImage = ImageUtil.readPPM("res/Koala.ppm");
       Image grayscaleImage = originalImage.visualizeIntensity();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
-              p -> (p.getRed() + p.getGreen() + p.getBlue()) / 3));
+          p -> (p.getRed() + p.getGreen() + p.getBlue()) / 3));
     } catch (FileNotFoundException e) {
       fail("FileNotFoundException was thrown");
     }
@@ -109,7 +109,7 @@ public class ImageImplTest {
       Image originalImage = ImageUtil.readPPM("res/Koala.ppm");
       Image grayscaleImage = originalImage.visualizeLuma();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
-              p -> (int) ((p.getRed() * 0.2126)
+          p -> (int) ((p.getRed() * 0.2126)
                       + (p.getGreen() * 0.7152)
                       + (p.getBlue() * 0.0722) / 3)));
     } catch (FileNotFoundException e) {
