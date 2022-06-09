@@ -1,10 +1,15 @@
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 
 import controller.Controller;
 import controller.ControllerImpl;
+import controller.ImageUtil;
+import model.Image;
+import model.ImageImpl;
+import view.MockView;
 import view.TextView;
 import view.View;
 
@@ -55,11 +60,37 @@ public class ControllerImplTest {
 
   @Test
   public void testRunMockModel() {
-
+    View view = new TextView();
+    Readable input = new StringReader("load res/Koala.ppm koala q");
+    Controller controller = new ControllerImpl(view, input);
+    // FIXME no way to input a model, how to test?
+    try {
+      controller.run();
+    } catch (IOException e) {
+      fail("An IOException was thrown");
+    }
+//    assertEquals();
   }
 
   @Test
   public void testRunMockView() {
-
+    StringBuilder viewLog = new StringBuilder();
+    try {
+      Image image = ImageUtil.readPPM("res/Koala.ppm");
+    } catch (FileNotFoundException e) {
+      fail("A FileNotFoundException was thrown");
+    }
+    View view = new MockView(viewLog);
+    Readable input = new StringReader("load res/Koala.ppm koala q");
+    Controller controller = new ControllerImpl(view, input);
+    try {
+      controller.run();
+    } catch (IOException e) {
+      fail("An IOException was thrown");
+    }
+    assertEquals("message: Hello, welcome to our image processor.\n" +
+            "show options" +
+            "message: Success! Image loaded.\n" +
+            "message: Program Quit!", viewLog.toString());
   }
 }

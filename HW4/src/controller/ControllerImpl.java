@@ -18,7 +18,7 @@ public class ControllerImpl implements Controller {
 
   public ControllerImpl(View view, Readable input) {
     if (view == null || input == null) {
-      throw new IllegalArgumentException("The View and Readable cannot be null");
+      throw new IllegalArgumentException("The View and Readable cannot be null")
     }
     this.view = view;
     this.inputSource = input;
