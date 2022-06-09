@@ -4,8 +4,6 @@ import java.io.InputStreamReader;
 
 import controller.Controller;
 import controller.ControllerImpl;
-import controller.ImageUtil;
-import model.Image;
 import view.TextView;
 import view.View;
 

@@ -67,8 +67,30 @@ public interface Image {
    */
   public Image darkenImage(int value);
 
+  /**
+   * Gives the width of the image.
+   * @return int representing the width of the image.
+   */
+  public int getWidth();
 
+  /**
+   * Gives the height of the image.
+   * @return int representing the height of the image.
+   */
+  public int getHeight();
 
+  /**
+   * Gives the max color value of the image.
+   * @return int representing the max color value of the image.
+   */
+  public int getMaxValue();
 
+  /**
+   * Gives the pixel at the given location on the image.
+   * @param row the row index of the pixel.
+   * @param col the column index of the pixel.
+   * @return the Pixel at the given location
+   */
+  public Pixel getPixel(int row, int col);
 
 }

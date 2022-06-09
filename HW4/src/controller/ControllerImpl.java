@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import model.Image;
-import model.ImageImpl;
 import view.View;
+import model.Pixel;
 
 public class ControllerImpl implements Controller {
   private final View view;
@@ -17,10 +17,14 @@ public class ControllerImpl implements Controller {
   private HashMap<String, Image> listOfImages;
 
   public ControllerImpl(View view, Readable input) {
+    if (view == null || input == null) {
+      throw new IllegalArgumentException("The View and Readable cannot be null");
+    }
     this.view = view;
     this.inputSource = input;
     this.listOfImages = new HashMap<>();
   }
+
 
   @Override
   public void run() throws IOException {
@@ -30,7 +34,10 @@ public class ControllerImpl implements Controller {
     this.view.showOptions();
     while (true) {
       userInput = sc.next();
-
+      if (userInput.equalsIgnoreCase("q")) {
+        this.view.renderMessage("Program Quit!");
+        return;
+      }
       switch (userInput) {
         case "load":
           boolean validFilePath = false;
@@ -163,7 +170,35 @@ public class ControllerImpl implements Controller {
           view.renderMessage("Unknown command. Please try again.\n");
       }
     }
-
-
   }
+
+  // gets the image from the hashmap from the given imageName
+  // throws an IOException if there is an issue rendering the message to the user
+  private Image getImageFromName(String imageName) throws IOException {
+    // if the image with this name doesn't exist in the hashmap
+    if (this.listOfImages.get(imageName) == null) {
+      this.view.renderMessage("Invalid image name. Please try again.\n");
+    }
+    // return the image corresponding to the image name
+    return this.listOfImages.get(imageName);
+  }
+
+  private StringBuilder writePPM(Image image) {
+    StringBuilder fileString = new StringBuilder();
+    fileString.append("P3 ");
+    fileString.append(image.getWidth()).append(" ");
+    fileString.append(image.getHeight()).append(" ");
+    fileString.append(image.getMaxValue()).append("\n");
+    for (int i = 0; i < image.getHeight(); i++) {
+      for (int j = 0; j < image.getWidth(); j++) {
+        Pixel p = image.getPixel(i, j);
+        fileString.append(p.getRed()).append(" ");
+        fileString.append(p.getGreen()).append(" ");
+        fileString.append(p.getBlue()).append(" ");
+      }
+      fileString.append("\n");
+    }
+    return fileString;
+  }
+
 }

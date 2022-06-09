@@ -82,4 +82,39 @@ public class PixelImpl implements Pixel {
     return new PixelImpl(blue, blue, blue, maxValue);
   }
 
+  @Override
+  public int getRed() {
+    return red;
+  }
+
+  @Override
+  public int getGreen() {
+    return green;
+  }
+
+  @Override
+  public int getBlue() {
+    return blue;
+  }
+
+  @Override
+  public int getMaxValue() {
+    return maxValue;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == this) {
+      return true;
+    }
+    if (!(obj instanceof PixelImpl)) {
+      return false;
+    }
+    Pixel pixel = (Pixel) obj;
+    return (pixel.getRed() == this.getRed()
+            && pixel.getGreen() == this.getGreen()
+            && pixel.getBlue() == this.getBlue())
+            && pixel.getMaxValue() == this.maxValue;
+  }
+
 }

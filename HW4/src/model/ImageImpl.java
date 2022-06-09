@@ -32,7 +32,7 @@ public class ImageImpl implements Image {
       }
       newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
@@ -45,7 +45,7 @@ public class ImageImpl implements Image {
       }
       newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
@@ -58,7 +58,7 @@ public class ImageImpl implements Image {
       }
       newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
@@ -71,7 +71,7 @@ public class ImageImpl implements Image {
       }
       newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class ImageImpl implements Image {
       }
       newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
@@ -97,16 +97,16 @@ public class ImageImpl implements Image {
       }
       newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
   public Image flipImageVertically() {
     List<List<Pixel>> newImage = new ArrayList<>();
-    for (int i = 0; i < numRows; i++) {
-      newImage.add(image.get(numRows - 1));
+    for (int i = 1; i <= numRows; i++) {
+      newImage.add(image.get(numRows - i));
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
@@ -114,12 +114,12 @@ public class ImageImpl implements Image {
     List<List<Pixel>> newImage = new ArrayList<>();
     for (int i = 0; i < numRows; i++) {
       List<Pixel> newRow = new ArrayList<>();
-      for (int j = 1; j <= numRows; j++) {
-        newRow.add(image.get(i).get(numRows - j));
+      for (int j = 1; j <= numCols; j++) {
+        newRow.add(image.get(i).get(numCols - j));
       }
       newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
@@ -130,9 +130,9 @@ public class ImageImpl implements Image {
       for (Pixel pixel : row) {
         newRow.add(pixel.changeColor(value, value, value));
       }
-      newImage.add(row);
+      newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
 
   @Override
@@ -143,8 +143,30 @@ public class ImageImpl implements Image {
       for (Pixel pixel : row) {
         newRow.add(pixel.changeColor(-value, -value, -value));
       }
-      newImage.add(row);
+      newImage.add(newRow);
     }
-    return new ImageImpl(newImage);
+    return new ImageImpl(newImage, maxValue);
   }
+
+  @Override
+  public int getWidth() {
+    return numCols;
+  }
+
+  @Override
+  public int getHeight() {
+    return numRows;
+  }
+
+  @Override
+  public int getMaxValue() {
+    return maxValue;
+  }
+
+  @Override
+  public Pixel getPixel(int row, int col) {
+    List<Pixel> temp = image.get(row);
+    return temp.get(col);
+  }
+
 }

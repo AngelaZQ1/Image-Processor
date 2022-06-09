@@ -36,7 +36,7 @@ public class TextView implements View {
 
   @Override
   public void showOptions() throws IOException {
-    this.destination.append("Menu:\n");
+    this.destination.append("Available Commands:\n");
     this.destination.append("Load Image: load image-path image-name\n");
     this.destination.append("Save Image: save image-path image-name\n");
     this.destination.append("Red-Component: red-component image-name dest-image-name\n");
@@ -49,6 +49,7 @@ public class TextView implements View {
     this.destination.append("Vertical Flip: vertical-flip image-name dest-image-name\n");
     this.destination.append("Brighten: brighten increment image-name dest-image-name\n");
     this.destination.append("Darken: darken increment image-name dest-image-name\n");
+    this.destination.append("To Quit: q or Q\n");
   }
 
 
