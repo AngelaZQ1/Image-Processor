@@ -20,6 +20,7 @@ public class MockImage implements Image {
 
   /**
    * Tests that this method is called by appending "visualize red" to this mock's log.
+   * @return null
    */
   @Override
   public Image visualizeRedChannel() {
@@ -28,7 +29,8 @@ public class MockImage implements Image {
   }
 
   /**
-   * Tests that this method is called by appending "visualize red" to this mock's log.
+   * Tests that this method is called by appending "visualize green" to this mock's log.
+   * @return null
    */
   @Override
   public Image visualizeGreenChannel() {
@@ -37,7 +39,8 @@ public class MockImage implements Image {
   }
 
   /**
-   * Tests that this method is called by appending "visualize red" to this mock's log.
+   * Tests that this method is called by appending "visualize blue" to this mock's log.
+   * @return null
    */
   @Override
   public Image visualizeBlueChannel() {
@@ -46,7 +49,8 @@ public class MockImage implements Image {
   }
 
   /**
-   * Tests that this method is called by appending "visualize red" to this mock's log.
+   * Tests that this method is called by appending "visualize value" to this mock's log.
+   * @return null
    */
   @Override
   public Image visualizeValue() {
@@ -55,7 +59,8 @@ public class MockImage implements Image {
   }
 
   /**
-   * Tests that this method is called by appending "visualize red" to this mock's log.
+   * Tests that this method is called by appending "visualize intensity" to this mock's log.
+   * @return null
    */
   @Override
   public Image visualizeIntensity() {
@@ -64,7 +69,8 @@ public class MockImage implements Image {
   }
 
   /**
-   * Tests that this method is called by appending "visualize red" to this mock's log.
+   * Tests that this method is called by appending "visualize luma" to this mock's log.
+   * @return null
    */
   @Override
   public Image visualizeLuma() {
@@ -73,7 +79,8 @@ public class MockImage implements Image {
   }
 
   /**
-   * Tests that this method is called by appending "visualize red" to this mock's log.
+   * Tests that this method is called by appending "flip vertically" to this mock's log.
+   * @return null
    */
   @Override
   public Image flipImageVertically() {
@@ -82,7 +89,8 @@ public class MockImage implements Image {
   }
 
   /**
-   * Tests that this method is called by appending "visualize red" to this mock's log.
+   * Tests that this method is called by appending "flip horizontally" to this mock's log.
+   * @return null
    */
   @Override
   public Image flipImageHorizontally() {
@@ -91,7 +99,10 @@ public class MockImage implements Image {
   }
 
   /**
-   * Tests that this method is called by appending "visualize red" to this mock's log.
+   * Tests that this method is called with the correct argument by appending the given value
+   * to this mock's log
+   * @param value the value to append
+   * @return null
    */
   @Override
   public Image brightenImage(int value) {
@@ -102,9 +113,8 @@ public class MockImage implements Image {
   /**
    * Tests that this method is called with the correct argument by appending the given value
    * to this mock's log
-   * @param row the row value to append
-   * @param col the column value to append
-   * @return
+   * @param value the value to append
+   * @return null
    */
   @Override
   public Image darkenImage(int value) {
@@ -114,6 +124,7 @@ public class MockImage implements Image {
 
   /**
    * Tests that this method is called by appending "get width" to this mock's log.
+   * @return null
    */
   @Override
   public int getWidth() {
@@ -123,6 +134,7 @@ public class MockImage implements Image {
 
   /**
    * Tests that this method is called by appending "get height" to this mock's log.
+   * @return 0
    */
   @Override
   public int getHeight() {
@@ -132,6 +144,7 @@ public class MockImage implements Image {
 
   /**
    * Tests that this method is called by appending "get max value" to this mock's log.
+   * @return 0
    */
   @Override
   public int getMaxValue() {
@@ -144,7 +157,7 @@ public class MockImage implements Image {
    * to this mock's log
    * @param row the row value to append
    * @param col the column value to append
-   * @return
+   * @return null
    */
   @Override
   public Pixel getPixel(int row, int col) {

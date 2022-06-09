@@ -75,7 +75,6 @@ public class TextViewTest {
     } catch (IOException e) {
       fail("An IOException should have been thrown");
     }
-
   }
 
   @Test

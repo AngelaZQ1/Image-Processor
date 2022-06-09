@@ -8,7 +8,6 @@ import controller.Controller;
 import controller.ControllerImpl;
 import controller.ImageUtil;
 import model.Image;
-import model.ImageImpl;
 import view.MockView;
 import view.TextView;
 import view.View;

@@ -7,7 +7,6 @@ import java.io.IOException;
  */
 public interface View {
 
-
   /**
    * Sends the given message to the user through an Appendable.
    * @param message the message to send

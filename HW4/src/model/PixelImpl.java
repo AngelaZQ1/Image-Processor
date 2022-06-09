@@ -1,7 +1,8 @@
 package model;
 
 /**
- * This class represents a pixel on an image. This pixel can be changed according to color.
+ * This class represents a pixel on an image. This pixel has red, green, and blue values along
+ * with a maxValue.
  */
 public class PixelImpl implements Pixel {
   private int red;

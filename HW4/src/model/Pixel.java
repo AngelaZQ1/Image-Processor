@@ -1,7 +1,8 @@
 package model;
 
 /**
- * Represents a pixel in an image and contains a red, green, and blue value.
+ * This interface represents a pixel in an image and offers methods that return a new pixel
+ * that differs from the original pixel in some way.
  */
 public interface Pixel {
 

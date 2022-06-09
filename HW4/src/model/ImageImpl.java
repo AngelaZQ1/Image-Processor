@@ -1,8 +1,8 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * This class represents an implementation of the Image interface. It offers ways to visualize
@@ -21,83 +21,48 @@ public class ImageImpl implements Image {
     this.maxValue = maxValue;
   }
 
-  // TODO abstract these
-  @Override
-  public Image visualizeRedChannel() {
+  // helper method for visualizing images in grayscale.
+  // Takes in a function that changes the channels of a pixel
+  private Image visualizeHelper(Function<Pixel, Pixel> func) {
     List<List<Pixel>> newImage = new ArrayList<>();
     for (List<Pixel> row : image) {
       List<Pixel> newRow = new ArrayList<>();
       for (Pixel p : row) {
-        newRow.add(p.redScale());
+        newRow.add(func.apply(p));
       }
       newImage.add(newRow);
     }
     return new ImageImpl(newImage, maxValue);
+  }
+
+  @Override
+  public Image visualizeRedChannel() {
+    return visualizeHelper(Pixel::redScale);
   }
 
   @Override
   public Image visualizeGreenChannel() {
-    List<List<Pixel>> newImage = new ArrayList<>();
-    for (List<Pixel> row : image) {
-      List<Pixel> newRow = new ArrayList<>();
-      for (Pixel p : row) {
-        newRow.add(p.greenScale());
-      }
-      newImage.add(newRow);
-    }
-    return new ImageImpl(newImage, maxValue);
+    return visualizeHelper(Pixel::greenScale);
   }
 
   @Override
   public Image visualizeBlueChannel() {
-    List<List<Pixel>> newImage = new ArrayList<>();
-    for (List<Pixel> row : image) {
-      List<Pixel> newRow = new ArrayList<>();
-      for (Pixel p : row) {
-        newRow.add(p.blueScale());
-      }
-      newImage.add(newRow);
-    }
-    return new ImageImpl(newImage, maxValue);
+    return visualizeHelper(Pixel::blueScale);
   }
 
   @Override
   public Image visualizeValue() {
-    List<List<Pixel>> newImage = new ArrayList<>();
-    for (List<Pixel> row : image) {
-      List<Pixel> newRow = new ArrayList<>();
-      for (Pixel p : row) {
-        newRow.add(p.value());
-      }
-      newImage.add(newRow);
-    }
-    return new ImageImpl(newImage, maxValue);
+    return visualizeHelper(Pixel::value);
   }
 
   @Override
   public Image visualizeIntensity() {
-    List<List<Pixel>> newImage = new ArrayList<>();
-    for (List<Pixel> row : image) {
-      List<Pixel> newRow = new ArrayList<>();
-      for (Pixel p : row) {
-        newRow.add(p.intensity());
-      }
-      newImage.add(newRow);
-    }
-    return new ImageImpl(newImage, maxValue);
+    return visualizeHelper(Pixel::intensity);
   }
 
   @Override
   public Image visualizeLuma() {
-    List<List<Pixel>> newImage = new ArrayList<>();
-    for (List<Pixel> row : image) {
-      List<Pixel> newRow = new ArrayList<>();
-      for (Pixel p : row) {
-        newRow.add(p.luma());
-      }
-      newImage.add(newRow);
-    }
-    return new ImageImpl(newImage, maxValue);
+    return visualizeHelper(Pixel::luma);
   }
 
   @Override
@@ -124,28 +89,12 @@ public class ImageImpl implements Image {
 
   @Override
   public Image brightenImage(int value) {
-    List<List<Pixel>> newImage = new ArrayList<>();
-    for (List<Pixel> row : image) {
-      List<Pixel> newRow = new ArrayList<>();
-      for (Pixel pixel : row) {
-        newRow.add(pixel.changeColor(value, value, value));
-      }
-      newImage.add(newRow);
-    }
-    return new ImageImpl(newImage, maxValue);
+    return visualizeHelper(p -> p.changeColor(value, value, value));
   }
 
   @Override
   public Image darkenImage(int value) {
-    List<List<Pixel>> newImage = new ArrayList<>();
-    for (List<Pixel> row : image) {
-      List<Pixel> newRow = new ArrayList<>();
-      for (Pixel pixel : row) {
-        newRow.add(pixel.changeColor(-value, -value, -value));
-      }
-      newImage.add(newRow);
-    }
-    return new ImageImpl(newImage, maxValue);
+    return visualizeHelper(p -> p.changeColor(-value, -value, -value));
   }
 
   @Override

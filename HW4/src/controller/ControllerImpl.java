@@ -11,6 +11,10 @@ import model.Image;
 import view.View;
 import model.Pixel;
 
+/**
+ * This class represents an implementation of the Controller interface.
+ * It enables the user to enter several commands load, edit, and save an image.
+ */
 public class ControllerImpl implements Controller {
   private final View view;
   private final Readable inputSource;
@@ -18,7 +22,7 @@ public class ControllerImpl implements Controller {
 
   public ControllerImpl(View view, Readable input) {
     if (view == null || input == null) {
-      throw new IllegalArgumentException("The View and Readable cannot be null")
+      throw new IllegalArgumentException("The View and Readable cannot be null");
     }
     this.view = view;
     this.inputSource = input;
