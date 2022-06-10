@@ -48,8 +48,8 @@ public class ControllerImpl implements Controller {
    * @throws IllegalArgumentException if
    */
   public ControllerImpl(View view, Readable input, String name, Image image) {
-   this(view, input);
-   this.listOfImages.put(name, image);
+    this(view, input);
+    this.listOfImages.put(name, image);
   }
 
   @Override

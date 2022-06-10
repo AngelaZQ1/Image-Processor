@@ -77,8 +77,8 @@ public class PixelImplTest {
   public void testLuma() {
     assertEquals(new PixelImpl(4, 4, 4, 255),
             new PixelImpl(4, 4, 4, 255).luma());
-    assertEquals(new PixelImpl(50, 30, 70, 255),
-            new PixelImpl(50, 50, 50, 255).luma());
+    assertEquals(new PixelImpl(4, 4, 4, 255),
+            new PixelImpl(5, 5, 5, 255).luma());
   }
 
   @Test
