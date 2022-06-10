@@ -24,7 +24,7 @@ The image "fourPixels.ppm" was created by Angela Zheng using Gimp. I authorize t
 
 
 How to use our program:
-0) No need to give command line arguments
+0) Run the image ImageProcessor program, no need to give command line arguments
 1) Load in your desired image by doing the command: load image-path image-name
 2) Then you may edit/transform your image with any of the following commands:
     - Red-Component: red-component image-name dest-image-name    
