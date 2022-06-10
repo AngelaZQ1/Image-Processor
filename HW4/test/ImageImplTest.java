@@ -29,6 +29,8 @@ public class ImageImplTest {
     temp.add(row);
     temp.add(row);
     Image testImage = new ImageImpl(temp, 255);
+    assertEquals(new PixelImpl(1, 2, 3, 255),
+            testImage.getPixel(0, 0));
   }
 
   // helper method that compares each component from each pixel from a given original image

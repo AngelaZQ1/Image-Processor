@@ -45,9 +45,9 @@ public class ControllerImpl implements Controller {
    * @param input the input source for commands
    * @param name the name to use to refer to the given image
    * @param image the given image
+   * @throws IllegalArgumentException if
    */
-  public ControllerImpl(View view, Readable input, String name, Image image)
-          throws IllegalArgumentException {
+  public ControllerImpl(View view, Readable input, String name, Image image) {
    this(view, input);
    this.listOfImages.put(name, image);
   }
@@ -83,7 +83,7 @@ public class ControllerImpl implements Controller {
         case "save":
           BufferedWriter writer = null;
           boolean validFp = false;
-          while(!validFp) {
+          while (!validFp) {
             String filePath  = sc.next();
             try {
               writer = new BufferedWriter(new FileWriter(filePath));
@@ -94,7 +94,7 @@ public class ControllerImpl implements Controller {
           }
           Image image = null;
           boolean validName = false;
-          while(!validName) {
+          while (!validName) {
             String fileName = sc.next();
             image = this.getImageFromName(fileName);
             if (image != null) {

@@ -3,7 +3,6 @@ import org.junit.Test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.HashMap;
 
 import controller.Controller;
 import controller.ControllerImpl;
@@ -35,7 +34,9 @@ public class ControllerImplTest {
     Image image = null;
     try {
       image = ImageUtil.readPPM("res/Koala.ppm");
-    } catch (FileNotFoundException ignore) { }
+    } catch (FileNotFoundException ignore) {
+      // do nothing
+    }
     Controller otherController = new ControllerImpl(view, in, "name", image);
     try {
       view.renderMessage("test");

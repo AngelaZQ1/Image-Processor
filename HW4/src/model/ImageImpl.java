@@ -7,13 +7,12 @@ import java.util.function.Function;
 /**
  * This class represents an implementation of the Image interface. It offers ways to visualize
  * and manipulate an image.
- * INVARIANT:
  */
 public class ImageImpl implements Image {
   private List<List<Pixel>> image;
   private int numCols;
   private int numRows;
-  private int maxValue;
+  private final int maxValue;
 
   /**
    * Creates an ImageImpl object with the given image and max value of the image's channels

@@ -11,6 +11,7 @@ import java.util.Objects;
 public class MockImage implements Image {
   private final StringBuilder log;
   private final Image fakeImage;
+
   /**
    * Creates a MockImage object with the given StringBuilder.
    *
