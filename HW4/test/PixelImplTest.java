@@ -17,7 +17,7 @@ public class PixelImplTest {
 
   @Before
   public void init() {
-    pixel = new PixelImpl(0, 0, 0, 255);
+    pixel = new PixelImpl(3, 5, 7, 255);
   }
 
   // test that the constructor works
@@ -69,7 +69,7 @@ public class PixelImplTest {
   public void testIntensity() {
     assertEquals(new PixelImpl(4, 4, 4, 255),
             new PixelImpl(2, 4, 6, 255).intensity());
-    assertEquals(new PixelImpl(0, 0, 0, 244),
+    assertEquals(new PixelImpl(0, 0, 0, 255),
             new PixelImpl(0, 0, 0, 255).intensity());
   }
 
