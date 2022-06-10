@@ -81,4 +81,10 @@ public interface Pixel {
    * @return if the given pixel is the same as this pixel.
    */
   public boolean equals(Object obj);
+
+  /**
+   * Create a hashcode for this Pixel.
+   * @return the hashcode for this Pixel.
+   */
+  public int hashCode();
 }

@@ -1,16 +1,14 @@
-The structure of our program follows the MVC design.
+The structure of our program follows the MVC design. The program starts in the ImageProcessor class, where a controller object is created and its run method is called.
 
 Controller:
-Our Controller interface consists of one public method called run that takes no arguments. The purpose of this interface is to control the flow of the program by handling user input. It delegates tasks to the view and model accordingly. This interface is implemented in the ControllerImpl class, which implements the run method. When called, this method runs the program.
+Our Controller interface consists of one public method called run that takes no arguments. The purpose of this interface is to control the flow of the program by handling user input. It delegates tasks to the view and model accordingly. This interface is implemented in the ControllerImpl class, which implements the run method. When called, this method runs the program. An IOException is thrown if any output is unable to reach the Appendable.
 
 The Controller interface is implemented by the ControllerImpl class. Objects of this class have a View object, a Readable object as its input source, and a HashMap from String to Image representing the list of images and the name that is used to refer to them as a String. This class implements the run method which throws an IOException if output cannot be transmitted to the view. This class also have two private helper methods. One of them returns an image from the HashMap according to the String name it was passed, and the other one turns the given Image into a StringBuilder that represents the image in PPM format.
 
 Model:
-Our model is represented by the Image interface, which represents an image that can be manipulated using our program. This interface provides methods to visualize an image in grayscale using its red component, green component, blue component, value, intensity, and luma values. It also provides functionality to flip an image vertically or horizontally and to brighten or darken an image by a specific value. This interface also has methods to get the width, height, max value, and a specific pixel of the image.
+Our model is represented by the Image interface, which represents an image that can be manipulated using our program. This interface provides methods to visualize an image in grayscale using its red component, green component, blue component, value, intensity, and luma values. It also provides functionality to flip an image vertically or horizontally and to brighten or darken an image by a specific value. This interface also has methods to get the width, height, max value, and a specific pixel of the image based on the given row and column. The ImageImpl class implements the Image interface and its methods. It has a 2D ArrayList of the Pixel interface to represent its image.
 
-The ImageImpl class implements the Image interface and its methods. It has a 2D ArrayList of the Pixel interface to represent its image.
-
-The Pixel interface represents a pixel in an Image. This interface's methods that deal with changing a pixel return a new Pixel instead of changing the original pixel. This is because when manipulating images, users are never editing the contents of the image they are "editing," they are simply creating a new image with the edits applied. The original image always remains unchanged. The other methods in this interface are simply getter methods that return an int representing the component of the Pixel that is being obtained. Because they are simply ints, these getter methods also do not allow for any mutation. The only method that does not fall into the two categories is the equals method which overrides the corresponding method in the Object class.
+The Pixel interface represents a pixel in an Image. This interface's methods that deal with changing a pixel return a new Pixel instead of changing the original pixel. This is because when manipulating images, users are never editing the contents of the image they are "editing," they are simply creating a new image with the edits applied. The original image always remains unchanged. The other methods in this interface are simply getter methods that return an int representing the component of the Pixel that is being obtained. Because they are simply ints, these getter methods also do not allow for any mutation. The only method that does not fall into the two categories is the equals and hashcode method.
 
 The PixelImpl class implements the Pixel interface. Objects of this class represent pixels that has 3 channels: red, green, and blue, along with a maxValue, which represents the maximum value of any channel. The 3 channels are always between 0 and maxValue, inclusive. This class implements the methods in the Pixel interface while upholding the immutability of this class's fields.
 
@@ -24,7 +22,8 @@ The image "fourPixels.ppm" was created by Angela Zheng using Gimp. I authorize t
 
 
 How to use our program:
-0) Run the image ImageProcessor program, no need to give command line arguments
+
+0) No need to give command line arguments
 1) Load in your desired image by doing the command: load image-path image-name
 2) Then you may edit/transform your image with any of the following commands:
     - Red-Component: red-component image-name dest-image-name    
