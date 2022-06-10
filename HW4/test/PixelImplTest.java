@@ -17,7 +17,7 @@ public class PixelImplTest {
 
   @Before
   public void init() {
-    pixel = new PixelImpl(3, 5, 7, 255);
+    pixel = new PixelImpl(0, 0, 0, 255);
   }
 
   // test that the constructor works
@@ -107,23 +107,23 @@ public class PixelImplTest {
 
   @Test
   public void testGetRed() {
-    assertEquals(3, pixel.getRed());
+    assertEquals(0, pixel.getRed());
   }
 
   @Test
   public void testGetGreen() {
-    assertEquals(5, pixel.getGreen());
+    assertEquals(0, pixel.getGreen());
   }
 
   @Test
   public void testGetBlue() {
-    assertEquals(7, pixel.getBlue());
+    assertEquals(0, pixel.getBlue());
   }
 
   @Test
   public void testEquals() {
     init();
-    Pixel pixel2 = new PixelImpl(3, 5, 7, 255);
+    Pixel pixel2 = new PixelImpl(0, 0, 0, 255);
     assertTrue(pixel.equals(pixel2));
 
     // test that different max values are different pixels
