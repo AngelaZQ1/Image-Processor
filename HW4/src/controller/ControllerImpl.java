@@ -81,10 +81,26 @@ public class ControllerImpl implements Controller {
           this.view.renderMessage("Success! Image loaded.\n");
           break;
         case "save":
-          String filePath = sc.next();
-          String fileName = sc.next();
-          Image image = this.getImageFromName(fileName);
-          BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+          BufferedWriter writer = null;
+          boolean validFp = false;
+          while(!validFp) {
+            String filePath  = sc.next();
+            try {
+              writer = new BufferedWriter(new FileWriter(filePath));
+              validFp = true;
+            } catch (FileNotFoundException ignore) {
+              this.view.renderMessage("Invalid file path. Try again.\n");
+            }
+          }
+          Image image = null;
+          boolean validName = false;
+          while(!validName) {
+            String fileName = sc.next();
+            image = this.getImageFromName(fileName);
+            if (image != null) {
+              validName = true;
+            }
+          }
           writer.write(writePPM(image).toString());
           writer.close();
           this.view.renderMessage("Success! Image saved.\n");
@@ -193,8 +209,6 @@ public class ControllerImpl implements Controller {
           }
           this.view.renderMessage("Success! Image darkened.\n");
           break;
-        case "menu":
-
         default:
           view.renderMessage("Unknown command. Please try again.\n");
       }
