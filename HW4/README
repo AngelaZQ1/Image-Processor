@@ -24,3 +24,18 @@ The image "fourPixels.ppm" was created by Angela Zheng using Gimp. I authorize t
 
 
 How to use our program:
+0) No need to give command line arguments
+1) Load in your desired image by doing the command: load image-path image-name
+2) Then you may edit/transform your image with any of the following commands:
+    - Red-Component: red-component image-name dest-image-name    
+    - Green-Component: green-component image-name dest-image-name    
+    - Blue-Component: blue-component image-name dest-image-name    
+    - Value: value image-name dest-image-name    
+    - Luma: luma image-name dest-image-name    
+    - Intensity: intensity image-name dest-image-name    
+    - Horizontal Flip: horizontal-flip image-name dest-image-name    
+    - Vertical Flip: vertical-flip image-name dest-image-name    
+    - Brighten: brighten increment image-name dest-image-name    
+    - Darken: darken increment image-name dest-image-name
+3) Save your image by doing the command: save image-path image-name
+4) Finally you can quit by typing q or Q
