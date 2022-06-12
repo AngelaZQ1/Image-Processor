@@ -83,26 +83,26 @@ public class PixelImplTest {
 
   @Test
   public void testRedScale() {
-    assertEquals(new PixelImpl(245, 24, 104, 255),
-            new PixelImpl(245, 245, 245, 255).redScale());
-    assertEquals(new PixelImpl(41, 240, 165, 255),
-            new PixelImpl(41, 41, 41, 255).redScale());
+    assertEquals(new PixelImpl(245, 245, 245, 255),
+            new PixelImpl(245, 24, 104, 255).redScale());
+    assertEquals(new PixelImpl(41, 41, 41, 255),
+            new PixelImpl(41, 240, 165, 255).redScale());
   }
 
   @Test
   public void testGreenScale() {
-    assertEquals(new PixelImpl(245, 24, 104, 255),
-            new PixelImpl(24, 24, 24, 255).greenScale());
-    assertEquals(new PixelImpl(41, 240, 165, 255),
-            new PixelImpl(240, 240, 240, 255).greenScale());
+    assertEquals(new PixelImpl(24, 24, 24, 255),
+            new PixelImpl(245, 24, 104, 255).greenScale());
+    assertEquals(new PixelImpl(240, 240, 240, 255),
+            new PixelImpl(41, 240, 165, 255).greenScale());
   }
 
   @Test
   public void testBlueScale() {
-    assertEquals(new PixelImpl(245, 24, 104, 255),
-            new PixelImpl(104, 104, 104, 255).blueScale());
-    assertEquals(new PixelImpl(41, 240, 165, 255),
-            new PixelImpl(165, 165, 165, 255).blueScale());
+    assertEquals(new PixelImpl(104, 104, 104, 255),
+            new PixelImpl(245, 24, 104, 255).blueScale());
+    assertEquals( new PixelImpl(165, 165, 165, 255),
+            new PixelImpl(41, 240, 165, 255).blueScale());
   }
 
   @Test
