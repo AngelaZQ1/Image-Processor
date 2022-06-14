@@ -132,6 +132,24 @@ public class MockImage implements Image {
     return fakeImage;
   }
 
+  @Override
+  public Image blur() {
+    log.append("blur\n");
+    return this;
+  }
+
+  @Override
+  public Image sharpen() {
+    log.append("sharpen\n");
+    return this;
+  }
+
+  @Override
+  public Image grayscaleColorTransform(double red, double green, double blue) {
+    log.append("transform using " + red + " " + green + " " + blue + "\n");
+    return this;
+  }
+
   /**
    * Tests that this method is called by appending "get width" to this mock's log.
    * @return null

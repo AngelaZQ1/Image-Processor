@@ -38,69 +38,77 @@ public class PixelImpl implements Pixel {
 
     // prevent any values from going over maxValue or below 0
     if (r > 0) {
-      newRed = Math.min(red + r, this.maxValue);
+      newRed = Math.min(this.red + r, this.maxValue);
     } else {
-      newRed = Math.max(red + r, 0);
+      newRed = Math.max(this.red + r, 0);
     }
     if (g > 0) {
-      newGreen = Math.min(green + g, this.maxValue);
+      newGreen = Math.min(this.green + g, this.maxValue);
     } else {
-      newGreen = Math.max(green + g, 0);
+      newGreen = Math.max(this.green + g, 0);
     }
     if (b > 0) {
-      newBlue = Math.min(blue + b, this.maxValue);
+      newBlue = Math.min(this.blue + b, this.maxValue);
     } else {
-      newBlue = Math.max(blue + b, 0);
+      newBlue = Math.max(this.blue + b, 0);
     }
     return new PixelImpl(newRed, newGreen, newBlue, maxValue);
   }
 
   @Override
   public Pixel value() {
-    int value = Math.max(Math.max(red, green), blue);
+    int value = Math.max(Math.max(this.red, this.green), this.blue);
     return new PixelImpl(value, value, value, maxValue);
   }
 
   @Override
   public Pixel intensity() {
-    int intensity = (red + green + blue) / 3;
+    int intensity = (this.red + this.green + this.blue) / 3;
     return new PixelImpl(intensity, intensity, intensity, maxValue);
   }
 
   @Override
   public Pixel luma() {
-    double luma = (0.2126 * red) + (0.7152 * green) + (0.0722 * blue);
-    return new PixelImpl((int) luma, (int) luma, (int) luma, maxValue);
+    return grayscaleColorTransform(0.2126, 0.7152, 0.0722);
+  }
+
+  @Override
+  public Pixel grayscaleColorTransform(double red, double green, double blue) {
+    double grayScaledComponentValue = (red * this.red) + (green * this.green) + (blue * this.blue);
+    return new PixelImpl((int) grayScaledComponentValue,
+            (int) grayScaledComponentValue,
+            (int) grayScaledComponentValue,
+            maxValue);
   }
 
   @Override
   public Pixel redScale() {
-    return new PixelImpl(red, red, red, maxValue);
+    return new PixelImpl(this.red, this.red, this.red, maxValue);
   }
 
   @Override
   public Pixel greenScale() {
-    return new PixelImpl(green, green, green, maxValue);
+    return new PixelImpl(this.green, this.green, this.green, maxValue);
   }
 
   @Override
   public Pixel blueScale() {
-    return new PixelImpl(blue, blue, blue, maxValue);
+    return new PixelImpl(this.blue, this.blue, this.blue, maxValue);
   }
 
   @Override
   public int getRed() {
-    return red;
+    return this.red;
   }
 
   @Override
   public int getGreen() {
-    return green;
+    return this.green;
   }
 
   @Override
   public int getBlue() {
-    return blue;
+    return this.blue;
   }
 
   @Override

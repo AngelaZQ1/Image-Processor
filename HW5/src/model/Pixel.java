@@ -14,77 +14,87 @@ public interface Pixel {
    * @param b blue color value
    * @return the new pixel with the changed color
    */
-  public Pixel changeColor(int r, int g, int b);
+  Pixel changeColor(int r, int g, int b);
 
   /**
    * Returns a new pixel whose 3 components are this pixel's highest component.
    * @return a new Pixel that is the value-scaled version of this pixel.
    */
-  public Pixel value();
+  Pixel value();
 
   /**
    * Returns a new pixel whose 3 components are the average of this pixel's 3 components.
    * @return a new Pixel that is the intensity-scaled version of this pixel.
    */
-  public Pixel intensity();
+  Pixel intensity();
 
   /**
    * Returns a new pixel that is the luma-scaled version of this pixel.
    * @return a new Pixel that is the luma-scaled version of this pixel.
    */
-  public Pixel luma();
+  Pixel luma();
+
+  /**
+   * Return a new pixel that is the grayscaled version of this pixel using the given color
+   * transformation values.
+   * @param red the value to multiply this Pixel's red component by
+   * @param green the value to multiply this Pixel's green component by
+   * @param blue the value to multiply this Pixel's blue component by
+   * @return a new Pixel that is the grascaled version of this Pixel
+   */
+  Pixel grayscaleColorTransform(double red, double green, double blue);
 
   /**
    * Returns a new pixel whose 3 components are this pixel's red component.
    * @return a new Pixel that is the red-scaled version of this pixel.
    */
-  public Pixel redScale();
+  Pixel redScale();
 
   /**
    * Returns a new pixel whose 3 components are this pixel's blue component.
    * @return a new Pixel that is the blue-scaled version of this pixel.
    */
-  public Pixel blueScale();
+  Pixel blueScale();
 
   /**
    * Returns a new pixel whose 3 components are this pixel's green component.
    * @return a new Pixel that is the green-scaled version of this pixel.
    */
-  public Pixel greenScale();
+  Pixel greenScale();
 
   /**
    * Returns the red component for this pixel.
    * @return int representing the level of red in the pixel color.
    */
-  public int getRed();
+  int getRed();
 
   /**
    * Returns the green component for this pixel.
    * @return int representing the level of green in the pixel color.
    */
-  public int getGreen();
+  int getGreen();
 
   /**
    * Returns the blue component for this pixel.
    * @return int representing the level of blue in the pixel color.
    */
-  public int getBlue();
+  int getBlue();
 
   /**
    * Returns the max value for this pixel.
    * @return the max vale
    */
-  public int getMaxValue();
+  int getMaxValue();
 
   /**
    * Determines if the given pixel is the same as this pixel by comparing each field.
    * @return if the given pixel is the same as this pixel.
    */
-  public boolean equals(Object obj);
+  boolean equals(Object obj);
 
   /**
    * Create a hashcode for this Pixel.
    * @return the hashcode for this Pixel.
    */
-  public int hashCode();
+  int hashCode();
 }

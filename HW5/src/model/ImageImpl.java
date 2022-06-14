@@ -42,32 +42,32 @@ public class ImageImpl implements Image {
 
   @Override
   public Image visualizeRedChannel() {
-    return visualizeHelper(Pixel::redScale);
+    return visualizeHelper((pixel -> pixel.redScale()));
   }
 
   @Override
   public Image visualizeGreenChannel() {
-    return visualizeHelper(Pixel::greenScale);
+    return visualizeHelper((pixel -> pixel.greenScale()));
   }
 
   @Override
   public Image visualizeBlueChannel() {
-    return visualizeHelper(Pixel::blueScale);
+    return visualizeHelper((pixel -> pixel.blueScale()));
   }
 
   @Override
   public Image visualizeValue() {
-    return visualizeHelper(Pixel::value);
+    return visualizeHelper((pixel -> pixel.value()));
   }
 
   @Override
   public Image visualizeIntensity() {
-    return visualizeHelper(Pixel::intensity);
+    return visualizeHelper((pixel -> pixel.intensity()));
   }
 
   @Override
   public Image visualizeLuma() {
-    return visualizeHelper(Pixel::luma);
+    return visualizeHelper((pixel -> pixel.luma()));
   }
 
   @Override
@@ -100,6 +100,20 @@ public class ImageImpl implements Image {
   @Override
   public Image darkenImage(int value) {
     return visualizeHelper(p -> p.changeColor(-value, -value, -value));
+  }
+
+  public Image blur() {
+    // TODO blur
+    return null;
+  }
+
+  public Image sharpen() {
+    // TODO sharpen
+    return null;
+  }
+
+  public Image grayscaleColorTransform(double red, double green, double blue) {
+    return visualizeHelper(p -> p.grayscaleColorTransform(red, green, blue));
   }
 
   @Override

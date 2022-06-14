@@ -73,9 +73,6 @@ public class ControllerImpl implements Controller {
               String fileName = sc.next();
               this.listOfImages.put(fileName, newImage);
               validFilePath = true;
-//            } catch (FileNotFoundException e) {
-//              // filepath was invalid, keep asking for input
-//              this.view.renderMessage("Invalid file path. Try again.\n");
             } catch (IOException e) {
               this.view.renderMessage("Invalid file path. Try again.\n");
             }
@@ -90,7 +87,7 @@ public class ControllerImpl implements Controller {
             try { // keep trying to get a valid file path to save image to
               writer = new BufferedWriter(new FileWriter(filePath));
               validFp = true;
-            } catch (FileNotFoundException ignore) {
+            } catch (IOException e) {
               this.view.renderMessage("Invalid file path. Try again.\n");
             }
           }
@@ -210,6 +207,22 @@ public class ControllerImpl implements Controller {
             break; // tell the user and ask for more input
           }
           this.view.renderMessage("Success! Image darkened.\n");
+          break;
+        case "blur":
+          try {
+            Image newImage = this.getImageFromName(sc.next()).blur();
+            // add the resulting image to the hashmap according to the given image name
+            this.listOfImages.put(sc.next(), newImage);
+          } catch (IOException e) {
+            break; // tell the user and ask for more input
+          }
+          this.view.renderMessage("Success! Image blurred.\n");
+          break;
+        case "sharpen":
+          break;
+        case "grayscale":
+          break;
+        case "sepia":
           break;
         default:
           view.renderMessage("Unknown command. Please try again.\n");
