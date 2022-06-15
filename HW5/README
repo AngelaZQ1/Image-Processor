@@ -1,6 +1,12 @@
 Changed for HW5:
 In order to implement loading in images of different file formats, only one line of the controller was changed. Instead of calling a method to read a PPM file with a given filepath, a different method is called that parses several file types with the given filepath.
 
+To implement the filtering and color transformation features, we included the following cases to the switch statement in our controller:
+"blur", "sharpen", "grayscale", and "sepia."
+
+Each of these cases are structured the same as previous cases. Our controller tells our Image (the model) to perform the filtering on the Image object in the controller. Therefore, our Image interface was changed to add the filtering and color transformation methods.
+
+In the PixelImpl class, we edited the constructor so that if a PixelImpl is created with any of its components greater than the maxValue, that component is set to the maxValue. Similarly, if any component is initialized to be negative, it will be initialized to 0 instead.
 
 
 From HW4:

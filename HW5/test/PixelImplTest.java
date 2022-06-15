@@ -73,12 +73,28 @@ public class PixelImplTest {
             new PixelImpl(0, 0, 0, 255).intensity());
   }
 
+  // test that the luma() method returns a pixel that is correctly grayscaled
   @Test
   public void testLuma() {
     assertEquals(new PixelImpl(4, 4, 4, 255),
             new PixelImpl(4, 4, 4, 255).luma());
     assertEquals(new PixelImpl(4, 4, 4, 255),
             new PixelImpl(5, 5, 5, 255).luma());
+  }
+
+  // test that the grayscaleColorTransform() method returns a pixel that is correctly grayscaled
+  @Test
+  public void testGrayscaleColorTransform() {
+    assertEquals(new PixelImpl(2, 2, 2, 255),
+            new PixelImpl(1, 2, 3, 255)
+                    .grayscaleColorTransform(.2, .3, .5));
+  }
+
+  // test that applying the sepia() method returns a pixel with the correct components
+  @Test
+  public void testSepia() {
+    assertEquals(new PixelImpl(24, 22, 17, 255),
+            new PixelImpl(10, 20, 30, 255).sepia());
   }
 
   @Test

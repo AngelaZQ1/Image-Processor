@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
+import model.filters.FilterImpl;
+
+
 /**
  * This class represents an implementation of the Image interface. It offers ways to visualize
  * and manipulate an image.
@@ -16,7 +19,8 @@ public class ImageImpl implements Image {
 
   /**
    * Creates an ImageImpl object with the given image and max value of the image's channels.
-   * @param image the given image to use
+   *
+   * @param image    the given image to use
    * @param maxValue the max value of any channel
    */
   public ImageImpl(List<List<Pixel>> image, int maxValue) {
@@ -102,18 +106,45 @@ public class ImageImpl implements Image {
     return visualizeHelper(p -> p.changeColor(-value, -value, -value));
   }
 
-  public Image blur() {
-    // TODO blur
-    return null;
+  // helper method for abstracting filtering methods that use a kernel
+  // takes in a kernel to use on each pixel and returns a new filtered Image
+  private Image filterHelper(double[][] kernel) {
+    List<List<Pixel>> newImage = new ArrayList<>();
+    for (int row = 0; row < this.image.size(); row++) {
+
+      List<Pixel> newRow = new ArrayList<>();
+      for (int col = 0; col < this.image.get(row).size(); col++) {
+        // add a blurred pixel
+        newRow.add(new FilterImpl(this, kernel, row, col).applyKernelToPixel());
+      }
+      newImage.add(newRow);
+    }
+    return new ImageImpl(newImage, maxValue);
+
   }
 
+  @Override
+  public Image blur() {
+    double[][] blurKernel = {{1.0 / 16, 1.0 / 8, 1.0 / 16},
+            {1.0 / 8, 1.0 / 4, 1.0 / 8},
+            {1.0 / 16, 1.0 / 8, 1.0 / 16}};
+    return filterHelper(blurKernel);
+  }
+
+  @Override
   public Image sharpen() {
     // TODO sharpen
     return null;
   }
 
-  public Image grayscaleColorTransform(double red, double green, double blue) {
-    return visualizeHelper(p -> p.grayscaleColorTransform(red, green, blue));
+  @Override
+  public Image grayscaleColorTransform(double redScale, double greenScale, double blueScale) {
+    return visualizeHelper(p -> p.grayscaleColorTransform(redScale, greenScale, blueScale));
+  }
+
+  @Override
+  public Image sepia() {
+    return visualizeHelper(p -> p.sepia());
   }
 
   @Override

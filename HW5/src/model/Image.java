@@ -68,25 +68,31 @@ public interface Image {
   Image darkenImage(int value);
 
   /**
-   * Blurs this image with the use of a kernel
+   * Blurs this image with the use of a kernel.
    * @return the resulting image
    */
   Image blur();
 
   /**
-   * Sharpens this image with the use of a kernel
+   * Sharpens this image with the use of a kernel.
    * @return the resulting image
    */
   Image sharpen();
 
   /**
-   * Grayscales this image by performing a color transformation on each channel
+   * Grayscales this image by performing a color transformation on each channel.
    * @param red the value to multiply each red component by
    * @param green the value to multiply each green component by
    * @param blue the value to multiply each blue component by
    * @return the resulting image
    */
   Image grayscaleColorTransform(double red, double green, double blue);
+
+  /**
+   * Produces a sepia-toned version of this Image.
+   * @return the resulting image
+   */
+  Image sepia();
 
   /**
    * Gives the width of the image.

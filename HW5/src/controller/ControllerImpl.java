@@ -1,8 +1,5 @@
 package controller;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -219,10 +216,35 @@ public class ControllerImpl implements Controller {
           this.view.renderMessage("Success! Image blurred.\n");
           break;
         case "sharpen":
+          try {
+            Image newImage = this.getImageFromName(sc.next()).sharpen();
+            // add the resulting image to the hashmap according to the given image name
+            this.listOfImages.put(sc.next(), newImage);
+          } catch (IOException e) {
+            break; // tell the user and ask for more input
+          }
+          this.view.renderMessage("Success! Image sharpened.\n");
           break;
         case "grayscale":
+          try {
+            Image newImage = this.getImageFromName(sc.next())
+                    .grayscaleColorTransform(.2126, .7152, .0722);
+            // add the resulting image to the hashmap according to the given image name
+            this.listOfImages.put(sc.next(), newImage);
+          } catch (IOException e) {
+            break; // tell the user and ask for more input
+          }
+          this.view.renderMessage("Success! Image grayscaled.\n");
           break;
         case "sepia":
+          try {
+            Image newImage = this.getImageFromName(sc.next()).sepia();
+            // add the resulting image to the hashmap according to the given image name
+            this.listOfImages.put(sc.next(), newImage);
+          } catch (IOException e) {
+            break; // tell the user and ask for more input
+          }
+          this.view.renderMessage("Success! Image sepiaed.\n");
           break;
         default:
           view.renderMessage("Unknown command. Please try again.\n");

@@ -205,6 +205,75 @@ public class ImageImplTest {
     }
   }
 
+  @Test
+  public void testBlur() {
+    try {
+      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image blurredImage = image.blur();
+      assertEquals(new PixelImpl(63, 35, 38, 255),
+              blurredImage.getPixel(0, 0));
+      assertEquals(new PixelImpl(79, 71, 66, 255),
+              blurredImage.getPixel(0, 1));
+      assertEquals(new PixelImpl(79, 24, 28, 255),
+              blurredImage.getPixel(1, 0));
+      assertEquals(new PixelImpl(63, 47, 37, 255),
+              blurredImage.getPixel(1, 1));
+    } catch (FileNotFoundException e) {
+      fail("FileNotFoundException was thrown");
+    }
+  }
+
+  @Test
+  public void testSharpen() {
+    try {
+      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image sharpenedImage = image.sharpen();
+      assertEquals(new PixelImpl(127, 80, 76, 255),
+              sharpenedImage.getPixel(0, 0));
+      assertEquals(new PixelImpl(255, 255, 255, 255),
+              sharpenedImage.getPixel(0, 1));
+      assertEquals(new PixelImpl(255, 79, 114, 255),
+              sharpenedImage.getPixel(1, 0));
+      assertEquals(new PixelImpl(127, 128, 76, 255),
+              sharpenedImage.getPixel(1, 1));
+    } catch (FileNotFoundException e) {
+      fail("FileNotFoundException was thrown");
+    }
+  }
+
+  // test visualizing an image in grayscale using color transformations
+  @Test
+  public void testGrayscaleColorTransform() {
+    try {
+      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image grayscaleImage = originalImage.grayscaleColorTransform(.2, .5, .3);
+      assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
+              p -> (int) ((p.getRed() * .2)
+                      + (p.getGreen() * .5)
+                      + (p.getBlue() * .3))));
+    } catch (FileNotFoundException e) {
+      fail("FileNotFoundException was thrown");
+    }
+  }
+
+  @Test
+  public void testSepia() {
+    try {
+      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image sepiaImage = image.sepia();
+      assertEquals(new PixelImpl(1, 1, 0, 255),
+              sepiaImage.getPixel(0, 0));
+      assertEquals(new PixelImpl(255, 255, 236, 255),
+              sepiaImage.getPixel(0, 1));
+      assertEquals(new PixelImpl(109, 97, 76, 255),
+              sepiaImage.getPixel(1, 0));
+      assertEquals(new PixelImpl(49, 44, 34, 255),
+              sepiaImage.getPixel(1, 1));
+    } catch (FileNotFoundException e) {
+      fail("FileNotFoundException was thrown");
+    }
+  }
+
   // test getting the width of an image
   @Test
   public void testGetWidth() {

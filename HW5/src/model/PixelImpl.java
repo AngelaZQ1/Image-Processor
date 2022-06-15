@@ -82,6 +82,14 @@ public class PixelImpl implements Pixel {
   }
 
   @Override
+  public Pixel sepia() {
+    double newRed = .393 * this.red + .769 * this.green + .189 * this.blue;
+    double newGreen = .349 * this.red + .686 * this.green + .168 * this.blue;
+    double newBlue = .272 * this.red + .534 * this.green + .131 * this.blue;
+    return new PixelImpl((int) newRed, (int) newGreen, (int) newBlue, 255);
+  }
+
+  @Override
   public Pixel redScale() {
     return new PixelImpl(this.red, this.red, this.red, maxValue);
   }

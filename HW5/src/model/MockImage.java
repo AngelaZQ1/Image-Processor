@@ -150,6 +150,12 @@ public class MockImage implements Image {
     return this;
   }
 
+  @Override
+  public Image sepia() {
+    log.append("sepia\n");
+    return this;
+  }
+
   /**
    * Tests that this method is called by appending "get width" to this mock's log.
    * @return null

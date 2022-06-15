@@ -40,9 +40,15 @@ public interface Pixel {
    * @param red the value to multiply this Pixel's red component by
    * @param green the value to multiply this Pixel's green component by
    * @param blue the value to multiply this Pixel's blue component by
-   * @return a new Pixel that is the grascaled version of this Pixel
+   * @return a new Pixel that is the grayscaled version of this Pixel
    */
   Pixel grayscaleColorTransform(double red, double green, double blue);
+
+  /**
+   * Returns a new pixel that is the sepia-toned version of this Pixel.
+   * @return a new pixel that is the sepia-toned version of this Pixel.
+   */
+  Pixel sepia();
 
   /**
    * Returns a new pixel whose 3 components are this pixel's red component.
