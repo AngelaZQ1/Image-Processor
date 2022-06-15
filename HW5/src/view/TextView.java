@@ -49,6 +49,10 @@ public class TextView implements View {
     this.destination.append("Vertical Flip: vertical-flip image-name dest-image-name\n");
     this.destination.append("Brighten: brighten increment image-name dest-image-name\n");
     this.destination.append("Darken: darken increment image-name dest-image-name\n");
+    this.destination.append("Sharpen: sharpen image-name dest-image-name\n");
+    this.destination.append("Blue: blur image-name dest-image-name\n");
+    this.destination.append("Grayscale: grayscale image-name dest-image-name\n");
+    this.destination.append("Sepia: sepia image-name dest-image-name\n");
     this.destination.append("To Quit: q or Q\n");
   }
 

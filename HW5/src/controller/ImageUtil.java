@@ -2,8 +2,12 @@ package controller;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -40,6 +44,31 @@ public class ImageUtil {
       case "png":
       case "bmp":
         return readJpgPngBmp(filePath);
+      default:
+        throw new IOException("Image type not supported. Image must have a PPM, JPG, JPEG, PNG," +
+                " or BMP extension.");
+    }
+  }
+
+  public static void saveImage(String filePath, Image image) throws IOException {
+    String extension = "";
+
+    int i = filePath.lastIndexOf('.');
+    if (i > 0) {
+      extension = filePath.substring(i + 1);
+    }
+
+    switch (extension) {
+      case "ppm":
+        writePPM(filePath, image);
+      case "jpg":
+        ImageIO.write(imageToBufferedImage(image), "jpg", new File(filePath));
+      case "jpeg":
+        ImageIO.write(imageToBufferedImage(image), "jpeg", new File(filePath));
+      case "png":
+        ImageIO.write(imageToBufferedImage(image), "png", new File(filePath));
+      case "bmp":
+        ImageIO.write(imageToBufferedImage(image), "bmp", new File(filePath));
       default:
         throw new IOException("Image type not supported. Image must have a PPM, JPG, JPEG, PNG," +
                 " or BMP extension.");
@@ -123,5 +152,41 @@ public class ImageUtil {
     }
     return new ImageImpl(imageArrayList, maxValue);
   }
+
+
+  // helper method to turn an image into PPM format
+  public static void writePPM(String filePath, Image image) throws IOException {
+    StringBuilder fileString = new StringBuilder();
+    fileString.append("P3 ");
+    fileString.append(image.getWidth()).append(" ");
+    fileString.append(image.getHeight()).append(" ");
+    fileString.append(image.getMaxValue()).append("\n");
+    for (int i = 0; i < image.getHeight(); i++) {
+      for (int j = 0; j < image.getWidth(); j++) {
+        Pixel p = image.getPixel(i, j);
+        fileString.append(p.getRed()).append(" ");
+        fileString.append(p.getGreen()).append(" ");
+        fileString.append(p.getBlue()).append(" ");
+      }
+      fileString.append("\n");
+    }
+    BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+    writer.write(fileString.toString());
+    writer.close();
+  }
+
+  private static BufferedImage imageToBufferedImage(Image image) {
+    BufferedImage bufferedImage =
+            new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+    for (int r = 0; r < bufferedImage.getHeight(); r++) {
+      for (int c = 0; c < bufferedImage.getWidth(); c++) {
+        Pixel pixel = image.getPixel(r, c);
+        bufferedImage.setRGB(c, r,
+                new Color(pixel.getRed(), pixel.getGreen(), pixel.getBlue()).getRGB());
+      }
+    }
+    return bufferedImage;
+  }
+
 }
 

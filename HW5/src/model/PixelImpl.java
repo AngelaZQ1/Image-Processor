@@ -24,9 +24,28 @@ public class PixelImpl implements Pixel {
    * @param maxValue the maximum value for a channel
    */
   public PixelImpl(int red, int green, int blue, int maxValue) {
-    this.red = red;
-    this.green = green;
-    this.blue = blue;
+    // Update: cap pixel value given at maxValue
+    if (red > maxValue) {
+      this.red = maxValue;
+    } else if (red < 0) {
+      this.red = 0;
+    } else {
+      this.red = red;
+    }
+    if (green > maxValue) {
+      this.green = maxValue;
+    } else if (green < 0) {
+      this.green = 0;
+    } else {
+      this.green = green;
+    }
+    if (blue > maxValue) {
+      this.blue = maxValue;
+    } else if (blue < 0) {
+      this.blue = 0;
+    } else {
+      this.blue = blue;
+    }
     this.maxValue = maxValue;
   }
 

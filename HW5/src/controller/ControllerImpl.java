@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -77,14 +79,14 @@ public class ControllerImpl implements Controller {
           this.view.renderMessage("Success! Image loaded.\n");
           break;
         case "save":
-          BufferedWriter writer = null;
+          String filePath = "";
           boolean validFp = false;
           while (!validFp) {
-            String filePath = sc.next();
+            filePath = sc.next();
             try { // keep trying to get a valid file path to save image to
-              writer = new BufferedWriter(new FileWriter(filePath));
+              Paths.get(filePath);
               validFp = true;
-            } catch (IOException e) {
+            } catch (InvalidPathException e) {
               this.view.renderMessage("Invalid file path. Try again.\n");
             }
           }
@@ -97,8 +99,11 @@ public class ControllerImpl implements Controller {
               validName = true;
             }
           }
-          writer.write(writePPM(image).toString());
-          writer.close();
+          try {
+            new ImageUtil().saveImage(filePath, image);
+          } catch (IOException ignore) {
+
+          }
           this.view.renderMessage("Success! Image saved.\n");
           break;
         case "red-component":

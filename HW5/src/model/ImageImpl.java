@@ -133,8 +133,12 @@ public class ImageImpl implements Image {
 
   @Override
   public Image sharpen() {
-    // TODO sharpen
-    return null;
+    double[][] sharpenKernel = {{-1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8},
+            {-1.0 / 8, 1.0 / 4, 1.0 / 4, 1.0 / 4, -1.0 / 8},
+            {-1.0 / 8, 1.0 / 4, 1.0, 1.0 / 4, -1.0 / 8},
+            {-1.0 / 8, 1.0 / 4, 1.0 / 4, 1.0 / 4, -1.0 / 8},
+            {-1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8}};
+    return filterHelper(sharpenKernel);
   }
 
   @Override
