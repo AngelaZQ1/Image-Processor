@@ -97,12 +97,12 @@ public class ImageImpl implements Image {
   }
 
   @Override
-  public Image brightenImage(int value) {
+  public Image brighten(int value) {
     return visualizeHelper(p -> p.changeColor(value, value, value));
   }
 
   @Override
-  public Image darkenImage(int value) {
+  public Image darken(int value) {
     return visualizeHelper(p -> p.changeColor(-value, -value, -value));
   }
 

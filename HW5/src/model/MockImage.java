@@ -124,8 +124,8 @@ public class MockImage implements Image {
    * @return null
    */
   @Override
-  public Image brightenImage(int value) {
-    log.append("brighten by " + value + "\n");
+  public Image brighten(int value) {
+    log.append("Brighten by " + value + "\n");
     return this;
   }
 
@@ -137,14 +137,14 @@ public class MockImage implements Image {
    * @return null
    */
   @Override
-  public Image darkenImage(int value) {
+  public Image darken(int value) {
     log.append("darken by " + value + "\n");
     return fakeImage;
   }
 
   @Override
   public Image blur() {
-    log.append("blur\n");
+    log.append("Blur\n");
     return this;
   }
 

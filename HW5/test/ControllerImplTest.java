@@ -101,7 +101,7 @@ public class ControllerImplTest {
             "visualize luma\n" +
             "flip vertically\n" +
             "flip horizontally\n" +
-            "brighten by 10\n" +
+            "Brighten by 10\n" +
             "darken by 10\n";
     assertEquals(expected, log.toString());
   }

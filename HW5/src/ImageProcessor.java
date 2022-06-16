@@ -19,7 +19,7 @@ public class ImageProcessor {
    */
   public static void main(String[] args) throws IOException {
     Controller controller;
-    if (args[0].equals("-file")) {
+    if (args.length > 0 && args[0].equals("-file")) {
       String filePath = args[1];
       controller = new ControllerImpl(new TextView(), new FileReader(filePath));
     } else {

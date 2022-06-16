@@ -67,7 +67,7 @@ public interface Image {
    * @param value the given value to increase each RGB value by
    * @return the resulting image
    */
-  Image brightenImage(int value);
+  Image brighten(int value);
 
   /**
    * Darken this image by decreasing each RGB value by the given value. Each value caps at 255.
@@ -75,7 +75,7 @@ public interface Image {
    * @param value the given value to decrease each RGB value by
    * @return the resulting image
    */
-  Image darkenImage(int value);
+  Image darken(int value);
 
   /**
    * Blurs this image with the use of a kernel.

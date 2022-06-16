@@ -10,10 +10,10 @@ import java.util.Objects;
  * INVARIANT: blue is between 0 and maxValue (inclusive)
  */
 public class PixelImpl implements Pixel {
-  protected final int red;
-  protected final int green;
-  protected final int blue;
-  protected final int maxValue;
+  private final int red;
+  private final int green;
+  private final int blue;
+  private final int maxValue;
 
   /**
    * Creates a PixelImpl with the given RGB values and max value.

@@ -170,7 +170,7 @@ public class ImageImplTest {
   public void testBrighten() {
     try {
       Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
-      Image brightenedImage = originalImage.brightenImage(50);
+      Image brightenedImage = originalImage.brighten(50);
       for (int row = 0; row < originalImage.getHeight(); row++) {
         for (int col = 0; col < originalImage.getWidth(); col++) {
           Pixel originalPixel = originalImage.getPixel(row, col);
@@ -190,7 +190,7 @@ public class ImageImplTest {
   public void testDarken() {
     try {
       Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
-      Image darkenedImage = originalImage.darkenImage(50);
+      Image darkenedImage = originalImage.darken(50);
       for (int row = 0; row < originalImage.getHeight(); row++) {
         for (int col = 0; col < originalImage.getWidth(); col++) {
           Pixel originalPixel = originalImage.getPixel(row, col);
