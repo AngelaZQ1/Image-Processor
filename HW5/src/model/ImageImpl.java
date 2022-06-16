@@ -98,12 +98,12 @@ public class ImageImpl implements Image {
 
   @Override
   public Image brightenImage(int value) {
-    return visualizeHelper(p -> p.changeColor(value, value, value));
+    return visualizeHelper(p -> new FilterImpl().brighten(p, value));
   }
 
   @Override
   public Image darkenImage(int value) {
-    return visualizeHelper(p -> p.changeColor(-value, -value, -value));
+    return visualizeHelper(p -> new FilterImpl().darken(p, value));
   }
 
   // helper method for abstracting filtering methods that use a kernel
