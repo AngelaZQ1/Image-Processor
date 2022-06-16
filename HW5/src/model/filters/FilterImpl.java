@@ -97,6 +97,16 @@ public class FilterImpl implements Filter {
   }
 
   @Override
+  public Pixel brighten(Pixel p, int value) {
+    return p.changeColor(value, value, value);
+  }
+
+  @Override
+  public Pixel darken(Pixel p, int value) {
+    return p.changeColor(-value, -value, -value);
+  }
+
+  @Override
   public Pixel filterGrey(Pixel p, double red, double green, double blue) {
     double grayScaledComponentValue =
             (red * p.getRed()) + (green * p.getGreen()) + (blue * p.getBlue());
