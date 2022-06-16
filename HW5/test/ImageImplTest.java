@@ -262,6 +262,7 @@ public class ImageImplTest {
       Image image = ImageUtil.readPPM("res/fourPixels.ppm");
       Image sepiaImage = image.sepia();
       assertEquals(new PixelImpl(1, 1, 0, 255),
+
               sepiaImage.getPixel(0, 0));
       assertEquals(new PixelImpl(255, 255, 236, 255),
               sepiaImage.getPixel(0, 1));

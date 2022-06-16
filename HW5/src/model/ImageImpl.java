@@ -6,15 +6,15 @@ import java.util.function.Function;
 
 import model.filters.FilterImpl;
 
-
 /**
  * This class represents an implementation of the Image interface. It offers ways to visualize
- * and manipulate an image.
+ * and manipulate an image such as grayscaling, flipping, brightening, darkening, and applying
+ *  filters.
  */
 public class ImageImpl implements Image {
-  private List<List<Pixel>> image;
-  private int numCols;
-  private int numRows;
+  private final List<List<Pixel>> image;
+  private final int numCols;
+  private final int numRows;
   private final int maxValue;
 
   /**
@@ -30,14 +30,14 @@ public class ImageImpl implements Image {
     this.maxValue = maxValue;
   }
 
-  // helper method for visualizing images in grayscale.
-  // Takes in a function that changes the channels of a pixel
+  // helper method for visualizing images in grayscale by applying the given filter to
+  // each pixel
   private Image visualizeHelper(Function<Pixel, Pixel> func) {
     List<List<Pixel>> newImage = new ArrayList<>();
     for (List<Pixel> row : image) {
       List<Pixel> newRow = new ArrayList<>();
       for (Pixel p : row) {
-        newRow.add(func.apply(p));
+        func.apply(p);
       }
       newImage.add(newRow);
     }
@@ -46,32 +46,32 @@ public class ImageImpl implements Image {
 
   @Override
   public Image visualizeRedChannel() {
-    return visualizeHelper((pixel -> pixel.redScale()));
+    return visualizeHelper(p -> new FilterImpl().filterRed(p));
   }
 
   @Override
   public Image visualizeGreenChannel() {
-    return visualizeHelper((pixel -> pixel.greenScale()));
+    return visualizeHelper(p -> new FilterImpl().filterGreen(p));
   }
 
   @Override
   public Image visualizeBlueChannel() {
-    return visualizeHelper((pixel -> pixel.blueScale()));
+    return visualizeHelper(p -> new FilterImpl().filterBlue(p));
   }
 
   @Override
   public Image visualizeValue() {
-    return visualizeHelper((pixel -> pixel.value()));
+    return visualizeHelper(p -> new FilterImpl().filterValue(p));
   }
 
   @Override
   public Image visualizeIntensity() {
-    return visualizeHelper((pixel -> pixel.intensity()));
+    return visualizeHelper(p -> new FilterImpl().filterIntensity(p));
   }
 
   @Override
   public Image visualizeLuma() {
-    return visualizeHelper((pixel -> pixel.luma()));
+    return visualizeHelper(p -> new FilterImpl().filterLuma(p));
   }
 
   @Override
@@ -114,13 +114,12 @@ public class ImageImpl implements Image {
 
       List<Pixel> newRow = new ArrayList<>();
       for (int col = 0; col < this.image.get(row).size(); col++) {
-        // add a blurred pixel
-        newRow.add(new FilterImpl(this, kernel, row, col).applyKernelToPixel());
+        // apply the new filter to each pixel
+        newRow.add(new FilterImpl().applyKernelToPixel(this, kernel, row, col));
       }
       newImage.add(newRow);
     }
     return new ImageImpl(newImage, maxValue);
-
   }
 
   @Override
@@ -143,12 +142,12 @@ public class ImageImpl implements Image {
 
   @Override
   public Image grayscaleColorTransform(double redScale, double greenScale, double blueScale) {
-    return visualizeHelper(p -> p.grayscaleColorTransform(redScale, greenScale, blueScale));
+    return visualizeHelper(p -> new FilterImpl().filterGrey(p, redScale, greenScale, blueScale));
   }
 
   @Override
   public Image sepia() {
-    return visualizeHelper(p -> p.sepia());
+    return visualizeHelper(p -> new FilterImpl().sepia(p));
   }
 
   @Override
@@ -171,5 +170,4 @@ public class ImageImpl implements Image {
     List<Pixel> temp = image.get(row);
     return temp.get(col);
   }
-
 }

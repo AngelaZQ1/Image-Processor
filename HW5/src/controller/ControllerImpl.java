@@ -4,26 +4,30 @@ import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Function;
 
+import controller.commands.Command;
 import model.Image;
 import view.View;
 import model.Pixel;
 
 /**
  * This class represents an implementation of the Controller interface.
- * It enables the user to enter several commands load, edit, and save an image.
+ * It enables the user to enter several commands to load, edit, and save an image.
  * INVARIANT: view is not null
  * INVARIANT: inputSource is not null
  */
 public class ControllerImpl implements Controller {
   private final View view;
   private final Readable inputSource;
-  private HashMap<String, Image> listOfImages;
+  private final Map<String, Image> listOfImages;
 
   /**
    * Creates a ControllerImpl object with the given view and input source.
-   * @param view the given view to output to
+   *
+   * @param view  the given view to output to
    * @param input the input source for commands
    * @throws IllegalArgumentException if any of the given arguments are null
    */
@@ -40,11 +44,12 @@ public class ControllerImpl implements Controller {
    * Creates a ControllerImpl object with the given view, input source,
    * name of the starting image, and a starting image. Allows for creation of image processor
    * with image preloaded.
-   * @param view the given view to output to
+   *
+   * @param view  the given view to output to
    * @param input the input source for commands
-   * @param name the name to use to refer to the given image
+   * @param name  the name to use to refer to the given image
    * @param image the given image
-   * @throws IllegalArgumentException if
+   * @throws IllegalArgumentException if the view or input are null
    */
   public ControllerImpl(View view, Readable input, String name, Image image) {
     this(view, input);
@@ -57,7 +62,26 @@ public class ControllerImpl implements Controller {
     String userInput;
     this.view.renderMessage("Hello, welcome to our image processor.\n");
     this.view.showOptions();
-    while (true) {
+
+
+    // a map from a string to a function that takes a scanner and returns a command
+    Map<String, Function<Scanner, Command>> knownCommands = new HashMap<>();
+    knownCommands.put("load", (Scanner s) -> new Load(s.nextDouble())); // we only need to create a command object
+
+
+    while (sc.hasNext()) { // if the user has more input
+      Command c;  // create a command object
+      userInput = sc.next(); // get the input
+
+      // get the value of the key (the users input) which is the command object we want
+      Function<Scanner, Command> cmd = knownCommands.getOrDefault(userInput, null);
+
+      c = cmd.apply(sc); // get the command object using the user's input
+      c.applyCommand(m); // run that command object
+
+
+
+      while (true) {
       userInput = sc.next();
       if (userInput.equalsIgnoreCase("q")) {
         this.view.renderMessage("Program Quit!");
@@ -101,10 +125,10 @@ public class ControllerImpl implements Controller {
           }
           try {
             new ImageUtil().saveImage(filePath, image);
+            this.view.renderMessage("Success! Image saved.\n");
           } catch (IOException ignore) {
-
+            this.view.renderMessage(ignore.getMessage() + "\nImage Not Saved");
           }
-          this.view.renderMessage("Success! Image saved.\n");
           break;
         case "red-component":
           try {

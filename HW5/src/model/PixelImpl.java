@@ -10,13 +10,13 @@ import java.util.Objects;
  * INVARIANT: blue is between 0 and maxValue (inclusive)
  */
 public class PixelImpl implements Pixel {
-  private final int red;
-  private final int green;
-  private final int blue;
-  private final int maxValue;
+  protected final int red;
+  protected final int green;
+  protected final int blue;
+  protected final int maxValue;
 
   /**
-   * Creates a pixel given its rgb values and max value.
+   * Creates a PixelImpl with the given RGB values and max value.
    *
    * @param red      red color value
    * @param green    green color value
@@ -25,26 +25,20 @@ public class PixelImpl implements Pixel {
    */
   public PixelImpl(int red, int green, int blue, int maxValue) {
     // Update: cap pixel value given at maxValue
-    if (red > maxValue) {
-      this.red = maxValue;
-    } else if (red < 0) {
+    if (red > 0) {
+      this.red = Math.min(red, maxValue);
+    } else {
       this.red = 0;
-    } else {
-      this.red = red;
     }
-    if (green > maxValue) {
-      this.green = maxValue;
-    } else if (green < 0) {
+    if (green > 0) {
+      this.green = Math.min(green, maxValue);
+    } else {
       this.green = 0;
-    } else {
-      this.green = green;
     }
-    if (blue > maxValue) {
-      this.blue = maxValue;
-    } else if (blue < 0) {
-      this.blue = 0;
+    if (blue > 0) {
+      this.blue = Math.min(blue, maxValue);
     } else {
-      this.blue = blue;
+      this.blue = 0;
     }
     this.maxValue = maxValue;
   }
@@ -72,55 +66,6 @@ public class PixelImpl implements Pixel {
       newBlue = Math.max(this.blue + b, 0);
     }
     return new PixelImpl(newRed, newGreen, newBlue, maxValue);
-  }
-
-  @Override
-  public Pixel value() {
-    int value = Math.max(Math.max(this.red, this.green), this.blue);
-    return new PixelImpl(value, value, value, maxValue);
-  }
-
-  @Override
-  public Pixel intensity() {
-    int intensity = (this.red + this.green + this.blue) / 3;
-    return new PixelImpl(intensity, intensity, intensity, maxValue);
-  }
-
-  @Override
-  public Pixel luma() {
-    return grayscaleColorTransform(0.2126, 0.7152, 0.0722);
-  }
-
-  @Override
-  public Pixel grayscaleColorTransform(double red, double green, double blue) {
-    double grayScaledComponentValue = (red * this.red) + (green * this.green) + (blue * this.blue);
-    return new PixelImpl((int) grayScaledComponentValue,
-            (int) grayScaledComponentValue,
-            (int) grayScaledComponentValue,
-            maxValue);
-  }
-
-  @Override
-  public Pixel sepia() {
-    double newRed = .393 * this.red + .769 * this.green + .189 * this.blue;
-    double newGreen = .349 * this.red + .686 * this.green + .168 * this.blue;
-    double newBlue = .272 * this.red + .534 * this.green + .131 * this.blue;
-    return new PixelImpl((int) newRed, (int) newGreen, (int) newBlue, 255);
-  }
-
-  @Override
-  public Pixel redScale() {
-    return new PixelImpl(this.red, this.red, this.red, maxValue);
-  }
-
-  @Override
-  public Pixel greenScale() {
-    return new PixelImpl(this.green, this.green, this.green, maxValue);
-  }
-
-  @Override
-  public Pixel blueScale() {
-    return new PixelImpl(this.blue, this.blue, this.blue, maxValue);
   }
 
   @Override
@@ -162,6 +107,5 @@ public class PixelImpl implements Pixel {
   public int hashCode() {
     return Objects.hash(this.red, this.green, this.blue);
   }
-
 
 }

@@ -6,8 +6,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -50,6 +48,13 @@ public class ImageUtil {
     }
   }
 
+  /**
+   * Save the given image to the given filepath.
+   *
+   * @param filePath the location to save the given image
+   * @param image    the image to save
+   * @throws IOException if the image extension is not supported
+   */
   public static void saveImage(String filePath, Image image) throws IOException {
     String extension = "";
 
@@ -75,14 +80,10 @@ public class ImageUtil {
     }
   }
 
-  /**
-   * Reads a JPG, JPEG, PNG, or BMP file from the given filepath and returns
-   * an ImageImpl representation of the image.
-   * @param filePath the filepath where the image is found
-   * @return the image as an ImageImpl
-   * @throws IOException if the filepath is invalid
-   */
-  public static Image readJpgPngBmp(String filePath) throws IOException {
+  // Reads a JPG, JPEG, PNG, or BMP file from the given filepath and returns
+  // an ImageImpl representation of the image.
+  // throws IOException if the filepath is invalid
+  private static Image readJpgPngBmp(String filePath) throws IOException {
 
     BufferedImage bufferedImage = ImageIO.read(new File(filePath));
     List<List<Pixel>> pixels = new ArrayList<>();
@@ -155,7 +156,7 @@ public class ImageUtil {
 
 
   // helper method to turn an image into PPM format
-  public static void writePPM(String filePath, Image image) throws IOException {
+  private static void writePPM(String filePath, Image image) throws IOException {
     StringBuilder fileString = new StringBuilder();
     fileString.append("P3 ");
     fileString.append(image.getWidth()).append(" ");
@@ -175,6 +176,7 @@ public class ImageUtil {
     writer.close();
   }
 
+  // helper method to turn an Image into a BufferedImage
   private static BufferedImage imageToBufferedImage(Image image) {
     BufferedImage bufferedImage =
             new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);

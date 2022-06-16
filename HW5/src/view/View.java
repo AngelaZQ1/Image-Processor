@@ -9,15 +9,17 @@ public interface View {
 
   /**
    * Sends the given message to the user through an Appendable.
+   *
    * @param message the message to send
    * @throws IOException if there is an error sending the output
    */
-  public void renderMessage(String message) throws IOException;
+  void renderMessage(String message) throws IOException;
 
   /**
    * Shows the possible commands the user can input.
+   *
    * @throws IOException if there is an error sending the output
    */
-  public void showOptions() throws IOException;
+  void showOptions() throws IOException;
 
 }

@@ -8,7 +8,8 @@ import java.io.IOException;
 public interface Controller {
   /**
    * Runs the image processor.
+   *
    * @throws IOException if there is any issue transmitting output
    */
-  public void run() throws IOException;
+  void run() throws IOException;
 }

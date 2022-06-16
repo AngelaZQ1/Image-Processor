@@ -7,7 +7,7 @@ import java.io.IOException;
  * the display of messages to the user.
  */
 public class TextView implements View {
-  private Appendable destination;
+  private final Appendable destination;
 
   /**
    * The default constructor that creates a TextView object and uses System.out
@@ -19,6 +19,7 @@ public class TextView implements View {
 
   /**
    * A Constructor that creates a TextView object using the given appendable as its destination.
+   *
    * @param destination the given Appendable
    * @throws IllegalArgumentException if the given Appendable is null
    */
