@@ -190,7 +190,7 @@ public class ImageUtil {
   // helper method to turn an Image into a BufferedImage
   private static BufferedImage imageToBufferedImage(Image image) {
     BufferedImage bufferedImage =
-            new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
     for (int r = 0; r < bufferedImage.getHeight(); r++) {
       for (int c = 0; c < bufferedImage.getWidth(); c++) {
         Pixel pixel = image.getPixel(r, c);
