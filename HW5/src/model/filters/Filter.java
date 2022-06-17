@@ -78,7 +78,7 @@ public interface Filter {
    * returns a new pixel that is darkened by the given value
    *
    * @param p given pixel to be filtered
-   * @param value degreen to which to darken
+   * @param value degree to which to darken
    * @return
    */
   Pixel darken(Pixel p, int value);

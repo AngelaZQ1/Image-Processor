@@ -86,18 +86,6 @@ public class FilterImpl implements Filter {
 
   @Override
   public Pixel brighten(Pixel p, int value) {
-    return new PixelImpl(p.getRed() + value, p.getGreen() + value,
-            p.getBlue() + value, p.getMaxValue());
-  }
-
-  @Override
-  public Pixel darken(Pixel p, int value) {
-    return new PixelImpl(p.getRed() - value, p.getGreen() - value,
-            p.getBlue() - value, p.getMaxValue());
-  }
-
-  @Override
-  public Pixel brighten(Pixel p, int value) {
     return p.changeColor(value, value, value);
   }
 
