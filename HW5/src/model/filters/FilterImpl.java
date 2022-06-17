@@ -12,10 +12,15 @@ public class FilterImpl implements Filter {
 
   // uses this object's kernel to create a new Pixel
   @Override
-  public Pixel applyKernelToPixel(Image image, double[][] kernel, int pixelRow, int pixelCol) {
+  public Pixel applyKernelToPixel(Image image, double[][] kernel, int pixelRow, int pixelCol)
+          throws IllegalArgumentException {
 
     int kernelHeight = kernel.length;
     int kernelWidth = kernel[0].length;
+
+    if (kernelHeight % 2 == 0 || kernelHeight != kernelWidth) {
+      throw new IllegalArgumentException("Kernel Must have odd dimensions and be a square");
+    }
 
     // center of kernel
     int centerRow = kernelHeight / 2;

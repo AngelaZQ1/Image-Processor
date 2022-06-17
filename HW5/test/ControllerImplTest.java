@@ -132,4 +132,28 @@ public class ControllerImplTest {
             "message: Success! Image loaded.\n" +
             "message: Program Quit!", viewLog.toString());
   }
+
+  // test that the correct methods in the view are called when the controller calls the methods
+  @Test
+  public void testBlueComponent() {
+
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
