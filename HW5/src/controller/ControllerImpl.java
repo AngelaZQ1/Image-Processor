@@ -121,7 +121,6 @@ public class ControllerImpl implements Controller {
         Image imageToUse = this.getImageFromName(imageName); // get the image to work on
         Image newImage = c.applyCommand(imageToUse); // run that command object
 
-
         this.listOfImages.put(nameToSaveImageAs, newImage); // add image and image name to hashmap
       }
     }
