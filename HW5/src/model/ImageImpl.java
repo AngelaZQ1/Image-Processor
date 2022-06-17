@@ -37,7 +37,7 @@ public class ImageImpl implements Image {
     for (List<Pixel> row : image) {
       List<Pixel> newRow = new ArrayList<>();
       for (Pixel p : row) {
-        func.apply(p);
+        newRow.add(func.apply(p));
       }
       newImage.add(newRow);
     }

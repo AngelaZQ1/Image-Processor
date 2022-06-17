@@ -51,21 +51,25 @@ public class PixelImplTest {
             pixel.changeColor(-300, -300, -300));
   }
 
+  // test that getRed returns the Pixel's red component
   @Test
   public void testGetRed() {
     assertEquals(0, pixel.getRed());
   }
 
+  // test that getGreen returns the Pixel's green component
   @Test
   public void testGetGreen() {
     assertEquals(0, pixel.getGreen());
   }
 
+  // test that getBlue returns the Pixel's blue component
   @Test
   public void testGetBlue() {
     assertEquals(0, pixel.getBlue());
   }
 
+  // test that the equals method returns true when comparing two Pixels that have the same fields
   @Test
   public void testEquals() {
     init();

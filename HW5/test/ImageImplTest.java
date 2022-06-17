@@ -20,6 +20,8 @@ import static org.junit.Assert.fail;
  * and methods work as intended.
  */
 public class ImageImplTest {
+
+  // test that the constructor initializes its image field correctly
   @Test
   public void testConstructor() {
     List<Pixel> row = new ArrayList<>();
@@ -31,6 +33,7 @@ public class ImageImplTest {
     Image testImage = new ImageImpl(temp, 255);
     assertEquals(new PixelImpl(1, 2, 3, 255),
             testImage.getPixel(0, 0));
+    assertEquals(255, testImage.getMaxValue());
   }
 
   // helper method that compares each component from each pixel from a given original image
@@ -205,6 +208,7 @@ public class ImageImplTest {
     }
   }
 
+  // test blurring an image
   @Test
   public void testBlur() {
     try {
@@ -223,6 +227,7 @@ public class ImageImplTest {
     }
   }
 
+  // test sharpening an image
   @Test
   public void testSharpen() {
     try {
@@ -256,6 +261,7 @@ public class ImageImplTest {
     }
   }
 
+  // test getting the sepia tone of an image
   @Test
   public void testSepia() {
     try {

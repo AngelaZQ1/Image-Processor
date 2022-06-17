@@ -21,6 +21,8 @@ import static org.junit.Assert.fail;
  * constructors and methods work as intended.
  */
 public class ControllerImplTest {
+
+  // test that the constructor does not throw errors when valid argument are given and used
   @Test
   public void testConstructors() {
     View view = new TextView();
@@ -45,6 +47,7 @@ public class ControllerImplTest {
     }
   }
 
+  // test that the constructor throws exceptions when given null arguments
   @Test
   public void testConstructorNullArguments() {
     View view = new TextView();
@@ -69,6 +72,7 @@ public class ControllerImplTest {
     }
   }
 
+  // test that the correct methods in Image are called when the controller uses it
   @Test
   public void testRunMockModel() {
     StringBuilder log = new StringBuilder();
@@ -106,6 +110,7 @@ public class ControllerImplTest {
     assertEquals(expected, log.toString());
   }
 
+  // test that the correct methods in the view are called when the controller calls the methods
   @Test
   public void testRunMockView() {
     StringBuilder viewLog = new StringBuilder();

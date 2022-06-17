@@ -14,6 +14,7 @@ import static org.junit.Assert.fail;
  */
 public class TextViewTest {
 
+  // test that no exception is thrown when the constructor is called with a valid Appendable
   @Test
   public void testConstructorGivenValidAppendable() {
     Appendable destination = new StringBuilder();
@@ -21,16 +22,18 @@ public class TextViewTest {
     try {
       view.renderMessage("test");
     } catch (IOException e) {
-      // do nothing
+      fail("An IOException should not have been thrown");
     }
     assertEquals("test", destination.toString());
   }
 
+  // test that an exception is thrown when the constructor is called with a null Appendable
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorThrowsIllegalArgumentException() {
     new TextView(null);
   }
 
+  // test that the render message method works as intended and does not throw and error
   @Test
   public void testRenderMessageSuccess() {
     try {
@@ -41,6 +44,7 @@ public class TextViewTest {
     }
   }
 
+  // test that the render message throws an error when using an invalid Appendable
   @Test
   public void testRenderMessageThrowsIOException() {
     View view = new TextView(new CorruptAppendable());
@@ -52,6 +56,7 @@ public class TextViewTest {
     }
   }
 
+  // test that the showOptions method shows the correct text to the user
   @Test
   public void testShowOptions() {
     Appendable destination = new StringBuilder();
@@ -81,6 +86,7 @@ public class TextViewTest {
     }
   }
 
+  // test that the showOptions method throws an exception when the Appendable is invalid
   @Test
   public void testShowOptionsThrowsIOException() {
     View view = new TextView(new CorruptAppendable());
@@ -90,6 +96,5 @@ public class TextViewTest {
     } catch (IOException e) {
       // do nothing
     }
-
   }
 }
