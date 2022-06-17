@@ -9,7 +9,7 @@ import model.filters.FilterImpl;
 /**
  * This class represents an implementation of the Image interface. It offers ways to visualize
  * and manipulate an image such as grayscaling, flipping, brightening, darkening, and applying
- *  filters.
+ * filters.
  */
 public class ImageImpl implements Image {
   private final List<List<Pixel>> image;
@@ -125,18 +125,18 @@ public class ImageImpl implements Image {
   @Override
   public Image blur() {
     double[][] blurKernel = {{1.0 / 16, 1.0 / 8, 1.0 / 16},
-            {1.0 / 8, 1.0 / 4, 1.0 / 8},
-            {1.0 / 16, 1.0 / 8, 1.0 / 16}};
+        {1.0 / 8, 1.0 / 4, 1.0 / 8},
+        {1.0 / 16, 1.0 / 8, 1.0 / 16}};
     return filterHelper(blurKernel);
   }
 
   @Override
   public Image sharpen() {
     double[][] sharpenKernel = {{-1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8},
-            {-1.0 / 8, 1.0 / 4, 1.0 / 4, 1.0 / 4, -1.0 / 8},
-            {-1.0 / 8, 1.0 / 4, 1.0, 1.0 / 4, -1.0 / 8},
-            {-1.0 / 8, 1.0 / 4, 1.0 / 4, 1.0 / 4, -1.0 / 8},
-            {-1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8}};
+        {-1.0 / 8, 1.0 / 4, 1.0 / 4, 1.0 / 4, -1.0 / 8},
+        {-1.0 / 8, 1.0 / 4, 1.0, 1.0 / 4, -1.0 / 8},
+        {-1.0 / 8, 1.0 / 4, 1.0 / 4, 1.0 / 4, -1.0 / 8},
+        {-1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8}};
     return filterHelper(sharpenKernel);
   }
 

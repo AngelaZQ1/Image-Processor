@@ -89,7 +89,8 @@ public class ControllerImpl implements Controller {
     knownCommands.put("darken", (Scanner s) -> new Darken(s.nextInt()));
     knownCommands.put("blur", (Scanner s) -> new Blur());
     knownCommands.put("sharpen", (Scanner s) -> new Sharpen());
-    knownCommands.put("grayscale", (Scanner s) -> new Grayscale(s.nextInt(), s.nextInt(), s.nextInt()));
+    knownCommands.put("grayscale", (Scanner s) ->
+            new Grayscale(s.nextInt(), s.nextInt(), s.nextInt()));
     knownCommands.put("sepia", (Scanner s) -> new Sepia());
 
 

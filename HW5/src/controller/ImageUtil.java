@@ -1,6 +1,6 @@
 package controller;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,6 +26,12 @@ import model.PixelImpl;
  */
 public class ImageUtil {
 
+  /**
+   * Read an image from the given filePath.
+   * @param filePath the path to use to read the image
+   * @return an Image representing the image read.
+   * @throws IOException if the image's extension is not supported
+   */
   public static Image readImage(String filePath) throws IOException {
     String extension = "";
 
@@ -66,17 +72,22 @@ public class ImageUtil {
     switch (extension) {
       case "ppm":
         writePPM(filePath, image);
+        break;
       case "jpg":
         ImageIO.write(imageToBufferedImage(image), "jpg", new File(filePath));
+        break;
       case "jpeg":
         ImageIO.write(imageToBufferedImage(image), "jpeg", new File(filePath));
+        break;
       case "png":
         ImageIO.write(imageToBufferedImage(image), "png", new File(filePath));
+        break;
       case "bmp":
         ImageIO.write(imageToBufferedImage(image), "bmp", new File(filePath));
+        break;
       default:
-        throw new IOException("Image type not supported. Image must have a PPM, JPG, JPEG, PNG," +
-                " or BMP extension.");
+        throw new IOException("Image type not supported. Image must have a PPM, JPG, JPEG, PNG,"
+                + " or BMP extension.");
     }
   }
 

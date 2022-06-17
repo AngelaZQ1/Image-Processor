@@ -9,11 +9,12 @@ import model.Pixel;
 public interface Filter {
   /**
    * Applies the kernel to a pixel in an image.
-   * @param image given image
-   * @param kernel kernel that should be used to filter
+   *
+   * @param image    given image
+   * @param kernel   kernel that should be used to filter
    * @param pixelRow row of pixel
    * @param pixelCol column of pixel
-   * @return
+   * @return a new Pixel with the kernel applied
    */
   Pixel applyKernelToPixel(Image image, double[][] kernel, int pixelRow, int pixelCol);
 
@@ -66,20 +67,20 @@ public interface Filter {
   Pixel filterBlue(Pixel p);
 
   /**
-   * Returns a new pixel that is brightened by the given value
+   * Returns a new pixel that is brightened by the given value.
    *
-   * @param p given pixel to be filtered
+   * @param p     given pixel to be filtered
    * @param value degree to which to brighten
-   * @return
+   * @return a new Pixel that is the brightened version of this pixel.
    */
   Pixel brighten(Pixel p, int value);
 
   /**
-   * returns a new pixel that is darkened by the given value
+   * returns a new pixel that is darkened by the given value.
    *
-   * @param p given pixel to be filtered
+   * @param p     given pixel to be filtered
    * @param value degree to which to darken
-   * @return
+   * @return a new Pixel that is the darkened version of this pixel.
    */
   Pixel darken(Pixel p, int value);
 
