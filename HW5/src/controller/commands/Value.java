@@ -16,4 +16,9 @@ public class Value implements Command {
   public Image applyCommand(Image image) {
     return image.visualizeValue();
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image grayscaled by value.\n";
+  }
 }

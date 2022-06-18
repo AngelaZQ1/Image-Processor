@@ -141,8 +141,8 @@ public class ImageImpl implements Image {
   }
 
   @Override
-  public Image grayscaleColorTransform(double redScale, double greenScale, double blueScale) {
-    return visualizeHelper(p -> new FilterImpl().filterGrey(p, redScale, greenScale, blueScale));
+  public Image grayscaleColorTransform() {
+    return visualizeHelper(p -> new FilterImpl().filterGrey(p));
   }
 
   @Override

@@ -28,8 +28,6 @@ public class ImageProcessor {
     controller.run();
 
 
-    // TODO At least one example source image in png/jpg/bmp/ppm format, its blurred, sharpened, greyscaled and sepia-ed versions in a res/ folder
     // TODO update README
-    // TODO create jar file and put in the res folder
   }
 }

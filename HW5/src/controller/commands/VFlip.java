@@ -16,4 +16,9 @@ public class VFlip implements Command {
   public Image applyCommand(Image image) {
     return image.flipImageVertically();
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image flipped vertically.\n";
+  }
 }

@@ -251,11 +251,11 @@ public class ImageImplTest {
   public void testGrayscaleColorTransform() {
     try {
       Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
-      Image grayscaleImage = originalImage.grayscaleColorTransform(.2, .5, .3);
+      Image grayscaleImage = originalImage.visualizeLuma();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
-              p -> (int) ((p.getRed() * .2)
-                      + (p.getGreen() * .5)
-                      + (p.getBlue() * .3))));
+              p -> (int) ((p.getRed() * 0.2126)
+                      + (p.getGreen() * 0.7152)
+                      + (p.getBlue() * 0.0722))));
     } catch (FileNotFoundException e) {
       fail("FileNotFoundException was thrown");
     }

@@ -114,9 +114,10 @@ public class FilterImplTest {
   // test that the filterGrey method returns a Pixel that is correctly grayscaled
   @Test
   public void testGrey() {
-    assertEquals(new PixelImpl(2, 2, 2, 255), new FilterImpl()
-            .filterGrey(new PixelImpl(1, 2, 3, 255),
-                    .2, .3, .5));
+    assertEquals(new PixelImpl(4, 4, 4, 255), new FilterImpl()
+            .filterLuma(new PixelImpl(4, 4, 4, 255)));
+    assertEquals(new PixelImpl(4, 4, 4, 255), new FilterImpl()
+            .filterLuma(new PixelImpl(5, 5, 5, 255)));
   }
 
   // test that the sepia method returns a Pixel with the correct components

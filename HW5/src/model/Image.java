@@ -94,12 +94,9 @@ public interface Image {
   /**
    * Grayscales this image by performing a color transformation on each channel.
    *
-   * @param red   the value to multiply each red component by
-   * @param green the value to multiply each green component by
-   * @param blue  the value to multiply each blue component by
    * @return the resulting image
    */
-  Image grayscaleColorTransform(double red, double green, double blue);
+  Image grayscaleColorTransform();
 
   /**
    * Produces a sepia-toned version of this Image.

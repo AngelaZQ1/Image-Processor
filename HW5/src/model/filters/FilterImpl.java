@@ -6,7 +6,7 @@ import model.PixelImpl;
 
 /**
  * This class represents functionality to filter pixels. It does so by applying its kernel
- * to a given pixel.
+ * represented by a 2D Array to a given pixel.
  */
 public class FilterImpl implements Filter {
 
@@ -18,8 +18,8 @@ public class FilterImpl implements Filter {
     int kernelHeight = kernel.length;
     int kernelWidth = kernel[0].length;
 
-    if (kernelHeight % 2 == 0 || kernelHeight != kernelWidth) {
-      throw new IllegalArgumentException("Kernel Must have odd dimensions and be a square");
+    if (kernelHeight % 2 == 0 || kernelWidth % 2 == 0) {
+      throw new IllegalArgumentException("Kernel Must have odd dimensions.");
     }
 
     // center of kernel
@@ -100,13 +100,8 @@ public class FilterImpl implements Filter {
   }
 
   @Override
-  public Pixel filterGrey(Pixel p, double red, double green, double blue) {
-    double grayScaledComponentValue =
-            (red * p.getRed()) + (green * p.getGreen()) + (blue * p.getBlue());
-    return new PixelImpl((int) grayScaledComponentValue,
-            (int) grayScaledComponentValue,
-            (int) grayScaledComponentValue,
-            p.getMaxValue());
+  public Pixel filterGrey(Pixel p) {
+    return filterLuma(p);
   }
 
   @Override

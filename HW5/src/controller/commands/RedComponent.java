@@ -16,4 +16,9 @@ public class RedComponent implements Command {
   public Image applyCommand(Image image) {
     return image.visualizeRedChannel();
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image grayscaled by red component.\n";
+  }
 }

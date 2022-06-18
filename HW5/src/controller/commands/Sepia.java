@@ -16,4 +16,9 @@ public class Sepia implements Command {
   public Image applyCommand(Image image) {
     return image.sepia();
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image sepiaed.\n";
+  }
 }

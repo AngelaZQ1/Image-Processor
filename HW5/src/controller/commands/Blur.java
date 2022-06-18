@@ -17,4 +17,9 @@ public class Blur implements Command {
   public Image applyCommand(Image image) {
     return image.blur();
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image blurred.\n";
+  }
 }

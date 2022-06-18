@@ -16,4 +16,9 @@ public class HFlip implements Command {
   public Image applyCommand(Image image) {
     return image.flipImageHorizontally();
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image flipped horizontally.\n";
+  }
 }

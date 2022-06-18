@@ -155,8 +155,8 @@ public class MockImage implements Image {
   }
 
   @Override
-  public Image grayscaleColorTransform(double red, double green, double blue) {
-    log.append("transform using " + red + " " + green + " " + blue + "\n");
+  public Image grayscaleColorTransform() {
+    log.append("grayscale\n");
     return this;
   }
 

@@ -16,4 +16,9 @@ public class Intensity implements Command {
   public Image applyCommand(Image image) {
     return image.visualizeIntensity();
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image grayscaled by intensity.\n";
+  }
 }

@@ -17,4 +17,9 @@ public class Sharpen implements Command {
   public Image applyCommand(Image image) {
     return image.sharpen();
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image sharpened.\n";
+  }
 }

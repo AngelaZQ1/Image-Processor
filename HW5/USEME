@@ -51,4 +51,4 @@ To Quit: q or Q
    - Quits program
 
 Conditions:
-An image must be loaded before any other command. Besides that, the commands can be run in any order.
+An image must be loaded before performing any other command. Besides that, the commands can be run in any order.

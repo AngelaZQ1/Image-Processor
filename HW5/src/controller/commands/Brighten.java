@@ -26,4 +26,9 @@ public class Brighten implements Command {
   public Image applyCommand(Image image) {
     return image.brighten(value);
   }
+
+  @Override
+  public String getMessage() {
+    return "Success! Image brightened by " + value + ".\n";
+  }
 }
