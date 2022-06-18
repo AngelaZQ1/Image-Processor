@@ -51,7 +51,7 @@ public class TextView implements View {
     this.destination.append("Brighten: Brighten increment image-name dest-image-name\n");
     this.destination.append("Darken: darken increment image-name dest-image-name\n");
     this.destination.append("Sharpen: sharpen image-name dest-image-name\n");
-    this.destination.append("Blur: Blur image-name dest-image-name\n");
+    this.destination.append("Blur: blur image-name dest-image-name\n");
     this.destination.append("Grayscale: grayscale image-name dest-image-name\n");
     this.destination.append("Sepia: sepia image-name dest-image-name\n");
     this.destination.append("To Quit: q or Q\n");
