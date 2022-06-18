@@ -101,9 +101,7 @@ public class ControllerImpl implements Controller {
       if (userCommand.equalsIgnoreCase("q")) {
         this.view.renderMessage("Program Quit!");
         return;
-      }
-
-      if (userCommand.equals("load")) {
+      } else if (userCommand.equals("load")) {
         loadHelper(sc);
       } else if (userCommand.equals("save")) {
         this.saveHelper(sc);

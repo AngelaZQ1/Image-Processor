@@ -26,8 +26,5 @@ public class ImageProcessor {
       controller = new ControllerImpl(new TextView(), new InputStreamReader(System.in));
     }
     controller.run();
-
-
-    // TODO update README
   }
 }
