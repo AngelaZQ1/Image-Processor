@@ -106,18 +106,21 @@ public class ControllerImpl implements Controller {
       } else if (userCommand.equals("save")) {
         this.saveHelper(sc);
       } else {
+        try { // catch invalid commands
+          // get the value of the key (the users input) which is the command object we want
+          Function<Scanner, Command> cmd = knownCommands.getOrDefault(userCommand, null);
+          c = cmd.apply(sc); // get the command object using the user's input
 
-        // get the value of the key (the users input) which is the command object we want
-        Function<Scanner, Command> cmd = knownCommands.getOrDefault(userCommand, null);
-        c = cmd.apply(sc); // get the command object using the user's input
+          String imageName = sc.next();
+          String nameToSaveImageAs = sc.next();
+          Image imageToUse = this.getImageFromName(imageName); // get the image to work on
+          Image newImage = c.applyCommand(imageToUse); // run that command object
 
-        String imageName = sc.next();
-        String nameToSaveImageAs = sc.next();
-        Image imageToUse = this.getImageFromName(imageName); // get the image to work on
-        Image newImage = c.applyCommand(imageToUse); // run that command object
-
-        this.listOfImages.put(nameToSaveImageAs, newImage); // add image and image name to hashmap
-        this.view.renderMessage(c.getMessage());
+          this.listOfImages.put(nameToSaveImageAs, newImage); // add image and image name to hashmap
+          this.view.renderMessage(c.getMessage());
+        } catch (NullPointerException e) {
+          this.view.renderMessage("Invalid command. Try again.\n");
+        }
       }
     }
   }
