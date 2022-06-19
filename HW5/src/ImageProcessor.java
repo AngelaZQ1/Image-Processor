@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 
 import controller.Controller;
 import controller.ControllerImpl;
+import controller.GUIController;
+import view.JFrameView;
 import view.TextView;
 
 /**
@@ -19,12 +21,18 @@ public class ImageProcessor {
    */
   public static void main(String[] args) throws IOException {
     Controller controller;
+    GUIController guiController;
     if (args.length > 0 && args[0].equals("-file")) {
       String filePath = args[1];
       controller = new ControllerImpl(new TextView(), new FileReader(filePath));
-    } else {
+      controller.run();
+    } else if (args.length > 0 && args[0].equals("-text")) {
       controller = new ControllerImpl(new TextView(), new InputStreamReader(System.in));
+      controller.run();
     }
-    controller.run();
+    else {
+      guiController = new GUIController();
+      guiController.setView(new JFrameView("Image Processor"));
+    }
   }
 }
