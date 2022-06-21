@@ -27,6 +27,15 @@ import model.PixelImpl;
 public class ImageUtil {
 
   /**
+   * Turns an Image to a Java Image.
+   * @param image the Image to turn into a Java Image
+   * @return a Image from java.awt.Image
+   */
+  public static java.awt.Image imageToImage(Image image) {
+    return imageToBufferedImage(image);
+  }
+
+  /**
    * Read an image from the given filePath.
    * @param filePath the path to use to read the image
    * @return an Image representing the image read.
@@ -119,7 +128,7 @@ public class ImageUtil {
    * @return the image
    * @throws FileNotFoundException if the filename could not be found
    */
-  public static Image readPPM(String filePath) throws FileNotFoundException {
+  private static Image readPPM(String filePath) throws FileNotFoundException {
     Scanner sc;
 
     sc = new Scanner(new FileInputStream(filePath));

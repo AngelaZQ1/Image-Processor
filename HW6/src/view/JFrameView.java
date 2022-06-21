@@ -1,20 +1,21 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.awt.*;
-import java.io.File;
+import java.io.IOException;
 
 import controller.Features;
 
+import controller.ImageUtil;
+import model.Image;
+
 public class JFrameView extends JFrame implements GUIView {
-  private JLabel imageLabel, openFilePath, saveFilePath;
+  private final JLabel imageLabel, openFilePath, saveFilePath;
   private JPanel redHistogram, greenHistogram, blueHistogram, intensityHistogram;
-  private JButton redButton, greenButton, blueButton, darkenButton, brightenButton,
+  private final JButton redButton, greenButton, blueButton, darkenButton, brightenButton,
   flipVerticallyButton, flipHorizontallyButton, valueButton, intensityButton, lumaButton,
   blurButton, sharpenButton, grayscaleButton, sepiaButton, exitButton, loadButton, saveButton;
-  private Image currentImage;
 
   public JFrameView(String caption) {
     super(caption);
@@ -27,14 +28,17 @@ public class JFrameView extends JFrame implements GUIView {
 
     this.setLayout(new GridLayout(0, 3));
 
-    // image with a scrollbar
-//    imageLabel.setMaximumSize(null);
-    imageLabel = new JLabel();
-    JScrollPane imageScrollPane = new JScrollPane();
-    imageLabel.setIcon(new ImageIcon("res/fourPixels.jpg"));
+    // image panel
+    JPanel imagePanel = new JPanel();
+    //a border around the panel with a caption
+    imagePanel.setBorder(BorderFactory.createTitledBorder("Current Image:"));
+    this.add(imagePanel);
+
+    // the current scrollable image
+    imageLabel = new JLabel(new ImageIcon());
+    JScrollPane imageScrollPane = new JScrollPane(imageLabel);
     imageScrollPane.setPreferredSize(new Dimension(500, 500));
-    imageLabel.add(imageScrollPane);
-    this.add(imageLabel);
+    imagePanel.add(imageScrollPane);
 
     // histograms
     redHistogram = new Histogram();
@@ -46,113 +50,76 @@ public class JFrameView extends JFrame implements GUIView {
     intensityHistogram = new Histogram();
     this.add(intensityHistogram);
 
-    //red comp
     redButton = new JButton("Red Component");
-    redButton.setActionCommand("Red Component Button");
     this.add(redButton);
 
-    //green comp
     greenButton = new JButton("Green Component");
-    greenButton.setActionCommand("Green Component Button");
     this.add(greenButton);
 
-    //blue comp
     blueButton = new JButton("Blue Component");
-    blueButton.setActionCommand("Blue Component Button");
     this.add(blueButton);
 
-    //darken
     darkenButton = new JButton("Darken");
-    darkenButton.setActionCommand("Darken Button");
     this.add(darkenButton);
 
-    //brighten
     brightenButton = new JButton("Brighten");
-    brightenButton.setActionCommand("Brighten Button");
     this.add(brightenButton);
 
-    //vflip
     flipVerticallyButton = new JButton("Flip Vertically");
-    flipVerticallyButton.setActionCommand("Flip Vertically Button");
     this.add(flipVerticallyButton);
 
-    //hflip
     flipHorizontallyButton = new JButton("Flip Horizontally");
-    flipHorizontallyButton.setActionCommand("Flip Horizontally Button");
     this.add(flipHorizontallyButton);
 
-    //value
     valueButton = new JButton("Grayscale Using Value");
-    valueButton.setActionCommand("Grayscale Using Value Button");
     this.add(valueButton);
 
-    //intensity
     intensityButton = new JButton("Grayscale Using Intensity");
-    intensityButton.setActionCommand("Grayscale Using Intensity Button");
     this.add(intensityButton);
 
-    //luma
     lumaButton = new JButton("Grayscale Using Luma");
-    lumaButton.setActionCommand("Grayscale Using Luma Button");
     this.add(lumaButton);
 
-    //blur button
     blurButton = new JButton("Blur");
-    blurButton.setActionCommand("Blur Button");
     this.add(blurButton);
 
-    //sharpen
     sharpenButton = new JButton("Sharpen");
-    sharpenButton.setActionCommand("Sharpen Button");
     this.add(sharpenButton);
 
-    //grayscale
     grayscaleButton = new JButton("Grayscale");
-    grayscaleButton.setActionCommand("Grayscale Button");
     this.add(grayscaleButton);
 
-    //sepia
     sepiaButton = new JButton("Sepia");
-    sepiaButton.setActionCommand("Sepia Button");
     this.add(sepiaButton);
 
-    //exit
     exitButton = new JButton("Exit");
-    exitButton.setActionCommand("Exit Button");
     this.add(exitButton);
-
 
     // dialogue box for saving and loading
     JPanel dialogBoxesPanel = new JPanel();
-    dialogBoxesPanel.setBorder(BorderFactory.createTitledBorder("Dialog boxes"));
+    dialogBoxesPanel.setBorder(BorderFactory.createTitledBorder("Load/Save Image"));
     dialogBoxesPanel.setLayout(new BoxLayout(dialogBoxesPanel, BoxLayout.PAGE_AXIS));
     this.add(dialogBoxesPanel);
 
     // load button
-    loadButton = new JButton("Load Image");
-    loadButton.setActionCommand("Load Image Button");
-    this.add(loadButton);
-
     JPanel openFilePanel = new JPanel();
     openFilePanel.setLayout(new FlowLayout());
+
     dialogBoxesPanel.add(openFilePanel);
-    JButton fileOpenButton = new JButton("Open a file");
-    fileOpenButton.setActionCommand("Open file");
-    openFilePanel.add(fileOpenButton);
+
+    loadButton = new JButton("Open a file");
+    openFilePanel.add(loadButton);
     openFilePath = new JLabel("File path will appear here");
     openFilePanel.add(openFilePath);
 
     // save button
-    saveButton = new JButton("Save Image");
-    saveButton.setActionCommand("Save Image Button");
-    this.add(saveButton);
-
     JPanel saveFilePanel = new JPanel();
     saveFilePanel.setLayout(new FlowLayout());
+
     dialogBoxesPanel.add(saveFilePanel);
-    JButton fileSaveButton = new JButton("Save a file");
-    fileSaveButton.setActionCommand("Save file");
-    saveFilePanel.add(fileSaveButton);
+
+    saveButton = new JButton("Save a file");
+    saveFilePanel.add(saveButton);
     saveFilePath = new JLabel("File path will appear here");
     saveFilePanel.add(saveFilePath);
 
@@ -177,36 +144,39 @@ public class JFrameView extends JFrame implements GUIView {
     sharpenButton.addActionListener(evt -> features.sharpen());
     grayscaleButton.addActionListener(evt -> features.grayscale());
     sepiaButton.addActionListener(evt -> features.sepia());
-    loadButton.addActionListener(evt -> load());
-    saveButton.addActionListener(evt -> save());
+    loadButton.addActionListener(evt -> features.load());
+    saveButton.addActionListener(evt -> features.save());
     exitButton.addActionListener(evt -> features.exit());
   }
-
-  private void load() {
-    final JFileChooser fchooser = new JFileChooser(".");
-    FileNameExtensionFilter filter = new FileNameExtensionFilter(
-            "JPG & GIF Images", "jpg", "gif");
-    fchooser.setFileFilter(filter);
-    int retvalue = fchooser.showOpenDialog(this);
-    if (retvalue == JFileChooser.APPROVE_OPTION) {
-      File f = fchooser.getSelectedFile();
-      openFilePath.setText(f.getAbsolutePath());
-    }
+  public void setOpenFilePath(String filepath) {
+    this.openFilePath.setText(filepath);
   }
 
-  private void save() {
-    final JFileChooser fchooser = new JFileChooser(".");
-    int retvalue = fchooser.showSaveDialog(this);
-    if (retvalue == JFileChooser.APPROVE_OPTION) {
-      File f = fchooser.getSelectedFile();
-      saveFilePath.setText(f.getAbsolutePath());
-    }
+  public void setSaveFilePath(String filePath) {
+    this.saveFilePath.setText(filePath);
   }
 
-  // TODO implement this
+  /**
+   * Updates the image shown to the Image using the given filepath.
+   * @param filepath the file path of the new Image to show
+   */
   @Override
-  public void updateImage(model.Image image) {
-    imageLabel.setIcon(new ImageIcon((Image) image));
+  public void updateImage(String filepath) {
+    try {
+      Image image = ImageUtil.readImage(filepath);
+      this.imageLabel.setIcon(new ImageIcon(ImageUtil.imageToImage(image)));
+    } catch (IOException e) {
+      System.out.println("IOException");
+    }
+  }
+
+  /**
+   * Updates the image shown to the given Image.
+   * @param image the new Image show
+   */
+  @Override
+  public void updateImage(Image image) {
+    this.imageLabel.setIcon(new ImageIcon(ImageUtil.imageToImage(image)));
   }
 
   // TODO implement this

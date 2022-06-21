@@ -1,9 +1,11 @@
 package controller;
 
 
+import model.Image;
+
 public interface Features {
 
-  public void updateImage();
+  public void updateImage(Image image);
 
   public void redComp();
 

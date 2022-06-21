@@ -1,7 +1,9 @@
 package model;
 
 /**
- * This interface represents an image that can be manipulated.
+ * This interface represents an image that can be manipulated. Manipulations include visualizing
+ * each channel, grayscaling, flipping, darkening and brightening, and blurring and
+ * sharpening the Image.
  */
 public interface Image {
 
