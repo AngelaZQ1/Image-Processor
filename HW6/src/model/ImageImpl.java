@@ -1,7 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 import model.filters.FilterImpl;
@@ -170,4 +172,56 @@ public class ImageImpl implements Image {
     List<Pixel> temp = image.get(row);
     return temp.get(col);
   }
+
+  @Override
+  public Map<Integer, Integer> getRedDistribution() {
+    Map<Integer, Integer> redValues = new HashMap<>();
+    for (int value = 0; value <= 255; value++) {
+      redValues.put(value, 0); // add the values 0 to 255
+    }
+
+    for (List<Pixel> row : this.image) {
+      for (Pixel pixel : row) {
+        int redValueOfPixel = pixel.getRed();
+        int currentCount = redValues.get(redValueOfPixel);
+        redValues.put(redValueOfPixel, currentCount + 1);
+      }
+    }
+    return redValues;
+  }
+
+  @Override
+  public Map<Integer, Integer> getGreenDistribution() {
+    Map<Integer, Integer> greenValues = new HashMap<>();
+    for (int value = 0; value <= 255; value++) {
+      greenValues.put(value, 0); // add the values 0 to 255
+    }
+
+    for (List<Pixel> row : this.image) {
+      for (Pixel pixel : row) {
+        int greenValueOfPixel = pixel.getRed();
+        int currentCount = greenValues.get(greenValueOfPixel);
+        greenValues.put(greenValueOfPixel, currentCount + 1);
+      }
+    }
+    return greenValues;
+  }
+
+  @Override
+  public Map<Integer, Integer> getBlueDistribution() {
+    Map<Integer, Integer> blueValues = new HashMap<>();
+    for (int value = 0; value <= 255; value++) {
+      blueValues.put(value, 0); // add the values 0 to 255
+    }
+
+    for (List<Pixel> row : this.image) {
+      for (Pixel pixel : row) {
+        int blueValueOfPixel = pixel.getRed();
+        int currentCount = blueValues.get(blueValueOfPixel);
+        blueValues.put(blueValueOfPixel, currentCount + 1);
+      }
+    }
+    return blueValues;
+  }
+
 }

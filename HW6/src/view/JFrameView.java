@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import controller.Features;
 
@@ -12,7 +14,10 @@ import model.Image;
 
 public class JFrameView extends JFrame implements GUIView {
   private final JLabel imageLabel, openFilePath, saveFilePath;
-  private JPanel redHistogram, greenHistogram, blueHistogram, intensityHistogram;
+  private JPanel histogramsSection;
+  private JPanel redHistogram;
+  private JPanel greenHistogram;
+  private JPanel blueHistogram;
   private final JButton redButton, greenButton, blueButton, darkenButton, brightenButton,
   flipVerticallyButton, flipHorizontallyButton, valueButton, intensityButton, lumaButton,
   blurButton, sharpenButton, grayscaleButton, sepiaButton, exitButton, loadButton, saveButton;
@@ -23,77 +28,33 @@ public class JFrameView extends JFrame implements GUIView {
     setSize(900, 700);
     setLocation(0, 0);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    // this.setResizable(false);
-    // this.setMinimumSize(new Dimension(300,300));
 
-    this.setLayout(new GridLayout(0, 3));
-
-    // image panel
-    JPanel imagePanel = new JPanel();
-    //a border around the panel with a caption
-    imagePanel.setBorder(BorderFactory.createTitledBorder("Current Image:"));
-    this.add(imagePanel);
-
-    // the current scrollable image
-    imageLabel = new JLabel(new ImageIcon());
-    JScrollPane imageScrollPane = new JScrollPane(imageLabel);
-    imageScrollPane.setPreferredSize(new Dimension(500, 500));
-    imagePanel.add(imageScrollPane);
+    this.setLayout(new BorderLayout());
 
     // histograms
-    redHistogram = new Histogram();
-    this.add(redHistogram);
-    greenHistogram = new Histogram();
-    this.add(greenHistogram);
-    blueHistogram = new Histogram();
-    this.add(blueHistogram);
-    intensityHistogram = new Histogram();
-    this.add(intensityHistogram);
+    histogramsSection = new JPanel();
+    histogramsSection.setLayout(new BoxLayout(histogramsSection, BoxLayout.PAGE_AXIS));
+    histogramsSection.setPreferredSize(new Dimension(300, 300));
 
-    redButton = new JButton("Red Component");
-    this.add(redButton);
+//
+//    redHistogram = new JPanel();
+//    redHistogram.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 
-    greenButton = new JButton("Green Component");
-    this.add(greenButton);
+    histogramsSection.add(updateRedHistogram(null));
+    // histogramsSection.add(updateGreenHistogram(null));
+    // histogramsSection.add(updateBlueHistogram(null));
+    // histogramsSection.add(updateIntensityHistogram(null));
 
-    blueButton = new JButton("Blue Component");
-    this.add(blueButton);
+//    histogramsSection.add(updateRedHistogram(new HashMap<Integer, Integer>()));
+//    histogramsSection.add(greenHistogramContainer);
+//    histogramsSection.add(blueHistogramContainer);
 
-    darkenButton = new JButton("Darken");
-    this.add(darkenButton);
+    this.add(histogramsSection, BorderLayout.LINE_START);
 
-    brightenButton = new JButton("Brighten");
-    this.add(brightenButton);
+    // TOP SECTION
 
-    flipVerticallyButton = new JButton("Flip Vertically");
-    this.add(flipVerticallyButton);
-
-    flipHorizontallyButton = new JButton("Flip Horizontally");
-    this.add(flipHorizontallyButton);
-
-    valueButton = new JButton("Grayscale Using Value");
-    this.add(valueButton);
-
-    intensityButton = new JButton("Grayscale Using Intensity");
-    this.add(intensityButton);
-
-    lumaButton = new JButton("Grayscale Using Luma");
-    this.add(lumaButton);
-
-    blurButton = new JButton("Blur");
-    this.add(blurButton);
-
-    sharpenButton = new JButton("Sharpen");
-    this.add(sharpenButton);
-
-    grayscaleButton = new JButton("Grayscale");
-    this.add(grayscaleButton);
-
-    sepiaButton = new JButton("Sepia");
-    this.add(sepiaButton);
-
-    exitButton = new JButton("Exit");
-    this.add(exitButton);
+    JPanel topSection = new JPanel();
+    topSection.setLayout(new FlowLayout());
 
     // dialogue box for saving and loading
     JPanel dialogBoxesPanel = new JPanel();
@@ -122,6 +83,65 @@ public class JFrameView extends JFrame implements GUIView {
     saveFilePanel.add(saveButton);
     saveFilePath = new JLabel("File path will appear here");
     saveFilePanel.add(saveFilePath);
+
+    // exit button
+    exitButton = new JButton("Exit");
+    this.add(exitButton);
+
+    topSection.add(dialogBoxesPanel);
+    topSection.add(exitButton);
+
+    this.add(topSection, BorderLayout.PAGE_START);
+
+    // IMAGE MIDDLE SECTION
+    
+    // image panel
+    JPanel imagePanel = new JPanel();
+    //a border around the panel with a caption
+    imagePanel.setBorder(BorderFactory.createTitledBorder("Current Image:"));
+    imagePanel.setSize(500, 500);
+    this.add(imagePanel, BorderLayout.CENTER);
+
+    // the current scrollable image
+    imageLabel = new JLabel(new ImageIcon());
+    JScrollPane imageScrollPane = new JScrollPane(imageLabel);
+    imageScrollPane.setPreferredSize(new Dimension(500, 500));
+    imagePanel.add(imageScrollPane);
+
+    // BUTTONS
+    JPanel buttonsSection = new JPanel();
+    buttonsSection.setLayout(new GridLayout(7, 2));
+
+    redButton = new JButton("Red Component");
+    buttonsSection.add(redButton);
+    greenButton = new JButton("Green Component");
+    buttonsSection.add(greenButton);
+    blueButton = new JButton("Blue Component");
+    buttonsSection.add(blueButton);
+    darkenButton = new JButton("Darken");
+    buttonsSection.add(darkenButton);
+    brightenButton = new JButton("Brighten");
+    buttonsSection.add(brightenButton);
+    flipVerticallyButton = new JButton("Flip Vertically");
+    buttonsSection.add(flipVerticallyButton);
+    flipHorizontallyButton = new JButton("Flip Horizontally");
+    buttonsSection.add(flipHorizontallyButton);
+    valueButton = new JButton("Grayscale Using Value");
+    buttonsSection.add(valueButton);
+    intensityButton = new JButton("Grayscale Using Intensity");
+    buttonsSection.add(intensityButton);
+    lumaButton = new JButton("Grayscale Using Luma");
+    buttonsSection.add(lumaButton);
+    blurButton = new JButton("Blur");
+    buttonsSection.add(blurButton);
+    sharpenButton = new JButton("Sharpen");
+    buttonsSection.add(sharpenButton);
+    grayscaleButton = new JButton("Grayscale");
+    buttonsSection.add(grayscaleButton);
+    sepiaButton = new JButton("Sepia");
+    buttonsSection.add(sepiaButton);
+
+    this.add(buttonsSection, BorderLayout.LINE_END);
 
     pack();
     setVisible(true);
@@ -181,27 +201,42 @@ public class JFrameView extends JFrame implements GUIView {
 
   // TODO implement this
   @Override
-  public void updateRedHistogram(Histogram histogram) {
-    this.redHistogram = histogram;
+  public JPanel updateRedHistogram(Map<Integer, Integer> distributionOfRedValues) {
+    return new Histogram(distributionOfRedValues);
+
+//    for (Integer key : distributionOfRedValues.keySet()) {
+//      JPanel bar = new JPanel();
+//      bar.setSize(1, distributionOfRedValues.get(key));
+//      redHistogram.add(bar);
+//    }
+//
+//    this.histogramsSection.remove(redHistogram);
+//    this.histogramsSection.add(redHistogram);
+//    this.validate();
+  }
+
+
+  // TODO implement this
+  @Override
+  public JPanel updateGreenHistogram(Map<Integer, Integer> distributionOfRedValues) {
+//    this.greenHistogram = histogram;
+    return new Histogram(distributionOfRedValues);
   }
 
   // TODO implement this
   @Override
-  public void updateGreenHistogram(Histogram histogram) {
-    this.greenHistogram = histogram;
+  public JPanel updateBlueHistogram(Map<Integer, Integer> distributionOfRedValues) {
+//    this.blueHistogram = histogram;
+    return new Histogram(distributionOfRedValues);
   }
 
   // TODO implement this
   @Override
-  public void updateBlueHistogram(Histogram histogram) {
-    this.blueHistogram = histogram;
+  public JPanel updateIntensityHistogram(Map<Integer, Integer> distributionOfRedValues) {
+//    this.intensityHistogram = histogram;
+    return new Histogram(distributionOfRedValues);
   }
 
-  // TODO implement this
-  @Override
-  public void updateIntensityHistogram(Histogram histogram) {
-    this.intensityHistogram = histogram;
-  }
 
 
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Map;
+
 /**
  * This interface represents an image that can be manipulated. Manipulations include visualizing
  * each channel, grayscaling, flipping, darkening and brightening, and blurring and
@@ -136,5 +138,11 @@ public interface Image {
    * @return the Pixel at the given location
    */
   Pixel getPixel(int row, int col);
+
+  Map<Integer, Integer> getRedDistribution();
+
+  Map<Integer, Integer> getGreenDistribution();
+
+  Map<Integer, Integer> getBlueDistribution();
 
 }

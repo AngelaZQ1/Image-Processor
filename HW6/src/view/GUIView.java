@@ -1,6 +1,10 @@
 package view;
 
 
+import java.util.Map;
+
+import javax.swing.*;
+
 import controller.Features;
 import model.Image;
 
@@ -10,13 +14,13 @@ public interface GUIView {
 
   void updateImage(Image image);
 
-  void updateRedHistogram(Histogram histogram);
+  JPanel updateRedHistogram(Map<Integer, Integer> distributionOfRedValues);
 
-  void updateGreenHistogram(Histogram histogram);
+  JPanel updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues);
 
-  void updateBlueHistogram(Histogram histogram);
+  JPanel updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues);
 
-  void updateIntensityHistogram(Histogram histogram);
+  JPanel updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues);
 
   void addFeatures(Features features);
 

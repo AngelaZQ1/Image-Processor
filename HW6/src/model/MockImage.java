@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -210,6 +211,22 @@ public class MockImage implements Image {
   @Override
   public Pixel getPixel(int row, int col) {
     log.append("get pixel from row \n" + row + " col " + col);
+    return null;
+  }
+
+  @Override
+  public Map<Integer, Integer> getRedDistribution() {
+    log.append("get red distribution");
+    return null;
+  }
+
+  @Override
+  public Map<Integer, Integer> getGreenDistribution() {
+    return null;
+  }
+
+  @Override
+  public Map<Integer, Integer> getBlueDistribution() {
     return null;
   }
 }

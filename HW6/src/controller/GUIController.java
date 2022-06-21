@@ -3,6 +3,8 @@ package controller;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -42,6 +44,13 @@ public class GUIController implements Features {
     Image newImage = command.applyCommand(this.image);
     this.view.updateImage(newImage);
     this.updateImage(newImage);
+
+    Map<Integer, Integer> distributionOfRedValues = this.image.getRedDistribution();
+    Map<Integer, Integer> distributionOfGreenValues = this.image.getGreenDistribution();
+    Map<Integer, Integer> distributionOfBlueValues = this.image.getBlueDistribution();
+    this.view.updateRedHistogram(distributionOfRedValues);
+    this.view.updateGreenHistogram(distributionOfGreenValues);
+    this.view.updateBlueHistogram(distributionOfBlueValues);
   }
 
   @Override
