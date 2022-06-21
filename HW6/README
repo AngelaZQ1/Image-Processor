@@ -1,0 +1,76 @@
+For HW6:
+
+- features interface
+- GUIController class
+- GUIView interface
+- JFrameView class
+- controller has one image instead of a list of images
+
+
+
+Implementation details for HW5:
+In order to implement loading in images of the new file formats such as jpg, jpeg, bmp, and png, we created a new method is called that parses several file types with the given filepath. To implement saving images to different file formats, the "save" case in the ControllerImpl class was edited slightly. Instead of calling a method in the ImageUtil class that strictly creates PPM files, it calls a new private method that saves an Image to a given file type, which can be either PPM, JPG, JPEG, PNG, or BMP. This new helper method then calls a method from our ImageUtil class that will do the actual saving in the different available formats. A few private helper methods were written in the ImageUtil class to accomplish this.
+
+We created a new interface named Filter that has one method, applyKernelToPixel, which applies a kernel with an odd size to a given Pixel in an Image and other methods that will return a new pixel that has been filtered. We created this interface to be able to apply filters like blurring and sharpening as well as all the others to an Image. This interface is implemented in the FilterImpl class. This class uses a default constructor with no arguments and has various methods that will apply the various filters. For the new sharpen and blur features, we created a function that takes in an Image object that represents the image to be filtered, a 2D Array representing the kernel to use for the filter, and a row and column value for the Pixel in the Image that the kernel is being applied to and uses the given information to blur the given pixel. Thus, to blur or sharpen, the ImageImpl class creates a new FilterImpl object and passes the Image, a 2D array representing kernel for the filter we want (blur or sharpen or another filter that can be implemented in the future), and the row and column position for a Pixel in the image.
+
+In addition, we decided to change the implementation of filtering Images. In order to allow ease for new filters to be added, we removed all the filtering implementation that was originally in the Pixel and Image and moved it to the filter class. Therefore, no matter the kind of filter, the FilterImpl class will be able to handle filtering a Pixel given the Pixel and/or other necessary information and returning a new version of that Pixel that has been changed according to the filter. Now, the PixelImpl class will do no filtering and the ImageImpl class will be calling the FilterImpl class methods on each Pixel to filter images. We did this so that we could easily add more filters in the future and separate the functions of the Image and Filter classes so they each did their own thing.
+
+To implement the filtering and color transformation features, we included the following classes to the selection of commands objects called by our controller: "blur", "sharpen", "grayscale", and "sepia." Each of these cases are structured the same way as previous cases. Our controller compares the given command to a key in our hashmap and if it matches any of the above mentioned commands, it will get the command object that will call the according method from our image class.
+
+To implement these features in our model, we added the methods blur, sharpen, grayscaleColorTransform, and sepia to the Filter and Image interfaces. We implemented these features in the ImageImpl and FilterImpl class. We did this because the new features function similar to the previous features, meaning that these new features were just another filter. The logic for grayscale and sepia is in the Pixel interface, so we added these new methods to the Pixel interface. Depending on which method was called in the ImageImpl class, the corresponding method is called in the PixelImpl class that performs the filter on every pixel in the image.
+
+Also, we decided to use the Command Design Pattern in our constructor in order to make the code simpler and more wieldy. We created a hashmap of the name of the command to the command object that would be called whenever a new command was given as input. If the command matches one of the available commands our controller gets the command object from the hashmap which will call the according method from the Image class. If it does not match it will show an error prompt and ask to try again. We decided to make this change because we assumed that there would be more commands that we would need to implement so rather than increase our switch statement, we can just create a new command object and add that to our hashmap.
+
+If a new filter is to be implemented in the future, a new method would be added to the Image and Filter interface, and the implementation of the method would be the same as previous filters.
+
+In the PixelImpl class, we also edited the constructor so that each component is limited to be between 0 and max value, inclusive. This way, if a filter attempts to create a pixel with an invalid component, it will automatically adjust the value to be between 0 and the pixel's max value.
+
+In our Main method in the ImageProcessor class where the program starts, we added functionality to allow the user to provide a command-line argument to specify a script using the format "-file name-of-script.txt". If a valid file is provided, the program will run the script and exit. Otherwise the program will use the interactive entry of script commands as before.
+
+In our test cases, we added tests for the new features and filter class and adjusted accordingly for our new designs.
+
+From HW4:
+The structure of our program follows the MVC design. The program starts in the ImageProcessor class, where a controller object is created and its run method is called.
+
+Controller:
+Our Controller interface consists of one public method called run that takes no arguments. The purpose of this interface is to control the flow of the program by handling user input. It delegates tasks to the view and model accordingly. This interface is implemented in the ControllerImpl class, which implements the run method. When called, this method runs the program. An IOException is thrown if any output is unable to reach the Appendable.
+
+The Controller interface is implemented by the ControllerImpl class. Objects of this class have a View object, a Readable object as its input source, and a HashMap from String to Image representing the list of images and the name that is used to refer to them as a String. This class implements the run method which throws an IOException if output cannot be transmitted to the view. This class also have two private helper methods. One of them returns an image from the HashMap according to the String name it was passed, and the other one turns the given Image into a StringBuilder that represents the image in PPM format.
+
+Model:
+Our model is represented by the Image interface, which represents an image that can be manipulated using our program. This interface provides methods to visualize an image in grayscale using its red component, green component, blue component, value, intensity, and luma values. It also provides functionality to flip an image vertically or horizontally and to brighten or darken an image by a specific value. This interface also has methods to get the width, height, max value, and a specific pixel of the image based on the given row and column. The ImageImpl class implements the Image interface and its methods. It has a 2D ArrayList of the Pixel interface to represent its image.
+
+The Pixel interface represents a pixel in an Image. This interface's methods that deal with changing a pixel return a new Pixel instead of changing the original pixel. This is because when manipulating images, users are never editing the contents of the image they are "editing," they are simply creating a new image with the edits applied. The original image always remains unchanged. The other methods in this interface are simply getter methods that return an int representing the component of the Pixel that is being obtained. Because they are simply ints, these getter methods also do not allow for any mutation. The only method that does not fall into the two categories is the equals and hashcode method.
+
+The PixelImpl class implements the Pixel interface. Objects of this class represent pixels that has 3 channels: red, green, and blue, along with a maxValue, which represents the maximum value of any channel. The 3 channels are always between 0 and maxValue, inclusive. This class implements the methods in the Pixel interface while upholding the immutability of this class's fields.
+
+View:
+Our view is represented by the View interface. This interface provides operations that deal with sending information to the user. It has two methods: renderMessage that takes in a String message and showOptions that takes in no arguments. renderMessage outputs the given message to the user and throws an IOException if the output was unable to be sent. showOptions shows a menu of possible commands to the user. This method also throws an IOException if the output could not be sent.
+
+The View interface is implemented in the TextView class, which represents a way of showing messages to the user using an Appendable. If not provided an Appendable, this class defaults to using System.out. This class implements renderMessage and showOptions in the View interface.
+
+
+The image "fourPixels.ppm" was created by Angela Zheng using Gimp. I authorize the use of this image for this project.
+
+
+How to use our program:
+
+0) No need to give command line arguments
+1) Load in your desired image by doing the command: load image-path image-name
+2) Then you may edit/transform your image with any of the following commands:
+    - Red-Component: red-component image-name dest-image-name    
+    - Green-Component: green-component image-name dest-image-name    
+    - Blue-Component: blue-component image-name dest-image-name    
+    - Value: value image-name dest-image-name    
+    - Luma: luma image-name dest-image-name    
+    - Intensity: intensity image-name dest-image-name    
+    - Horizontal Flip: horizontal-flip image-name dest-image-name    
+    - Vertical Flip: vertical-flip image-name dest-image-name    
+    - Brighten: brighten increment image-name dest-image-name    
+    - Darken: darken increment image-name dest-image-name
+    - Blur: blur image-name dest-image-name
+    - Sharpen: sharpen image-name dest-image-name
+    - Grayscale: grayscale image-name dest-image-name
+    - Sepia: sepia image-name dest-image-name
+3) Save your image by doing the command: save image-path image-name
+4) Finally you can quit by typing q or Q

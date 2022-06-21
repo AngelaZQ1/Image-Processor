@@ -1,0 +1,54 @@
+Available Commands:
+Load Image: load image-path image-name
+   - Loads image, must be used for any of the following commands to work excluding quit
+   - Ex: load res/fourPixels.ppm fourPixels
+Save Image: save image-path image-name
+   - Saves image, must have loaded at least one image
+   - Ex: save res/newFourPixels.ppm fourPixels
+Red-Component: red-component image-name dest-image-name
+   - Red-scales image, must have loaded at least one image
+   - Ex: red-component fourPixels redFourPixels
+Green-Component: green-component image-name dest-image-name
+   - Green-scales image, must have loaded at least one image
+   - Ex: green-component fourPixels greenFourPixels
+Blue-Component: blue-component image-name dest-image-name
+   - Blue-scales image, must have loaded at least one image
+   - Ex: blue-component fourPixels blueFourPixels
+Value: value image-name dest-image-name
+   - Value-scales image, must have loaded at least one image
+   - Ex: value fourPixels valueFourPixels
+Luma: luma image-name dest-image-name
+   - Luma-scales image, must have loaded at least one image
+   - Ex: luma fourPixels lumaFourPixels
+Intensity: intensity image-name dest-image-name
+   - Intensity-scales image, must have loaded at least one image
+   - Ex: intensity fourPixels intensityFourPixels
+Horizontal Flip: horizontal-flip image-name dest-image-name
+   - Horizontally flips image, must have loaded at least one image
+   - Ex: horizontal-flip fourPixels horizontalFourPixels
+Vertical Flip: vertical-flip image-name dest-image-name
+   - Vertically flips image, must have loaded at least one image
+   - Ex: vertical-flip fourPixels verticalFourPixels
+Brighten: brighten increment image-name dest-image-name
+   - Brightens image, must have loaded at least one image
+   - Ex: brighten fourPixels brightenFourPixels
+Darken: darken increment image-name dest-image-name
+   - Darkens image, must have loaded at least one image
+   - Ex: darken fourPixels darkenFourPixels
+Sharpen: sharpen image-name dest-image-name
+   - Sharpens image, must have loaded at least one image
+   - Ex: sharpen fourPixels sharpenFourPixels
+Blur: blur image-name dest-image-name
+   - Blurs image, must have loaded at least one image
+   - Ex: blur fourPixels blurFourPixels
+Grayscale: grayscale image-name dest-image-name
+   - Grayscale color transformation on image, must have loaded at least one image
+   - Ex: grayscale fourPixels grayscaleFourPixels
+Sepia: sepia image-name dest-image-name
+   - Sepia color transformation on image, must have loaded at least one image
+   - Ex: sepia fourPixels sepiaFourPixels
+To Quit: q or Q
+   - Quits program
+
+Conditions:
+An image must be loaded before performing any other command. Besides that, the commands can be run in any order.

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/HW6.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/USEME" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/HW5_jar/HW5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/ImageProcessor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/ControllerImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/ImageUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/BlueComponent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Blur.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Brighten.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Command.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Darken.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Grayscale.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/GreenComponent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/HFlip.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Intensity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Luma.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/RedComponent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Sepia.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Sharpen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/VFlip.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/controller/commands/Value.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/model/Image.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/model/ImageImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/model/MockImage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/model/Pixel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/model/PixelImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/model/filters/Filter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/model/filters/FilterImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/view/MockView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/view/TextView.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HW5/view/View.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/HW5/ControllerImplTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/HW5/CorruptAppendable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/HW5/FilterImplTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/HW5/ImageImplTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/HW5/PixelImplTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/test/HW5/TextViewTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/ClassDiagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/HW5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/NewClassDiagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/blur.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/fourPixels.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/fourPixels.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/fourPixels.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/fourPixels.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/grayscale.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/script" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/sepia.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/sharpen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/testMock.ppm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ImageProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/ControllerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/Features.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/ImageUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/BlueComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Blur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Brighten.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Darken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Grayscale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/GreenComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/HFlip.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Intensity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Luma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/RedComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Sepia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Sharpen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/VFlip.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/commands/Value.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Image.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ImageImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/MockImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Pixel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/PixelImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/filters/Filter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/filters/FilterImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/GUIView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/Histogram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/JFrameView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/MockView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/TextView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ControllerImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/CorruptAppendable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/FilterImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ImageImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/PixelImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/TextViewTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AtBKOQK5xPSzDCcvwMBdhFy1cb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/angela/Desktop/OOD/Group/HW6&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="ImageProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ImageProcessor" />
+      <module name="HW6" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ImageProcessor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="" />
+      <created>1655818937618</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655818937618</updated>
+      <workItem from="1655818941156" duration="27000" />
+      <workItem from="1655819067533" duration="4972000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

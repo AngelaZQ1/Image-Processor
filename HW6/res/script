@@ -1,0 +1,32 @@
+load res/fourPixels.ppm fourPixels
+red-component fourPixels fourPixels-red
+save res/fourPixels-red.png fourPixels-red
+green-component fourPixels fourPixels-green
+save res/fourPixels-green.png fourPixels-green
+blue-component fourPixels fourPixels-blue
+save res/fourPixels-blue.png fourPixels-blue
+blue-component fourPixels fourPixels-blue
+save res/fourPixels-blue.png fourPixels-blue
+value fourPixels fourPixels-value
+save res/fourPixels-value.png fourPixels-value
+intensity fourPixels fourPixels-intensity
+save res/fourPixels-intensity.png fourPixels-intensity
+luma fourPixels fourPixels-luma
+save res/fourPixels-luma.png fourPixels-luma
+vertical-flip fourPixels fourPixels-vFlipped
+save res/fourPixels-vFlipped.png fourPixels-vFlipped
+horizontal-flip fourPixels fourPixels-hFlipped
+save res/fourPixels-hFlipped.png fourPixels-hFlipped
+brighten 20 fourPixels fourPixels-brighter
+save res/fourPixels-brighter.png fourPixels-brighter
+darken 20 fourPixels fourPixels-darken
+save res/fourPixels-darken.png fourPixels-darken
+blur fourPixels fourPixels-blur
+save res/fourPixels-blur.png fourPixels-blur
+sharpen fourPixels fourPixels-sharpen
+save res/fourPixels-sharpen.png fourPixels-sharpen
+grayscale fourPixels fourPixels-grayscale
+save res/fourPixels-grayscale.png fourPixels-grayscale
+sepia fourPixels fourPixels-sepia
+save res/fourPixels-sepia.png fourPixels-sepia
+q
