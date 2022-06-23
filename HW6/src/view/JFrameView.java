@@ -35,13 +35,13 @@ public class JFrameView extends JFrame implements GUIView {
     histogramsSection = new JPanel();
     histogramsSection.setLayout(new BoxLayout(histogramsSection, BoxLayout.PAGE_AXIS));
     histogramsSection.setPreferredSize(new Dimension(800, 300));
-    redHistogram = new Histogram(null, "");
+    redHistogram = new Histogram(null, "red");
     histogramsSection.add(redHistogram);
-    greenHistogram = new Histogram(null, "");
+    greenHistogram = new Histogram(null, "green");
     histogramsSection.add(greenHistogram);
-    blueHistogram = new Histogram(null, "");
+    blueHistogram = new Histogram(null, "blue");
     histogramsSection.add(blueHistogram);
-    intensityHistogram = new Histogram(null, "");
+    intensityHistogram = new Histogram(null, "intensity");
     histogramsSection.add(intensityHistogram);
 
     this.add(histogramsSection, BorderLayout.LINE_START);
@@ -222,6 +222,7 @@ public class JFrameView extends JFrame implements GUIView {
   public void updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues) {
     this.intensityHistogram = new Histogram(distributionOfIntensityValues, "intensity");
     this.histogramsSection.add(intensityHistogram);
+    this.histogramsSection.revalidate();
   }
 
 

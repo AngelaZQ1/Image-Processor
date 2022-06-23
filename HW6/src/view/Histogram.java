@@ -19,11 +19,6 @@ public class Histogram extends JPanel {
 
   @Override
   protected void paintComponent(Graphics g) {
-    if (colors == null) {
-      g.setColor(Color.black);
-      g.fillRect(0, 0, 50, 50);
-      return; // No display if count is null
-    }
 
     super.paintComponent(g);
 
@@ -32,11 +27,34 @@ public class Histogram extends JPanel {
     int height = getHeight();
     int barWidth = 1;
 
+    // Draw y-axis of histogram
+    g.drawLine(10, height - 19, width - 10, height - 19);
+
+    // Draw x-axis of histogram
+    g.drawLine(10, 0, 10, height - 19);
+
+    g.setColor(Color.black);
+    switch (this.color) {
+      case "red":
+        g.drawString("Red Values", 10, height - 5);
+        break;
+      case "green":
+        g.drawString("Green Values", 10, height - 5);
+        break;
+      case "blue":
+        g.drawString("Blue Values", 10, height - 5);
+        break;
+      case "intensity":
+        g.drawString("Intensity Values", 10, height - 5);
+    }
+
+    if (colors == null) {
+      // No display if count is null
+      return;
+    }
+
     // x is the start position for the first bar in the histogram
     int x = 10;
-
-    // Draw bottom line of histogram
-    g.drawLine(10, height - 19, width - 10, height - 19);
 
     // Get Max occurrence of any value
     int maxOccur = 0;
@@ -68,20 +86,6 @@ public class Histogram extends JPanel {
       g.fillRect(x, height - 20 - barHeight, barWidth, barHeight);
       x += (barWidth + 2);
       // System.out.println(color + " " + hue.getKey()+ ": " + hue.getValue());
-    }
-    g.setColor(Color.black);
-    switch (this.color) {
-      case "red":
-        g.drawString("Red Values", 10, height - 5);
-        break;
-      case "green":
-        g.drawString("Green Values", 10, height - 5);
-        break;
-      case "blue":
-        g.drawString("Blue Values", 10, height - 5);
-        break;
-      case "intensity":
-        g.drawString("Intensity Values", 10, height - 5);
     }
   }
 
