@@ -145,4 +145,6 @@ public interface Image {
 
   Map<Integer, Integer> getBlueDistribution();
 
+  Map<Integer, Integer> getIntensityDistribution();
+
 }

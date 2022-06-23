@@ -45,12 +45,10 @@ public class GUIController implements Features {
     this.view.updateImage(newImage);
     this.updateImage(newImage);
 
-    Map<Integer, Integer> distributionOfRedValues = this.image.getRedDistribution();
-    Map<Integer, Integer> distributionOfGreenValues = this.image.getGreenDistribution();
-    Map<Integer, Integer> distributionOfBlueValues = this.image.getBlueDistribution();
-    this.view.updateRedHistogram(distributionOfRedValues);
-    this.view.updateGreenHistogram(distributionOfGreenValues);
-    this.view.updateBlueHistogram(distributionOfBlueValues);
+    this.view.updateRedHistogram(this.image.getRedDistribution());
+    this.view.updateGreenHistogram(this.image.getGreenDistribution());
+    this.view.updateBlueHistogram(this.image.getBlueDistribution());
+    this.view.updateIntensityHistogram(this.image.getIntensityDistribution());
   }
 
   @Override
@@ -147,6 +145,10 @@ public class GUIController implements Features {
     } catch (IOException e) {
       System.out.println("IOException");
     }
+    this.view.updateRedHistogram(this.image.getRedDistribution());
+    this.view.updateGreenHistogram(this.image.getGreenDistribution());
+    this.view.updateBlueHistogram(this.image.getBlueDistribution());
+    this.view.updateIntensityHistogram(this.image.getIntensityDistribution());
   }
 
   @Override

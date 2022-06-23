@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import controller.Features;
@@ -18,6 +17,7 @@ public class JFrameView extends JFrame implements GUIView {
   private JPanel redHistogram;
   private JPanel greenHistogram;
   private JPanel blueHistogram;
+  private JPanel intensityHistogram;
   private final JButton redButton, greenButton, blueButton, darkenButton, brightenButton,
   flipVerticallyButton, flipHorizontallyButton, valueButton, intensityButton, lumaButton,
   blurButton, sharpenButton, grayscaleButton, sepiaButton, exitButton, loadButton, saveButton;
@@ -25,7 +25,7 @@ public class JFrameView extends JFrame implements GUIView {
   public JFrameView(String caption) {
     super(caption);
 
-    setSize(900, 700);
+    setSize(1400, 700);
     setLocation(0, 0);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -34,20 +34,15 @@ public class JFrameView extends JFrame implements GUIView {
     // histograms
     histogramsSection = new JPanel();
     histogramsSection.setLayout(new BoxLayout(histogramsSection, BoxLayout.PAGE_AXIS));
-    histogramsSection.setPreferredSize(new Dimension(300, 300));
-
-//
-//    redHistogram = new JPanel();
-//    redHistogram.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-
-    histogramsSection.add(updateRedHistogram(null));
-    // histogramsSection.add(updateGreenHistogram(null));
-    // histogramsSection.add(updateBlueHistogram(null));
-    // histogramsSection.add(updateIntensityHistogram(null));
-
-//    histogramsSection.add(updateRedHistogram(new HashMap<Integer, Integer>()));
-//    histogramsSection.add(greenHistogramContainer);
-//    histogramsSection.add(blueHistogramContainer);
+    histogramsSection.setPreferredSize(new Dimension(800, 300));
+    redHistogram = new Histogram(null, "");
+    histogramsSection.add(redHistogram);
+    greenHistogram = new Histogram(null, "");
+    histogramsSection.add(greenHistogram);
+    blueHistogram = new Histogram(null, "");
+    histogramsSection.add(blueHistogram);
+    intensityHistogram = new Histogram(null, "");
+    histogramsSection.add(intensityHistogram);
 
     this.add(histogramsSection, BorderLayout.LINE_START);
 
@@ -201,40 +196,32 @@ public class JFrameView extends JFrame implements GUIView {
 
   // TODO implement this
   @Override
-  public JPanel updateRedHistogram(Map<Integer, Integer> distributionOfRedValues) {
-    return new Histogram(distributionOfRedValues);
-
-//    for (Integer key : distributionOfRedValues.keySet()) {
-//      JPanel bar = new JPanel();
-//      bar.setSize(1, distributionOfRedValues.get(key));
-//      redHistogram.add(bar);
-//    }
-//
-//    this.histogramsSection.remove(redHistogram);
-//    this.histogramsSection.add(redHistogram);
-//    this.validate();
+  public void updateRedHistogram(Map<Integer, Integer> distributionOfRedValues) {
+    this.histogramsSection.removeAll();
+    this.redHistogram = new Histogram(distributionOfRedValues, "red");
+    this.histogramsSection.add(redHistogram);
   }
 
 
   // TODO implement this
   @Override
-  public JPanel updateGreenHistogram(Map<Integer, Integer> distributionOfRedValues) {
-//    this.greenHistogram = histogram;
-    return new Histogram(distributionOfRedValues);
+  public void updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues) {
+    this.greenHistogram = new Histogram(distributionOfGreenValues, "green");
+    this.histogramsSection.add(greenHistogram);
   }
 
   // TODO implement this
   @Override
-  public JPanel updateBlueHistogram(Map<Integer, Integer> distributionOfRedValues) {
-//    this.blueHistogram = histogram;
-    return new Histogram(distributionOfRedValues);
+  public void updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues) {
+    this.blueHistogram = new Histogram(distributionOfBlueValues, "blue");
+    this.histogramsSection.add(blueHistogram);
   }
 
   // TODO implement this
   @Override
-  public JPanel updateIntensityHistogram(Map<Integer, Integer> distributionOfRedValues) {
-//    this.intensityHistogram = histogram;
-    return new Histogram(distributionOfRedValues);
+  public void updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues) {
+    this.intensityHistogram = new Histogram(distributionOfIntensityValues, "intensity");
+    this.histogramsSection.add(intensityHistogram);
   }
 
 

@@ -2,7 +2,6 @@ package view;
 
 
 import java.awt.*;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.*;
@@ -10,51 +9,80 @@ import javax.swing.*;
 
 public class Histogram extends JPanel {
   // HashMap of the 256 colors and the number of occurences
-  private Map<Integer, Integer> colors;
+  private final Map<Integer, Integer> colors;
+  private final String color;
 
-  public Histogram(Map<Integer, Integer> colors) {
+  public Histogram(Map<Integer, Integer> colors, String color) {
     this.colors = colors;
+    this.color = color;
   }
 
   @Override
   protected void paintComponent(Graphics g) {
-    if (colors == null) return; // No display if count is null
+    if (colors == null) {
+      g.setColor(Color.black);
+      g.fillRect(0, 0, 50, 50);
+      return; // No display if count is null
+    }
 
     super.paintComponent(g);
 
     // Find the panel size and bar width and interval dynamically
     int width = getWidth();
     int height = getHeight();
-    int barWidth = (width - 40) / 256;
+    int barWidth = 1;
 
     // x is the start position for the first bar in the histogram
-    int x = 30;
+    int x = 10;
 
-    g.setColor(Color.PINK);
-    g.fillRect(0, 0, width, height / 2);
-    g.setColor(Color.blue);
-    g.fillRect(0, height / 2, width, height / 2);
+    // Draw bottom line of histogram
+    g.drawLine(10, height - 19, width - 10, height - 19);
 
+    // Get Max occurrence of any value
+    int maxOccur = 0;
     for (var hue : colors.entrySet()) {
-      // Find the bar height
-      int barHeight = hue.getValue();
+      maxOccur = Math.max(maxOccur, hue.getValue());
     }
 
-//    for (int i = 0; i < count.length; i++) {
-//      // Find the bar height
-//      int barHeight =
-//              (int)(((double)count[i] / (double)maxCount) * (height - 55));
-//
-//      // Display a bar (i.e. rectangle)
-//      g.drawRect(x, height - 45 - barHeight, individualWidth,
-//              barHeight);
-//
-//      // Display a letter under the base line
-//      g.drawString((char)(65 + i) + "", x, height - 30);
-//
-//      // Move x for displaying the next character
-//      x += interval;
-//    }
+    // Draw bars
+    for (var hue : colors.entrySet()) {
+      // Find the bar height
+      int barHeight = hue.getValue() / 256;
+      if ((hue.getValue() / maxOccur) > 0) {
+        // System.out.println("Percent: " + (hue.getValue() / maxOccur));
+      }
+      switch (this.color) {
+        case "red":
+          g.setColor(Color.red);
+          break;
+        case "green":
+          g.setColor(Color.green);
+          break;
+        case "blue":
+          g.setColor(Color.blue);
+          break;
+        case "intensity":
+          g.setColor(Color.black);
+      }
+      g.drawRect(x, height - 20 - barHeight, barWidth, barHeight);
+      g.fillRect(x, height - 20 - barHeight, barWidth, barHeight);
+      x += (barWidth + 2);
+      // System.out.println(color + " " + hue.getKey()+ ": " + hue.getValue());
+    }
+    g.setColor(Color.black);
+    switch (this.color) {
+      case "red":
+        g.drawString("Red Values", 10, height - 5);
+        break;
+      case "green":
+        g.drawString("Green Values", 10, height - 5);
+        break;
+      case "blue":
+        g.drawString("Blue Values", 10, height - 5);
+        break;
+      case "intensity":
+        g.drawString("Intensity Values", 10, height - 5);
+    }
   }
 
   /** Override getPreferredSize */

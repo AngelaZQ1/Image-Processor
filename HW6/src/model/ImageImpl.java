@@ -199,7 +199,7 @@ public class ImageImpl implements Image {
 
     for (List<Pixel> row : this.image) {
       for (Pixel pixel : row) {
-        int greenValueOfPixel = pixel.getRed();
+        int greenValueOfPixel = pixel.getGreen();
         int currentCount = greenValues.get(greenValueOfPixel);
         greenValues.put(greenValueOfPixel, currentCount + 1);
       }
@@ -216,12 +216,29 @@ public class ImageImpl implements Image {
 
     for (List<Pixel> row : this.image) {
       for (Pixel pixel : row) {
-        int blueValueOfPixel = pixel.getRed();
+        int blueValueOfPixel = pixel.getBlue();
         int currentCount = blueValues.get(blueValueOfPixel);
         blueValues.put(blueValueOfPixel, currentCount + 1);
       }
     }
     return blueValues;
+  }
+
+  @Override
+  public Map<Integer, Integer> getIntensityDistribution() {
+    Map<Integer, Integer> intensityValues = new HashMap<>();
+    for (int value = 0; value <= 255; value++) {
+      intensityValues.put(value, 0); // add the values 0 to 255
+    }
+
+    for (List<Pixel> row : this.image) {
+      for (Pixel pixel : row) {
+        int intensityValueOfPixel = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+        int currentCount = intensityValues.get(intensityValueOfPixel);
+        intensityValues.put(intensityValueOfPixel, currentCount + 1);
+      }
+    }
+    return intensityValues;
   }
 
 }

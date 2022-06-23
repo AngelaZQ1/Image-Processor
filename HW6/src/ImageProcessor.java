@@ -29,8 +29,7 @@ public class ImageProcessor {
     } else if (args.length > 0 && args[0].equals("-text")) {
       controller = new ControllerImpl(new TextView(), new InputStreamReader(System.in));
       controller.run();
-    }
-    else {
+    } else {
       guiController = new GUIController();
       guiController.setView(new JFrameView("Image Processor"));
     }

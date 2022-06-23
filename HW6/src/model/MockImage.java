@@ -229,4 +229,9 @@ public class MockImage implements Image {
   public Map<Integer, Integer> getBlueDistribution() {
     return null;
   }
+
+  @Override
+  public Map<Integer, Integer> getIntensityDistribution() {
+    return null;
+  }
 }

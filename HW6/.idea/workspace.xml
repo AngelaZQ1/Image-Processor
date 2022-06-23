@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
+      <change afterPath="$PROJECT_DIR$/res/sky.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Image.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/ImageImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageImpl.java" afterDir="false" />
@@ -11,10 +16,7 @@
       <change beforePath="$PROJECT_DIR$/src/view/Histogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Histogram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/JFrameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/JFrameView.java" afterDir="false" />
     </list>
-    <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Histogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Histogram.java" afterDir="false" />
-    </list>
+    <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,39 +33,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/view/Histogram.java">
-      <ranges>
-        <range start1="4" end1="4" start2="4" end2="6" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="9" end1="11" start2="11" end2="13" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="12" end1="16" start2="14" end2="16" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="18" end1="19" start2="18" end2="19" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="20" end1="21" start2="20" end2="21" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="27" end1="36" start2="27" end2="28" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="40" end1="43" start2="32" end2="36" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="44" end1="56" start2="37" end2="38" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="57" end1="57" start2="39" end2="55" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
-        <range start1="59" end1="63" start2="57" end2="57" changelist="87508b8a-4453-43b2-b2dc-33dbbbda0611" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AtBKOQK5xPSzDCcvwMBdhFy1cb" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "/Users/angela/Desktop/OOD/Group/HW6"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lucasjang/Desktop/School Stuff/Computer Science/OOD/group/OOD/HW6&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ImageProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessor" />
@@ -88,6 +82,8 @@
       <updated>1655818937618</updated>
       <workItem from="1655818941156" duration="27000" />
       <workItem from="1655819067533" duration="18693000" />
+      <workItem from="1655842895352" duration="11518000" />
+      <workItem from="1655944498782" duration="1568000" />
     </task>
     <task id="LOCAL-00001" summary="Created UI, added Features interface">
       <created>1655824113367</created>
@@ -121,6 +117,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Created UI, added Features interface" />
     <MESSAGE value="made buttons work including saving and loading" />
     <option name="LAST_COMMIT_MESSAGE" value="made buttons work including saving and loading" />

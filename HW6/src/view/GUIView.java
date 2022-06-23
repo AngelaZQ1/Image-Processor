@@ -14,13 +14,13 @@ public interface GUIView {
 
   void updateImage(Image image);
 
-  JPanel updateRedHistogram(Map<Integer, Integer> distributionOfRedValues);
+  void updateRedHistogram(Map<Integer, Integer> distributionOfRedValues);
 
-  JPanel updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues);
+  void updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues);
 
-  JPanel updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues);
+  void updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues);
 
-  JPanel updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues);
+  void updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues);
 
   void addFeatures(Features features);
 
