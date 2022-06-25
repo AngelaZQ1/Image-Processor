@@ -4,12 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
+    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="histograms">
+      <change afterPath="$PROJECT_DIR$/Archive.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/MockGUIController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/MockGUIView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/FeaturesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/HW6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HW6.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/ClassDiagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/NewClassDiagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sky.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Features.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Features.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ImageImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/MockImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUIView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Histogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Histogram.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/JFrameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/JFrameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ControllerImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ControllerImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ImageImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ImageImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/TextViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/TextViewTest.java" afterDir="false" />
     </list>
-    <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="" />
+    <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="Changes by lucasjang" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +57,10 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -51,7 +72,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in HW6">
     <configuration name="ImageProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessor" />
       <module name="HW6" />
@@ -59,8 +80,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in HW6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FeaturesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeaturesTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FeaturesTest.testControllerSetView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeaturesTest" />
+      <option name="METHOD_NAME" value="testControllerSetView" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FeaturesTest.testControllerUpdateImage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeaturesTest" />
+      <option name="METHOD_NAME" value="testControllerUpdateImage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in HW6" />
+        <item itemvalue="JUnit.FeaturesTest.testControllerSetView" />
+        <item itemvalue="JUnit.FeaturesTest.testControllerUpdateImage" />
+        <item itemvalue="JUnit.FeaturesTest" />
         <item itemvalue="Application.ImageProcessor" />
       </list>
     </recent_temporary>
@@ -77,6 +139,8 @@
       <workItem from="1655819067533" duration="18693000" />
       <workItem from="1655842895352" duration="11518000" />
       <workItem from="1655944498782" duration="2109000" />
+      <workItem from="1656017071086" duration="5073000" />
+      <workItem from="1656111582235" duration="3210000" />
     </task>
     <task id="LOCAL-00001" summary="Created UI, added Features interface">
       <created>1655824113367</created>
@@ -121,5 +185,21 @@
     <MESSAGE value="Created UI, added Features interface" />
     <MESSAGE value="made buttons work including saving and loading" />
     <option name="LAST_COMMIT_MESSAGE" value="made buttons work including saving and loading" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/FeaturesTest.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test/FeaturesTest.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

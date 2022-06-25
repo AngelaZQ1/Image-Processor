@@ -11,17 +11,46 @@ import controller.Features;
 import controller.ImageUtil;
 import model.Image;
 
+/**
+ * This class represents an implementation of the GUIView. It shows an interface
+ * to the user that consists of the image being worked on, four histograms representing
+ * the distribution of the image's components, and buttons that enable the user to manipulate
+ * the image, save/load, and exit the program.
+ */
 public class JFrameView extends JFrame implements GUIView {
-  private final JLabel imageLabel, openFilePath, saveFilePath;
+  private final JLabel imageLabel;
+  private final JLabel openFilePath;
+  private final JLabel saveFilePath;
   private JPanel histogramsSection;
   private JPanel redHistogram;
   private JPanel greenHistogram;
   private JPanel blueHistogram;
   private JPanel intensityHistogram;
-  private final JButton redButton, greenButton, blueButton, darkenButton, brightenButton,
-  flipVerticallyButton, flipHorizontallyButton, valueButton, intensityButton, lumaButton,
-  blurButton, sharpenButton, grayscaleButton, sepiaButton, exitButton, loadButton, saveButton;
+  private final JButton redButton;
+  private final JButton greenButton;
+  private final JButton blueButton;
+  private final JButton darkenButton;
+  private final JButton brightenButton;
+  private final JButton flipVerticallyButton;
+  private final JButton flipHorizontallyButton;
+  private final JButton valueButton;
+  private final JButton intensityButton;
+  private final JButton lumaButton;
+  private final JButton blurButton;
+  private final JButton sharpenButton;
+  private final JButton grayscaleButton;
+  private final JButton sepiaButton;
+  private final JButton exitButton;
+  private final JButton loadButton;
+  private final JButton saveButton;
 
+  /**
+   * Creates a new JFrameView object with the given string as the caption of the frame.
+   * Sets the size of the window to be 1400 pixels wide and 700 pixels tall.
+   * Adds all components to the GUI.
+   *
+   * @param caption the title of the frame
+   */
   public JFrameView(String caption) {
     super(caption);
 
@@ -33,15 +62,16 @@ public class JFrameView extends JFrame implements GUIView {
 
     // histograms
     histogramsSection = new JPanel();
+    histogramsSection.setBorder(BorderFactory.createTitledBorder("Histograms:"));
     histogramsSection.setLayout(new BoxLayout(histogramsSection, BoxLayout.PAGE_AXIS));
     histogramsSection.setPreferredSize(new Dimension(800, 300));
     redHistogram = new Histogram(null, "red");
-    histogramsSection.add(redHistogram);
     greenHistogram = new Histogram(null, "green");
-    histogramsSection.add(greenHistogram);
     blueHistogram = new Histogram(null, "blue");
-    histogramsSection.add(blueHistogram);
     intensityHistogram = new Histogram(null, "intensity");
+    histogramsSection.add(redHistogram);
+    histogramsSection.add(greenHistogram);
+    histogramsSection.add(blueHistogram);
     histogramsSection.add(intensityHistogram);
 
     this.add(histogramsSection, BorderLayout.LINE_START);
@@ -89,7 +119,7 @@ public class JFrameView extends JFrame implements GUIView {
     this.add(topSection, BorderLayout.PAGE_START);
 
     // IMAGE MIDDLE SECTION
-    
+
     // image panel
     JPanel imagePanel = new JPanel();
     //a border around the panel with a caption
@@ -106,6 +136,7 @@ public class JFrameView extends JFrame implements GUIView {
     // BUTTONS
     JPanel buttonsSection = new JPanel();
     buttonsSection.setLayout(new GridLayout(7, 2));
+    buttonsSection.setPreferredSize(new Dimension(280, 2000));
 
     redButton = new JButton("Red Component");
     buttonsSection.add(redButton);
@@ -121,11 +152,17 @@ public class JFrameView extends JFrame implements GUIView {
     buttonsSection.add(flipVerticallyButton);
     flipHorizontallyButton = new JButton("Flip Horizontally");
     buttonsSection.add(flipHorizontallyButton);
-    valueButton = new JButton("Grayscale Using Value");
+    valueButton = new JButton("Grayscale\nUsing Value");
+    valueButton.setText("<html><center>" + "Grayscale" + "<br>" + "Using Value" +
+            "</center></html>");
     buttonsSection.add(valueButton);
-    intensityButton = new JButton("Grayscale Using Intensity");
+    intensityButton = new JButton("Grayscale\nUsing Intensity");
+    intensityButton.setText("<html><center>" + "Grayscale" + "<br>" + "Using Intensity" +
+            "</center></html>");
     buttonsSection.add(intensityButton);
-    lumaButton = new JButton("Grayscale Using Luma");
+    lumaButton = new JButton("Grayscale\nUsing Luma");
+    lumaButton.setText("<html><center>" + "Grayscale" + "<br>" + "Using Luma" +
+            "</center></html>");
     buttonsSection.add(lumaButton);
     blurButton = new JButton("Blur");
     buttonsSection.add(blurButton);
@@ -140,7 +177,6 @@ public class JFrameView extends JFrame implements GUIView {
 
     pack();
     setVisible(true);
-
   }
 
   @Override
@@ -163,6 +199,7 @@ public class JFrameView extends JFrame implements GUIView {
     saveButton.addActionListener(evt -> features.save());
     exitButton.addActionListener(evt -> features.exit());
   }
+
   public void setOpenFilePath(String filepath) {
     this.openFilePath.setText(filepath);
   }
@@ -173,6 +210,7 @@ public class JFrameView extends JFrame implements GUIView {
 
   /**
    * Updates the image shown to the Image using the given filepath.
+   *
    * @param filepath the file path of the new Image to show
    */
   @Override
@@ -187,6 +225,7 @@ public class JFrameView extends JFrame implements GUIView {
 
   /**
    * Updates the image shown to the given Image.
+   *
    * @param image the new Image show
    */
   @Override
@@ -194,7 +233,6 @@ public class JFrameView extends JFrame implements GUIView {
     this.imageLabel.setIcon(new ImageIcon(ImageUtil.imageToImage(image)));
   }
 
-  // TODO implement this
   @Override
   public void updateRedHistogram(Map<Integer, Integer> distributionOfRedValues) {
     this.histogramsSection.removeAll();
@@ -203,28 +241,22 @@ public class JFrameView extends JFrame implements GUIView {
   }
 
 
-  // TODO implement this
   @Override
   public void updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues) {
     this.greenHistogram = new Histogram(distributionOfGreenValues, "green");
     this.histogramsSection.add(greenHistogram);
   }
 
-  // TODO implement this
   @Override
   public void updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues) {
     this.blueHistogram = new Histogram(distributionOfBlueValues, "blue");
     this.histogramsSection.add(blueHistogram);
   }
 
-  // TODO implement this
   @Override
   public void updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues) {
     this.intensityHistogram = new Histogram(distributionOfIntensityValues, "intensity");
     this.histogramsSection.add(intensityHistogram);
     this.histogramsSection.revalidate();
   }
-
-
-
 }

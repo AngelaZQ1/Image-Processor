@@ -77,7 +77,7 @@ public class TextViewTest {
               "Brighten: Brighten increment image-name dest-image-name\n" +
               "Darken: darken increment image-name dest-image-name\n" +
               "Sharpen: sharpen image-name dest-image-name\n" +
-              "Blur: Blur image-name dest-image-name\n" +
+              "Blur: blur image-name dest-image-name\n" +
               "Grayscale: grayscale image-name dest-image-name\n" +
               "Sepia: sepia image-name dest-image-name\n" +
               "To Quit: q or Q\n", destination.toString());

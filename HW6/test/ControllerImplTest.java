@@ -1,6 +1,5 @@
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -35,8 +34,8 @@ public class ControllerImplTest {
     }
     Image image = null;
     try {
-      image = ImageUtil.readPPM("res/fourPixels.ppm");
-    } catch (FileNotFoundException ignore) {
+      image = ImageUtil.readImage("res/fourPixels.ppm");
+    } catch (IOException ignore) {
       // do nothing
     }
     Controller otherController = new ControllerImpl(view, in, "name", image);
@@ -115,9 +114,9 @@ public class ControllerImplTest {
   public void testRunMockView() {
     StringBuilder viewLog = new StringBuilder();
     try {
-      ImageUtil.readPPM("res/fourPixels.ppm");
-    } catch (FileNotFoundException e) {
-      fail("A FileNotFoundException was thrown");
+      ImageUtil.readImage("res/fourPixels.ppm");
+    } catch (IOException e) {
+      fail("A IOException was thrown");
     }
     View view = new MockView(viewLog);
     Readable input = new StringReader("load res/fourPixels.ppm koala q");

@@ -173,72 +173,42 @@ public class ImageImpl implements Image {
     return temp.get(col);
   }
 
-  @Override
-  public Map<Integer, Integer> getRedDistribution() {
-    Map<Integer, Integer> redValues = new HashMap<>();
+  // a helper method for getting the distribution of this image depending on the channel to use
+  // which is given
+  private Map<Integer, Integer> getDistributionHelper(Function<Pixel, Integer> func) {
+    Map<Integer, Integer> distribution = new HashMap<>();
     for (int value = 0; value <= 255; value++) {
-      redValues.put(value, 0); // add the values 0 to 255
+      distribution.put(value, 0); // add the values 0 to 255
     }
 
     for (List<Pixel> row : this.image) {
       for (Pixel pixel : row) {
-        int redValueOfPixel = pixel.getRed();
-        int currentCount = redValues.get(redValueOfPixel);
-        redValues.put(redValueOfPixel, currentCount + 1);
+        int valueOfPixel = func.apply(pixel);
+        int currentCount = distribution.get(valueOfPixel);
+        distribution.put(valueOfPixel, currentCount + 1);
       }
     }
-    return redValues;
+    return distribution;
+  }
+
+  @Override
+  public Map<Integer, Integer> getRedDistribution() {
+    return this.getDistributionHelper(p -> p.getRed());
   }
 
   @Override
   public Map<Integer, Integer> getGreenDistribution() {
-    Map<Integer, Integer> greenValues = new HashMap<>();
-    for (int value = 0; value <= 255; value++) {
-      greenValues.put(value, 0); // add the values 0 to 255
-    }
-
-    for (List<Pixel> row : this.image) {
-      for (Pixel pixel : row) {
-        int greenValueOfPixel = pixel.getGreen();
-        int currentCount = greenValues.get(greenValueOfPixel);
-        greenValues.put(greenValueOfPixel, currentCount + 1);
-      }
-    }
-    return greenValues;
+    return this.getDistributionHelper(p -> p.getGreen());
   }
 
   @Override
   public Map<Integer, Integer> getBlueDistribution() {
-    Map<Integer, Integer> blueValues = new HashMap<>();
-    for (int value = 0; value <= 255; value++) {
-      blueValues.put(value, 0); // add the values 0 to 255
-    }
-
-    for (List<Pixel> row : this.image) {
-      for (Pixel pixel : row) {
-        int blueValueOfPixel = pixel.getBlue();
-        int currentCount = blueValues.get(blueValueOfPixel);
-        blueValues.put(blueValueOfPixel, currentCount + 1);
-      }
-    }
-    return blueValues;
+    return this.getDistributionHelper(p -> p.getBlue());
   }
 
   @Override
   public Map<Integer, Integer> getIntensityDistribution() {
-    Map<Integer, Integer> intensityValues = new HashMap<>();
-    for (int value = 0; value <= 255; value++) {
-      intensityValues.put(value, 0); // add the values 0 to 255
-    }
-
-    for (List<Pixel> row : this.image) {
-      for (Pixel pixel : row) {
-        int intensityValueOfPixel = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
-        int currentCount = intensityValues.get(intensityValueOfPixel);
-        intensityValues.put(intensityValueOfPixel, currentCount + 1);
-      }
-    }
-    return intensityValues;
+    return this.getDistributionHelper(p -> (p.getRed() + p.getGreen() + p.getBlue()) / 3);
   }
 
 }

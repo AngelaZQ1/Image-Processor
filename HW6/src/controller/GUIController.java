@@ -3,8 +3,6 @@ package controller;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -27,24 +25,37 @@ import controller.commands.Value;
 import model.Image;
 import view.GUIView;
 
+/**
+ * This class represents a controller for the program that uses a GUI. It implements the methods in
+ * the Features interface to be able to manipulate the image, save/load an image, and exit
+ * the program.
+ */
 public class GUIController implements Features {
   private Image image;
   private GUIView view;
 
-  public GUIController() {
-    this.image = null;
-  }
-
+  /**
+   * Set the view for this Controller object and lets the view use this object for its features.
+   * @param v the view to use
+   */
   public void setView(GUIView v) {
     view = v;
     view.addFeatures(this);
   }
 
+  // helper method for applying the given command and updating the image in this controller
+  // and in the view
   private void applyCommandAndUpdateImage(Command command) {
+    if (this.image == null) {
+      return;
+    }
     Image newImage = command.applyCommand(this.image);
-    this.view.updateImage(newImage);
     this.updateImage(newImage);
+    this.updateHistograms();
+  }
 
+  // helper method for updating the 4 histograms
+  private void updateHistograms() {
     this.view.updateRedHistogram(this.image.getRedDistribution());
     this.view.updateGreenHistogram(this.image.getGreenDistribution());
     this.view.updateBlueHistogram(this.image.getBlueDistribution());
@@ -53,6 +64,7 @@ public class GUIController implements Features {
 
   @Override
   public void updateImage(Image image) {
+    this.view.updateImage(image);
     this.image = image;
   }
 
@@ -145,10 +157,7 @@ public class GUIController implements Features {
     } catch (IOException e) {
       System.out.println("IOException");
     }
-    this.view.updateRedHistogram(this.image.getRedDistribution());
-    this.view.updateGreenHistogram(this.image.getGreenDistribution());
-    this.view.updateBlueHistogram(this.image.getBlueDistribution());
-    this.view.updateIntensityHistogram(this.image.getIntensityDistribution());
+    this.updateHistograms();
   }
 
   @Override

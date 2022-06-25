@@ -1,43 +1,101 @@
 package controller;
 
-
 import model.Image;
 
+/**
+ * This interface represents everything that can change the program.
+ * E.g. updating the shown image, using the commands, exiting the program.
+ */
 public interface Features {
 
-  public void updateImage(Image image);
+  /**
+   * Update the image shown to the user using the given Image.
+   * @param image the new image to show
+   */
+  void updateImage(Image image);
 
-  public void redComp();
+  /**
+   * Grayscale the current image with the red component.
+   */
+  void redComp();
 
-  public void greenComp();
+  /**
+   * Grayscale the current image with the green component.
+   */
+  void greenComp();
 
-  public void blueComp();
+  /**
+   * Grayscale the current image with the blue component.
+   */
+  void blueComp();
 
-  public void darken();
+  /**
+   * Darken the current image by 25.
+   */
+  void darken();
 
-  public void brighten();
+  /**
+   * Brighten the current image by 25.
+   */
+  void brighten();
 
-  public void vFlip();
+  /**
+   * Flip the current image vertically.
+   */
+  void vFlip();
 
-  public void hFlip();
+  /**
+   * Flip the current image horizontally.
+   */
+  void hFlip();
 
-  public void value();
+  /**
+   * Grayscale the current image using its value.
+   */
+  void value();
 
-  public void intensity();
+  /**
+   * Grayscale the current image using its intensity.
+   */
+  void intensity();
 
-  public void luma();
+  /**
+   * Grayscale the current image using its luma.
+   */
+  void luma();
 
-  public void blur();
+  /**
+   * Blur the current image.
+   */
+  void blur();
 
-  public void sharpen();
+  /**
+   * Sharpen the current image.
+   */
+  void sharpen();
 
-  public void grayscale();
+  /**
+   * Grayscale the current image.
+   */
+  void grayscale();
 
-  public void sepia();
+  /**
+   * Turn the current image sepia-toned.
+   */
+  void sepia();
 
-  public void load();
+  /**
+   * Load a new image.
+   */
+  void load();
 
-  public void save();
+  /**
+   * Save the current image.
+   */
+  void save();
 
-  public void exit();
+  /**
+   * Exit the program.
+   */
+  void exit();
 }

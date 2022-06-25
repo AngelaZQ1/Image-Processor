@@ -1,8 +1,9 @@
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 import controller.ImageUtil;
@@ -57,11 +58,11 @@ public class ImageImplTest {
   @Test
   public void testVisualizeRed() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image grayscaleImage = originalImage.visualizeRedChannel();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage, Pixel::getRed));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -69,11 +70,11 @@ public class ImageImplTest {
   @Test
   public void testVisualizeGreen() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image grayscaleImage = originalImage.visualizeGreenChannel();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage, Pixel::getGreen));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -81,11 +82,11 @@ public class ImageImplTest {
   @Test
   public void testVisualizeBlue() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image grayscaleImage = originalImage.visualizeBlueChannel();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage, Pixel::getBlue));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -93,12 +94,12 @@ public class ImageImplTest {
   @Test
   public void testVisualizeValue() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image grayscaleImage = originalImage.visualizeValue();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
           p -> Math.max(p.getRed(), Math.max(p.getGreen(), p.getBlue()))));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -106,12 +107,12 @@ public class ImageImplTest {
   @Test
   public void testVisualizeIntensity() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image grayscaleImage = originalImage.visualizeIntensity();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
           p -> (p.getRed() + p.getGreen() + p.getBlue()) / 3));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -119,14 +120,14 @@ public class ImageImplTest {
   @Test
   public void testVisualizeLuma() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image grayscaleImage = originalImage.visualizeLuma();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
           p -> (int) ((p.getRed() * 0.2126)
                       + (p.getGreen() * 0.7152)
                       + (p.getBlue() * 0.0722))));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -134,7 +135,7 @@ public class ImageImplTest {
   @Test
   public void testFlipVertically() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       Image flippedImage = image.flipImageVertically();
       assertEquals(new PixelImpl(255, 0, 51, 255),
               flippedImage.getPixel(0, 0));
@@ -144,8 +145,8 @@ public class ImageImplTest {
               flippedImage.getPixel(1, 0));
       assertEquals(new PixelImpl(252, 253, 252, 255),
               flippedImage.getPixel(1, 1));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -153,7 +154,7 @@ public class ImageImplTest {
   @Test
   public void testFlipHorizontally() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       Image flippedImage = image.flipImageHorizontally();
       assertEquals(new PixelImpl(252, 253, 252, 255),
               flippedImage.getPixel(0, 0));
@@ -163,8 +164,8 @@ public class ImageImplTest {
               flippedImage.getPixel(1, 0));
       assertEquals(new PixelImpl(255, 0, 51, 255),
               flippedImage.getPixel(1, 1));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -172,7 +173,7 @@ public class ImageImplTest {
   @Test
   public void testBrighten() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image brightenedImage = originalImage.brighten(50);
       for (int row = 0; row < originalImage.getHeight(); row++) {
         for (int col = 0; col < originalImage.getWidth(); col++) {
@@ -183,8 +184,8 @@ public class ImageImplTest {
           assertEquals(editedPixel.getBlue(), Math.min(255, originalPixel.getBlue() + 50));
         }
       }
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -192,7 +193,7 @@ public class ImageImplTest {
   @Test
   public void testDarken() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image darkenedImage = originalImage.darken(50);
       for (int row = 0; row < originalImage.getHeight(); row++) {
         for (int col = 0; col < originalImage.getWidth(); col++) {
@@ -203,8 +204,8 @@ public class ImageImplTest {
           assertEquals(editedPixel.getBlue(), Math.max(0, originalPixel.getBlue() - 50));
         }
       }
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -212,7 +213,7 @@ public class ImageImplTest {
   @Test
   public void testBlur() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       Image blurredImage = image.blur();
       assertEquals(new PixelImpl(63, 35, 38, 255),
               blurredImage.getPixel(0, 0));
@@ -222,8 +223,8 @@ public class ImageImplTest {
               blurredImage.getPixel(1, 0));
       assertEquals(new PixelImpl(63, 47, 37, 255),
               blurredImage.getPixel(1, 1));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -231,7 +232,7 @@ public class ImageImplTest {
   @Test
   public void testSharpen() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       Image sharpenedImage = image.sharpen();
       assertEquals(new PixelImpl(127, 80, 76, 255),
               sharpenedImage.getPixel(0, 0));
@@ -241,8 +242,8 @@ public class ImageImplTest {
               sharpenedImage.getPixel(1, 0));
       assertEquals(new PixelImpl(127, 128, 76, 255),
               sharpenedImage.getPixel(1, 1));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -250,14 +251,14 @@ public class ImageImplTest {
   @Test
   public void testGrayscaleColorTransform() {
     try {
-      Image originalImage = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image originalImage = ImageUtil.readImage("res/fourPixels.ppm");
       Image grayscaleImage = originalImage.visualizeLuma();
       assertTrue(compareEachPixelToValueHelper(originalImage, grayscaleImage,
               p -> (int) ((p.getRed() * 0.2126)
                       + (p.getGreen() * 0.7152)
                       + (p.getBlue() * 0.0722))));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -265,7 +266,7 @@ public class ImageImplTest {
   @Test
   public void testSepia() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       Image sepiaImage = image.sepia();
       assertEquals(new PixelImpl(1, 1, 0, 255),
 
@@ -276,8 +277,8 @@ public class ImageImplTest {
               sepiaImage.getPixel(1, 0));
       assertEquals(new PixelImpl(49, 44, 34, 255),
               sepiaImage.getPixel(1, 1));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -285,10 +286,10 @@ public class ImageImplTest {
   @Test
   public void testGetWidth() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       assertEquals(2, image.getWidth());
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -296,10 +297,10 @@ public class ImageImplTest {
   @Test
   public void getHeight() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       assertEquals(2, image.getHeight());
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -307,10 +308,10 @@ public class ImageImplTest {
   @Test
   public void getMaxValue() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       assertEquals(255, image.getMaxValue());
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
 
@@ -318,7 +319,7 @@ public class ImageImplTest {
   @Test
   public void testGetPixel() {
     try {
-      Image image = ImageUtil.readPPM("res/fourPixels.ppm");
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
       assertEquals(new PixelImpl(1, 1, 1, 255),
               image.getPixel(0, 0));
       assertEquals(new PixelImpl(252, 253, 252, 255),
@@ -327,8 +328,82 @@ public class ImageImplTest {
               image.getPixel(1, 0));
       assertEquals(new PixelImpl(0, 65, 0, 255),
               image.getPixel(1, 1));
-    } catch (FileNotFoundException e) {
-      fail("FileNotFoundException was thrown");
+    } catch (IOException e) {
+      fail("IOException was thrown");
     }
   }
+
+  // test getting the red distribution
+  @Test
+  public void testGetRedDistribution() {
+    try {
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
+      Map<Integer, Integer> redMap = image.getRedDistribution();
+      assertTrue(redMap.get(2) == 0);
+      assertTrue(redMap.get(0) == 1);
+      assertTrue(redMap.get(252) == 1);
+      assertTrue(redMap.get(255) == 1);
+      assertTrue(redMap.get(10) == 0);
+      assertTrue(redMap.get(20) == 0);
+      assertTrue(redMap.get(1) == 1);
+    } catch (IOException e) {
+      fail("IOException was thrown");
+    }
+  }
+
+
+  // test getting the green distribution
+  @Test
+  public void testGetGreenDistribution() {
+    try {
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
+      Map<Integer, Integer> greenMap = image.getGreenDistribution();
+      assertTrue(greenMap.get(253) == 1);
+      assertTrue(greenMap.get(1) == 1);
+      assertTrue(greenMap.get(0) == 1);
+      assertTrue(greenMap.get(65) == 1);
+      assertTrue(greenMap.get(255) == 0);
+      assertTrue(greenMap.get(20) == 0);
+      assertTrue(greenMap.get(2) == 0);
+    } catch (IOException e) {
+      fail("IOException was thrown");
+    }
+  }
+
+  // test getting the blue distribution
+  @Test
+  public void testGetBlueDistribution() {
+    try {
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
+      Map<Integer, Integer> blueMap = image.getBlueDistribution();
+      assertTrue(blueMap.get(252) == 1);
+      assertTrue(blueMap.get(1) == 1);
+      assertTrue(blueMap.get(0) == 1);
+      assertTrue(blueMap.get(65) == 0);
+      assertTrue(blueMap.get(51) == 1);
+      assertTrue(blueMap.get(20) == 0);
+      assertTrue(blueMap.get(2) == 0);
+    } catch (IOException e) {
+      fail("IOException was thrown");
+    }
+  }
+
+  // test getting the intensity distribution
+  @Test
+  public void testGetIntensityDistribution() {
+    try {
+      Image image = ImageUtil.readImage("res/fourPixels.ppm");
+      Map<Integer, Integer> intensityMap = image.getIntensityDistribution();
+      assertTrue(intensityMap.get(252) == 1);
+      assertTrue(intensityMap.get(21) == 1);
+      assertTrue(intensityMap.get(102) == 1);
+      assertTrue(intensityMap.get(252) == 1);
+      assertTrue(intensityMap.get(51) == 0);
+      assertTrue(intensityMap.get(20) == 0);
+      assertTrue(intensityMap.get(2) == 0);
+    } catch (IOException e) {
+      fail("IOException was thrown");
+    }
+  }
+
 }

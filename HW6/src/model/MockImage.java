@@ -222,16 +222,19 @@ public class MockImage implements Image {
 
   @Override
   public Map<Integer, Integer> getGreenDistribution() {
+    log.append("get green distribution");
     return null;
   }
 
   @Override
   public Map<Integer, Integer> getBlueDistribution() {
+    log.append("get blue distribution");
     return null;
   }
 
   @Override
   public Map<Integer, Integer> getIntensityDistribution() {
+    log.append("get intensity distribution");
     return null;
   }
 }

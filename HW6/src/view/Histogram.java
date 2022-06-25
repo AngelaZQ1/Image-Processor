@@ -6,17 +6,31 @@ import java.util.Map;
 
 import javax.swing.*;
 
-
+/**
+ * This class represents a JPanel that represents a histogram of values for a component in
+ * an image. It has a color representing the channel and a Map of Integers to
+ * Integers representing the distribution of values for the channel.
+ */
 public class Histogram extends JPanel {
   // HashMap of the 256 colors and the number of occurences
   private final Map<Integer, Integer> colors;
   private final String color;
 
+  /**
+   * Creates a Histogram object with the given color distribution as a Map and the color
+   * histogram it represents as a String.
+   * @param colors the distribution of values
+   * @param color the color
+   */
   public Histogram(Map<Integer, Integer> colors, String color) {
     this.colors = colors;
     this.color = color;
   }
 
+  /**
+   * To draw this histogram.
+   * @param g the given Graphics object
+   */
   @Override
   protected void paintComponent(Graphics g) {
 
@@ -46,6 +60,8 @@ public class Histogram extends JPanel {
         break;
       case "intensity":
         g.drawString("Intensity Values", 10, height - 5);
+      default:
+        System.out.println("Color must be red, green, blue, or intensity");
     }
 
     if (colors == null) {
@@ -81,15 +97,16 @@ public class Histogram extends JPanel {
           break;
         case "intensity":
           g.setColor(Color.black);
+        default:
+          System.out.println("Color must be red, green, blue, or intensity");
       }
       g.drawRect(x, height - 20 - barHeight, barWidth, barHeight);
       g.fillRect(x, height - 20 - barHeight, barWidth, barHeight);
       x += (barWidth + 2);
-      // System.out.println(color + " " + hue.getKey()+ ": " + hue.getValue());
     }
   }
 
-  /** Override getPreferredSize */
+  /** Override getPreferredSize. */
   public Dimension getPreferredSize() {
     return new Dimension(300, 300);
   }

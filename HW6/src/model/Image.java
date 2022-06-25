@@ -139,12 +139,31 @@ public interface Image {
    */
   Pixel getPixel(int row, int col);
 
+  /**
+   * Get the distribution of red values in this Image as a Map from the value to the number
+   * of Pixels with that value as its red component.
+   * @return a map of values representing the red distribution
+   */
   Map<Integer, Integer> getRedDistribution();
 
+  /**
+   * Get the distribution of green values in this Image as a Map from the value to the number
+   * of Pixels with that value as its green component.
+   * @return a map of values representing the green distribution
+   */
   Map<Integer, Integer> getGreenDistribution();
 
+  /**
+   * Get the distribution of blue values in this Image as a Map from the value to the number
+   * of Pixels with that value as its blue component.
+   * @return a map of values representing the blue distribution
+   */
   Map<Integer, Integer> getBlueDistribution();
 
+  /**
+   * Get the distribution of intensity values in this Image as a Map from the value to the number
+   * of Pixels with that value as its intensity.
+   * @return a map of values representing the intensity
+   */
   Map<Integer, Integer> getIntensityDistribution();
-
 }
