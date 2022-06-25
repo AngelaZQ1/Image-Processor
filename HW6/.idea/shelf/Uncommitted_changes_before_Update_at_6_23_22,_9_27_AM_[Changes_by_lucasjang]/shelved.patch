@@ -1,0 +1,52 @@
+Index: src/ImageProcessor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.FileReader;\nimport java.io.IOException;\nimport java.io.InputStreamReader;\n\nimport controller.Controller;\nimport controller.ControllerImpl;\nimport controller.GUIController;\nimport view.JFrameView;\nimport view.TextView;\n\n/**\n * This class represents an image processing program. It offers functionality that enables the\n * user to edit images.\n */\npublic class ImageProcessor {\n  /**\n   * The main method that runs when the program is started.\n   *\n   * @param args the arguments used when starting the program\n   * @throws IOException if output cannot be transmitted\n   */\n  public static void main(String[] args) throws IOException {\n    Controller controller;\n    GUIController guiController;\n    if (args.length > 0 && args[0].equals(\"-file\")) {\n      String filePath = args[1];\n      controller = new ControllerImpl(new TextView(), new FileReader(filePath));\n      controller.run();\n    } else if (args.length > 0 && args[0].equals(\"-text\")) {\n      controller = new ControllerImpl(new TextView(), new InputStreamReader(System.in));\n      controller.run();\n    }\n    else {\n      guiController = new GUIController();\n      guiController.setView(new JFrameView(\"Image Processor\"));\n    }\n  }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/ImageProcessor.java b/src/ImageProcessor.java
+--- a/src/ImageProcessor.java	(revision 24bf42838896fe4db7ff9bd6e6888e4f4ccb3338)
++++ b/src/ImageProcessor.java	(date 1655838289437)
+@@ -29,8 +29,7 @@
+     } else if (args.length > 0 && args[0].equals("-text")) {
+       controller = new ControllerImpl(new TextView(), new InputStreamReader(System.in));
+       controller.run();
+-    }
+-    else {
++    } else {
+       guiController = new GUIController();
+       guiController.setView(new JFrameView("Image Processor"));
+     }
+Index: src/view/Histogram.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\n\n\nimport java.awt.*;\nimport java.util.HashMap;\nimport java.util.Map;\n\nimport javax.swing.*;\n\n\npublic class Histogram extends JPanel {\n  // HashMap of the 256 colors and the number of occurences\n  private Map<Integer, Integer> colors;\n\n  public Histogram(Map<Integer, Integer> colors) {\n    this.colors = colors;\n  }\n\n  @Override\n  protected void paintComponent(Graphics g) {\n    if (colors == null) return; // No display if count is null\n\n    super.paintComponent(g);\n\n    // Find the panel size and bar width and interval dynamically\n    int width = getWidth();\n    int height = getHeight();\n    int barWidth = (width - 40) / 256;\n\n    // x is the start position for the first bar in the histogram\n    int x = 30;\n\n    g.setColor(Color.PINK);\n    g.fillRect(0, 0, width, height / 2);\n    g.setColor(Color.blue);\n    g.fillRect(0, height / 2, width, height / 2);\n\n    for (var hue : colors.entrySet()) {\n      // Find the bar height\n      int barHeight = hue.getValue();\n    }\n\n//    for (int i = 0; i < count.length; i++) {\n//      // Find the bar height\n//      int barHeight =\n//              (int)(((double)count[i] / (double)maxCount) * (height - 55));\n//\n//      // Display a bar (i.e. rectangle)\n//      g.drawRect(x, height - 45 - barHeight, individualWidth,\n//              barHeight);\n//\n//      // Display a letter under the base line\n//      g.drawString((char)(65 + i) + \"\", x, height - 30);\n//\n//      // Move x for displaying the next character\n//      x += interval;\n//    }\n  }\n\n  /** Override getPreferredSize */\n  public Dimension getPreferredSize() {\n    return new Dimension(300, 300);\n  }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/Histogram.java b/src/view/Histogram.java
+--- a/src/view/Histogram.java	(revision 24bf42838896fe4db7ff9bd6e6888e4f4ccb3338)
++++ b/src/view/Histogram.java	(date 1655843289496)
+@@ -31,9 +31,9 @@
+     int x = 30;
+ 
+     g.setColor(Color.PINK);
+-    g.fillRect(0, 0, width, height / 2);
++    g.fillRect(10, 10, width, height / 2);
+     g.setColor(Color.blue);
+-    g.fillRect(0, height / 2, width, height / 2);
++    g.fillRect(10, height / 2, width, height / 2);
+ 
+     for (var hue : colors.entrySet()) {
+       // Find the bar height
+@@ -57,8 +57,4 @@
+ //    }
+   }
+ 
+-  /** Override getPreferredSize */
+-  public Dimension getPreferredSize() {
+-    return new Dimension(300, 300);
+-  }
+ }
+\ No newline at end of file

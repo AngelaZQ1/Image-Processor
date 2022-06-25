@@ -1,0 +1,404 @@
+Index: src/view/JFrameView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\n\nimport javax.swing.*;\n\nimport java.awt.*;\nimport java.io.IOException;\nimport java.util.HashMap;\nimport java.util.Map;\n\nimport controller.Features;\n\nimport controller.ImageUtil;\nimport model.Image;\n\npublic class JFrameView extends JFrame implements GUIView {\n  private final JLabel imageLabel, openFilePath, saveFilePath;\n  private JPanel histogramsSection;\n  private JPanel redHistogram;\n  private JPanel greenHistogram;\n  private JPanel blueHistogram;\n  private final JButton redButton, greenButton, blueButton, darkenButton, brightenButton,\n  flipVerticallyButton, flipHorizontallyButton, valueButton, intensityButton, lumaButton,\n  blurButton, sharpenButton, grayscaleButton, sepiaButton, exitButton, loadButton, saveButton;\n\n  public JFrameView(String caption) {\n    super(caption);\n\n    setSize(900, 700);\n    setLocation(0, 0);\n    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n\n    this.setLayout(new BorderLayout());\n\n    // histograms\n    histogramsSection = new JPanel();\n    histogramsSection.setLayout(new BoxLayout(histogramsSection, BoxLayout.PAGE_AXIS));\n    histogramsSection.setPreferredSize(new Dimension(300, 300));\n\n//\n//    redHistogram = new JPanel();\n//    redHistogram.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));\n\n    histogramsSection.add(updateRedHistogram(null));\n    // histogramsSection.add(updateGreenHistogram(null));\n    // histogramsSection.add(updateBlueHistogram(null));\n    // histogramsSection.add(updateIntensityHistogram(null));\n\n//    histogramsSection.add(updateRedHistogram(new HashMap<Integer, Integer>()));\n//    histogramsSection.add(greenHistogramContainer);\n//    histogramsSection.add(blueHistogramContainer);\n\n    this.add(histogramsSection, BorderLayout.LINE_START);\n\n    // TOP SECTION\n\n    JPanel topSection = new JPanel();\n    topSection.setLayout(new FlowLayout());\n\n    // dialogue box for saving and loading\n    JPanel dialogBoxesPanel = new JPanel();\n    dialogBoxesPanel.setBorder(BorderFactory.createTitledBorder(\"Load/Save Image\"));\n    dialogBoxesPanel.setLayout(new BoxLayout(dialogBoxesPanel, BoxLayout.PAGE_AXIS));\n    this.add(dialogBoxesPanel);\n\n    // load button\n    JPanel openFilePanel = new JPanel();\n    openFilePanel.setLayout(new FlowLayout());\n\n    dialogBoxesPanel.add(openFilePanel);\n\n    loadButton = new JButton(\"Open a file\");\n    openFilePanel.add(loadButton);\n    openFilePath = new JLabel(\"File path will appear here\");\n    openFilePanel.add(openFilePath);\n\n    // save button\n    JPanel saveFilePanel = new JPanel();\n    saveFilePanel.setLayout(new FlowLayout());\n\n    dialogBoxesPanel.add(saveFilePanel);\n\n    saveButton = new JButton(\"Save a file\");\n    saveFilePanel.add(saveButton);\n    saveFilePath = new JLabel(\"File path will appear here\");\n    saveFilePanel.add(saveFilePath);\n\n    // exit button\n    exitButton = new JButton(\"Exit\");\n    this.add(exitButton);\n\n    topSection.add(dialogBoxesPanel);\n    topSection.add(exitButton);\n\n    this.add(topSection, BorderLayout.PAGE_START);\n\n    // IMAGE MIDDLE SECTION\n    \n    // image panel\n    JPanel imagePanel = new JPanel();\n    //a border around the panel with a caption\n    imagePanel.setBorder(BorderFactory.createTitledBorder(\"Current Image:\"));\n    imagePanel.setSize(500, 500);\n    this.add(imagePanel, BorderLayout.CENTER);\n\n    // the current scrollable image\n    imageLabel = new JLabel(new ImageIcon());\n    JScrollPane imageScrollPane = new JScrollPane(imageLabel);\n    imageScrollPane.setPreferredSize(new Dimension(500, 500));\n    imagePanel.add(imageScrollPane);\n\n    // BUTTONS\n    JPanel buttonsSection = new JPanel();\n    buttonsSection.setLayout(new GridLayout(7, 2));\n\n    redButton = new JButton(\"Red Component\");\n    buttonsSection.add(redButton);\n    greenButton = new JButton(\"Green Component\");\n    buttonsSection.add(greenButton);\n    blueButton = new JButton(\"Blue Component\");\n    buttonsSection.add(blueButton);\n    darkenButton = new JButton(\"Darken\");\n    buttonsSection.add(darkenButton);\n    brightenButton = new JButton(\"Brighten\");\n    buttonsSection.add(brightenButton);\n    flipVerticallyButton = new JButton(\"Flip Vertically\");\n    buttonsSection.add(flipVerticallyButton);\n    flipHorizontallyButton = new JButton(\"Flip Horizontally\");\n    buttonsSection.add(flipHorizontallyButton);\n    valueButton = new JButton(\"Grayscale Using Value\");\n    buttonsSection.add(valueButton);\n    intensityButton = new JButton(\"Grayscale Using Intensity\");\n    buttonsSection.add(intensityButton);\n    lumaButton = new JButton(\"Grayscale Using Luma\");\n    buttonsSection.add(lumaButton);\n    blurButton = new JButton(\"Blur\");\n    buttonsSection.add(blurButton);\n    sharpenButton = new JButton(\"Sharpen\");\n    buttonsSection.add(sharpenButton);\n    grayscaleButton = new JButton(\"Grayscale\");\n    buttonsSection.add(grayscaleButton);\n    sepiaButton = new JButton(\"Sepia\");\n    buttonsSection.add(sepiaButton);\n\n    this.add(buttonsSection, BorderLayout.LINE_END);\n\n    pack();\n    setVisible(true);\n\n  }\n\n  @Override\n  public void addFeatures(Features features) {\n    redButton.addActionListener(evt -> features.redComp());\n    greenButton.addActionListener(evt -> features.greenComp());\n    blueButton.addActionListener(evt -> features.blueComp());\n    darkenButton.addActionListener(evt -> features.darken());\n    brightenButton.addActionListener(evt -> features.brighten());\n    flipVerticallyButton.addActionListener(evt -> features.vFlip());\n    flipHorizontallyButton.addActionListener(evt -> features.hFlip());\n    valueButton.addActionListener(evt -> features.value());\n    intensityButton.addActionListener(evt -> features.intensity());\n    lumaButton.addActionListener(evt -> features.luma());\n    blurButton.addActionListener(evt -> features.blur());\n    sharpenButton.addActionListener(evt -> features.sharpen());\n    grayscaleButton.addActionListener(evt -> features.grayscale());\n    sepiaButton.addActionListener(evt -> features.sepia());\n    loadButton.addActionListener(evt -> features.load());\n    saveButton.addActionListener(evt -> features.save());\n    exitButton.addActionListener(evt -> features.exit());\n  }\n  public void setOpenFilePath(String filepath) {\n    this.openFilePath.setText(filepath);\n  }\n\n  public void setSaveFilePath(String filePath) {\n    this.saveFilePath.setText(filePath);\n  }\n\n  /**\n   * Updates the image shown to the Image using the given filepath.\n   * @param filepath the file path of the new Image to show\n   */\n  @Override\n  public void updateImage(String filepath) {\n    try {\n      Image image = ImageUtil.readImage(filepath);\n      this.imageLabel.setIcon(new ImageIcon(ImageUtil.imageToImage(image)));\n    } catch (IOException e) {\n      System.out.println(\"IOException\");\n    }\n  }\n\n  /**\n   * Updates the image shown to the given Image.\n   * @param image the new Image show\n   */\n  @Override\n  public void updateImage(Image image) {\n    this.imageLabel.setIcon(new ImageIcon(ImageUtil.imageToImage(image)));\n  }\n\n  // TODO implement this\n  @Override\n  public JPanel updateRedHistogram(Map<Integer, Integer> distributionOfRedValues) {\n    return new Histogram(distributionOfRedValues);\n\n//    for (Integer key : distributionOfRedValues.keySet()) {\n//      JPanel bar = new JPanel();\n//      bar.setSize(1, distributionOfRedValues.get(key));\n//      redHistogram.add(bar);\n//    }\n//\n//    this.histogramsSection.remove(redHistogram);\n//    this.histogramsSection.add(redHistogram);\n//    this.validate();\n  }\n\n\n  // TODO implement this\n  @Override\n  public JPanel updateGreenHistogram(Map<Integer, Integer> distributionOfRedValues) {\n//    this.greenHistogram = histogram;\n    return new Histogram(distributionOfRedValues);\n  }\n\n  // TODO implement this\n  @Override\n  public JPanel updateBlueHistogram(Map<Integer, Integer> distributionOfRedValues) {\n//    this.blueHistogram = histogram;\n    return new Histogram(distributionOfRedValues);\n  }\n\n  // TODO implement this\n  @Override\n  public JPanel updateIntensityHistogram(Map<Integer, Integer> distributionOfRedValues) {\n//    this.intensityHistogram = histogram;\n    return new Histogram(distributionOfRedValues);\n  }\n\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/JFrameView.java b/src/view/JFrameView.java
+--- a/src/view/JFrameView.java	(revision 24bf42838896fe4db7ff9bd6e6888e4f4ccb3338)
++++ b/src/view/JFrameView.java	(date 1655868040882)
+@@ -4,6 +4,7 @@
+ 
+ import java.awt.*;
+ import java.io.IOException;
++import java.util.Collections;
+ import java.util.HashMap;
+ import java.util.Map;
+ 
+@@ -18,6 +19,7 @@
+   private JPanel redHistogram;
+   private JPanel greenHistogram;
+   private JPanel blueHistogram;
++  private JPanel intensityHistogram;
+   private final JButton redButton, greenButton, blueButton, darkenButton, brightenButton,
+   flipVerticallyButton, flipHorizontallyButton, valueButton, intensityButton, lumaButton,
+   blurButton, sharpenButton, grayscaleButton, sepiaButton, exitButton, loadButton, saveButton;
+@@ -33,14 +35,34 @@
+ 
+     // histograms
+     histogramsSection = new JPanel();
++    histogramsSection.setBorder(BorderFactory.createTitledBorder("Histograms:"));
+     histogramsSection.setLayout(new BoxLayout(histogramsSection, BoxLayout.PAGE_AXIS));
+-    histogramsSection.setPreferredSize(new Dimension(300, 300));
++    histogramsSection.setPreferredSize(new Dimension(510, 800));
+ 
+ //
+-//    redHistogram = new JPanel();
+-//    redHistogram.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
++    redHistogram = new JPanel();
++    redHistogram.setLayout(new BoxLayout(redHistogram, BoxLayout.X_AXIS));
++    redHistogram.setPreferredSize(new Dimension(510, 200));
++
++    greenHistogram = new JPanel();
++    greenHistogram.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
++    greenHistogram.setPreferredSize(new Dimension(510, 200));
+ 
+-    histogramsSection.add(updateRedHistogram(null));
++    blueHistogram = new JPanel();
++    blueHistogram.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
++    blueHistogram.setPreferredSize(new Dimension(510, 200));
++
++    intensityHistogram = new JPanel();
++    intensityHistogram.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
++    intensityHistogram.setPreferredSize(new Dimension(510, 200));
++
++
++    histogramsSection.add(redHistogram);
++    histogramsSection.add(greenHistogram);
++    histogramsSection.add(blueHistogram);
++    histogramsSection.add(intensityHistogram);
++
++//    histogramsSection.add(updateRedHistogram(null));
+     // histogramsSection.add(updateGreenHistogram(null));
+     // histogramsSection.add(updateBlueHistogram(null));
+     // histogramsSection.add(updateIntensityHistogram(null));
+@@ -52,7 +74,6 @@
+     this.add(histogramsSection, BorderLayout.LINE_START);
+ 
+     // TOP SECTION
+-
+     JPanel topSection = new JPanel();
+     topSection.setLayout(new FlowLayout());
+ 
+@@ -168,6 +189,7 @@
+     saveButton.addActionListener(evt -> features.save());
+     exitButton.addActionListener(evt -> features.exit());
+   }
++
+   public void setOpenFilePath(String filepath) {
+     this.openFilePath.setText(filepath);
+   }
+@@ -199,42 +221,84 @@
+     this.imageLabel.setIcon(new ImageIcon(ImageUtil.imageToImage(image)));
+   }
+ 
++  // normalize the given value between 0 and 200 using the given min and max
++  private int normalize(int min, int max, int valueToNormalize) {
++    return (int)Math.round((double)(valueToNormalize - min) / (max - min) * 200);
++  }
++
+   // TODO implement this
+   @Override
+-  public JPanel updateRedHistogram(Map<Integer, Integer> distributionOfRedValues) {
+-    return new Histogram(distributionOfRedValues);
++  public void updateRedHistogram(Map<Integer, Integer> distributionOfRedValues) {
++//    return new Histogram(distributionOfRedValues);
+ 
+-//    for (Integer key : distributionOfRedValues.keySet()) {
++    for (Integer key : distributionOfRedValues.keySet()) {
++      JPanel bar = new JPanel();
++      int min = Collections.min(distributionOfRedValues.values());
++      int max = Collections.max(distributionOfRedValues.values());
++      bar.setSize(new Dimension(2, normalize(min, max, distributionOfRedValues.get(key))));
++//      bar.setPreferredSize(new Dimension(1, 50));
++      bar.setBackground(Color.RED);
++      redHistogram.add(bar);
++    }
++//    int i = 1;
++//    while (i <= 10) {
+ //      JPanel bar = new JPanel();
+-//      bar.setSize(1, distributionOfRedValues.get(key));
++//      bar.setPreferredSize(new Dimension(1, i * 10));
+ //      redHistogram.add(bar);
++//      i++;
+ //    }
+-//
+-//    this.histogramsSection.remove(redHistogram);
+-//    this.histogramsSection.add(redHistogram);
+-//    this.validate();
++
++    this.histogramsSection.remove(redHistogram);
++    this.histogramsSection.add(redHistogram);
++//    this.histogramsSection.doLayout();
+   }
+ 
+ 
+   // TODO implement this
+   @Override
+-  public JPanel updateGreenHistogram(Map<Integer, Integer> distributionOfRedValues) {
+-//    this.greenHistogram = histogram;
+-    return new Histogram(distributionOfRedValues);
++  public void updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues) {
++//    return new Histogram(distributionOfRedValues);
++
++    for (Integer key : distributionOfGreenValues.keySet()) {
++      JPanel bar = new JPanel();
++      bar.setSize(1, distributionOfGreenValues.get(key));
++      bar.setBackground(Color.GREEN);
++      greenHistogram.add(bar);
++    }
++    this.histogramsSection.remove(greenHistogram);
++    this.histogramsSection.add(greenHistogram);
++    this.histogramsSection.doLayout();
+   }
+ 
+   // TODO implement this
+   @Override
+-  public JPanel updateBlueHistogram(Map<Integer, Integer> distributionOfRedValues) {
+-//    this.blueHistogram = histogram;
+-    return new Histogram(distributionOfRedValues);
++  public void updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues) {
++
++    for (Integer key : distributionOfBlueValues.keySet()) {
++      JPanel bar = new JPanel();
++      bar.setSize(1, distributionOfBlueValues.get(key));
++      bar.setBackground(Color.BLUE);
++      blueHistogram.add(bar);
++    }
++    this.histogramsSection.remove(blueHistogram);
++    this.histogramsSection.add(blueHistogram);
++    this.histogramsSection.doLayout();
+   }
+ 
+   // TODO implement this
+   @Override
+-  public JPanel updateIntensityHistogram(Map<Integer, Integer> distributionOfRedValues) {
+-//    this.intensityHistogram = histogram;
+-    return new Histogram(distributionOfRedValues);
++  public void updateIntensityHistogram(Map<Integer, Integer> distributionOfValues) {
++//    return new Histogram(distributionOfRedValues);
++
++    for (Integer key : distributionOfValues.keySet()) {
++      JPanel bar = new JPanel();
++      bar.setSize(1, distributionOfValues.get(key));
++      bar.setBackground(Color.GRAY);
++      intensityHistogram.add(bar);
++    }
++    this.histogramsSection.remove(intensityHistogram);
++    this.histogramsSection.add(intensityHistogram);
++    this.histogramsSection.doLayout();
+   }
+ 
+ 
+Index: src/model/ImageImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\n\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.function.Function;\n\nimport model.filters.FilterImpl;\n\n/**\n * This class represents an implementation of the Image interface. It offers ways to visualize\n * and manipulate an image such as grayscaling, flipping, brightening, darkening, and applying\n * filters.\n */\npublic class ImageImpl implements Image {\n  private final List<List<Pixel>> image;\n  private final int numCols;\n  private final int numRows;\n  private final int maxValue;\n\n  /**\n   * Creates an ImageImpl object with the given image and max value of the image's channels.\n   *\n   * @param image    the given image to use\n   * @param maxValue the max value of any channel\n   */\n  public ImageImpl(List<List<Pixel>> image, int maxValue) {\n    this.image = image;\n    this.numRows = image.size();\n    this.numCols = image.get(0).size();\n    this.maxValue = maxValue;\n  }\n\n  // helper method for visualizing images in grayscale by applying the given filter to\n  // each pixel\n  private Image visualizeHelper(Function<Pixel, Pixel> func) {\n    List<List<Pixel>> newImage = new ArrayList<>();\n    for (List<Pixel> row : image) {\n      List<Pixel> newRow = new ArrayList<>();\n      for (Pixel p : row) {\n        newRow.add(func.apply(p));\n      }\n      newImage.add(newRow);\n    }\n    return new ImageImpl(newImage, maxValue);\n  }\n\n  @Override\n  public Image visualizeRedChannel() {\n    return visualizeHelper(p -> new FilterImpl().filterRed(p));\n  }\n\n  @Override\n  public Image visualizeGreenChannel() {\n    return visualizeHelper(p -> new FilterImpl().filterGreen(p));\n  }\n\n  @Override\n  public Image visualizeBlueChannel() {\n    return visualizeHelper(p -> new FilterImpl().filterBlue(p));\n  }\n\n  @Override\n  public Image visualizeValue() {\n    return visualizeHelper(p -> new FilterImpl().filterValue(p));\n  }\n\n  @Override\n  public Image visualizeIntensity() {\n    return visualizeHelper(p -> new FilterImpl().filterIntensity(p));\n  }\n\n  @Override\n  public Image visualizeLuma() {\n    return visualizeHelper(p -> new FilterImpl().filterLuma(p));\n  }\n\n  @Override\n  public Image flipImageVertically() {\n    List<List<Pixel>> newImage = new ArrayList<>();\n    for (int i = 1; i <= numRows; i++) {\n      newImage.add(image.get(numRows - i));\n    }\n    return new ImageImpl(newImage, maxValue);\n  }\n\n  @Override\n  public Image flipImageHorizontally() {\n    List<List<Pixel>> newImage = new ArrayList<>();\n    for (int i = 0; i < numRows; i++) {\n      List<Pixel> newRow = new ArrayList<>();\n      for (int j = 1; j <= numCols; j++) {\n        newRow.add(image.get(i).get(numCols - j));\n      }\n      newImage.add(newRow);\n    }\n    return new ImageImpl(newImage, maxValue);\n  }\n\n  @Override\n  public Image brighten(int value) {\n    return visualizeHelper(p -> p.changeColor(value, value, value));\n  }\n\n  @Override\n  public Image darken(int value) {\n    return visualizeHelper(p -> p.changeColor(-value, -value, -value));\n  }\n\n  // helper method for abstracting filtering methods that use a kernel\n  // takes in a kernel to use on each pixel and returns a new filtered Image\n  private Image filterHelper(double[][] kernel) {\n    List<List<Pixel>> newImage = new ArrayList<>();\n    for (int row = 0; row < this.image.size(); row++) {\n\n      List<Pixel> newRow = new ArrayList<>();\n      for (int col = 0; col < this.image.get(row).size(); col++) {\n        // apply the new filter to each pixel\n        newRow.add(new FilterImpl().applyKernelToPixel(this, kernel, row, col));\n      }\n      newImage.add(newRow);\n    }\n    return new ImageImpl(newImage, maxValue);\n  }\n\n  @Override\n  public Image blur() {\n    double[][] blurKernel = {{1.0 / 16, 1.0 / 8, 1.0 / 16},\n        {1.0 / 8, 1.0 / 4, 1.0 / 8},\n        {1.0 / 16, 1.0 / 8, 1.0 / 16}};\n    return filterHelper(blurKernel);\n  }\n\n  @Override\n  public Image sharpen() {\n    double[][] sharpenKernel = {{-1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8},\n        {-1.0 / 8, 1.0 / 4, 1.0 / 4, 1.0 / 4, -1.0 / 8},\n        {-1.0 / 8, 1.0 / 4, 1.0, 1.0 / 4, -1.0 / 8},\n        {-1.0 / 8, 1.0 / 4, 1.0 / 4, 1.0 / 4, -1.0 / 8},\n        {-1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8, -1.0 / 8}};\n    return filterHelper(sharpenKernel);\n  }\n\n  @Override\n  public Image grayscaleColorTransform() {\n    return visualizeHelper(p -> new FilterImpl().filterGrey(p));\n  }\n\n  @Override\n  public Image sepia() {\n    return visualizeHelper(p -> new FilterImpl().sepia(p));\n  }\n\n  @Override\n  public int getWidth() {\n    return numCols;\n  }\n\n  @Override\n  public int getHeight() {\n    return numRows;\n  }\n\n  @Override\n  public int getMaxValue() {\n    return maxValue;\n  }\n\n  @Override\n  public Pixel getPixel(int row, int col) {\n    List<Pixel> temp = image.get(row);\n    return temp.get(col);\n  }\n\n  @Override\n  public Map<Integer, Integer> getRedDistribution() {\n    Map<Integer, Integer> redValues = new HashMap<>();\n    for (int value = 0; value <= 255; value++) {\n      redValues.put(value, 0); // add the values 0 to 255\n    }\n\n    for (List<Pixel> row : this.image) {\n      for (Pixel pixel : row) {\n        int redValueOfPixel = pixel.getRed();\n        int currentCount = redValues.get(redValueOfPixel);\n        redValues.put(redValueOfPixel, currentCount + 1);\n      }\n    }\n    return redValues;\n  }\n\n  @Override\n  public Map<Integer, Integer> getGreenDistribution() {\n    Map<Integer, Integer> greenValues = new HashMap<>();\n    for (int value = 0; value <= 255; value++) {\n      greenValues.put(value, 0); // add the values 0 to 255\n    }\n\n    for (List<Pixel> row : this.image) {\n      for (Pixel pixel : row) {\n        int greenValueOfPixel = pixel.getRed();\n        int currentCount = greenValues.get(greenValueOfPixel);\n        greenValues.put(greenValueOfPixel, currentCount + 1);\n      }\n    }\n    return greenValues;\n  }\n\n  @Override\n  public Map<Integer, Integer> getBlueDistribution() {\n    Map<Integer, Integer> blueValues = new HashMap<>();\n    for (int value = 0; value <= 255; value++) {\n      blueValues.put(value, 0); // add the values 0 to 255\n    }\n\n    for (List<Pixel> row : this.image) {\n      for (Pixel pixel : row) {\n        int blueValueOfPixel = pixel.getRed();\n        int currentCount = blueValues.get(blueValueOfPixel);\n        blueValues.put(blueValueOfPixel, currentCount + 1);\n      }\n    }\n    return blueValues;\n  }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/model/ImageImpl.java b/src/model/ImageImpl.java
+--- a/src/model/ImageImpl.java	(revision 24bf42838896fe4db7ff9bd6e6888e4f4ccb3338)
++++ b/src/model/ImageImpl.java	(date 1655842891206)
+@@ -199,7 +199,7 @@
+ 
+     for (List<Pixel> row : this.image) {
+       for (Pixel pixel : row) {
+-        int greenValueOfPixel = pixel.getRed();
++        int greenValueOfPixel = pixel.getGreen();
+         int currentCount = greenValues.get(greenValueOfPixel);
+         greenValues.put(greenValueOfPixel, currentCount + 1);
+       }
+@@ -216,7 +216,7 @@
+ 
+     for (List<Pixel> row : this.image) {
+       for (Pixel pixel : row) {
+-        int blueValueOfPixel = pixel.getRed();
++        int blueValueOfPixel = pixel.getBlue();
+         int currentCount = blueValues.get(blueValueOfPixel);
+         blueValues.put(blueValueOfPixel, currentCount + 1);
+       }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" name=\"Changes\" comment=\"made buttons work including saving and loading\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/controller/GUIController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/controller/GUIController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/Image.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/Image.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/ImageImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/ImageImpl.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/model/MockImage.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/model/MockImage.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/view/GUIView.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/view/GUIView.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/view/Histogram.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/view/Histogram.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/view/JFrameView.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/view/JFrameView.java\" afterDir=\"false\" />\n    </list>\n    <list id=\"87508b8a-4453-43b2-b2dc-33dbbbda0611\" name=\"Changes by lucasjang\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/ImageProcessor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/ImageProcessor.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/view/Histogram.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/view/Histogram.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\n  </component>\n  <component name=\"LineStatusTrackerManager\">\n    <file path=\"$PROJECT_DIR$/src/view/Histogram.java\">\n      <ranges>\n        <range start1=\"4\" end1=\"4\" start2=\"4\" end2=\"6\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"9\" end1=\"11\" start2=\"11\" end2=\"13\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"12\" end1=\"16\" start2=\"14\" end2=\"16\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"18\" end1=\"19\" start2=\"18\" end2=\"19\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"20\" end1=\"21\" start2=\"20\" end2=\"21\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"27\" end1=\"36\" start2=\"27\" end2=\"28\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"40\" end1=\"43\" start2=\"32\" end2=\"36\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"44\" end1=\"56\" start2=\"37\" end2=\"38\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"57\" end1=\"57\" start2=\"39\" end2=\"55\" changelist=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" />\n        <range start1=\"59\" end1=\"63\" start2=\"57\" end2=\"57\" changelist=\"87508b8a-4453-43b2-b2dc-33dbbbda0611\" />\n      </ranges>\n    </file>\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2AtBKOQK5xPSzDCcvwMBdhFy1cb\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"codeWithMe.voiceChat.enabledByDefault\": \"false\",\n    \"last_opened_file_path\": \"/Users/angela/Desktop/OOD/Group/HW6\"\n  }\n}]]></component>\n  <component name=\"RunManager\">\n    <configuration name=\"ImageProcessor\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"ImageProcessor\" />\n      <module name=\"HW6\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.ImageProcessor\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef\" name=\"Changes\" comment=\"\" />\n      <created>1655818937618</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1655818937618</updated>\n      <workItem from=\"1655818941156\" duration=\"27000\" />\n      <workItem from=\"1655819067533\" duration=\"18693000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Created UI, added Features interface\">\n      <created>1655824113367</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1655824113367</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"made buttons work including saving and loading\">\n      <created>1655833397345</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1655833397345</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Created UI, added Features interface\" />\n    <MESSAGE value=\"made buttons work including saving and loading\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"made buttons work including saving and loading\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 24bf42838896fe4db7ff9bd6e6888e4f4ccb3338)
++++ b/.idea/workspace.xml	(date 1655904610029)
+@@ -1,14 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
++    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="histograms">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Image.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/model/ImageImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/model/MockImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MockImage.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/view/GUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUIView.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/view/Histogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Histogram.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/view/JFrameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/JFrameView.java" afterDir="false" />
+     </list>
+     <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="">
+@@ -31,22 +28,6 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+   </component>
+-  <component name="LineStatusTrackerManager">
+-    <file path="$PROJECT_DIR$/src/view/Histogram.java">
+-      <ranges>
+-        <range start1="4" end1="4" start2="4" end2="6" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="9" end1="11" start2="11" end2="13" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="12" end1="16" start2="14" end2="16" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="18" end1="19" start2="18" end2="19" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="20" end1="21" start2="20" end2="21" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="27" end1="36" start2="27" end2="28" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="40" end1="43" start2="32" end2="36" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="44" end1="56" start2="37" end2="38" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="57" end1="57" start2="39" end2="55" changelist="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" />
+-        <range start1="59" end1="63" start2="57" end2="57" changelist="87508b8a-4453-43b2-b2dc-33dbbbda0611" />
+-      </ranges>
+-    </file>
+-  </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+@@ -56,14 +37,14 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "codeWithMe.voiceChat.enabledByDefault": "false",
+-    "last_opened_file_path": "/Users/angela/Desktop/OOD/Group/HW6"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/Users/angela/Desktop/OOD/Group/HW6&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="ImageProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="ImageProcessor" />
+@@ -87,7 +68,8 @@
+       <option name="presentableId" value="Default" />
+       <updated>1655818937618</updated>
+       <workItem from="1655818941156" duration="27000" />
+-      <workItem from="1655819067533" duration="18693000" />
++      <workItem from="1655819067533" duration="26128000" />
++      <workItem from="1655904542849" duration="65000" />
+     </task>
+     <task id="LOCAL-00001" summary="Created UI, added Features interface">
+       <created>1655824113367</created>
+@@ -103,7 +85,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1655833397345</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="histograms">
++      <created>1655842809158</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1655842809158</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -123,6 +112,28 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Created UI, added Features interface" />
+     <MESSAGE value="made buttons work including saving and loading" />
+-    <option name="LAST_COMMIT_MESSAGE" value="made buttons work including saving and loading" />
++    <MESSAGE value="histograms" />
++    <option name="LAST_COMMIT_MESSAGE" value="histograms" />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/view/JFrameView.java</url>
++          <line>237</line>
++          <option name="timeStamp" value="12" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/controller/GUIController.java</url>
++          <line>53</line>
++          <option name="timeStamp" value="13" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/view/JFrameView.java</url>
++          <line>225</line>
++          <option name="timeStamp" value="14" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/controller/GUIController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\n\nimport java.awt.*;\nimport java.io.File;\nimport java.io.IOException;\nimport java.util.HashMap;\nimport java.util.Map;\n\nimport javax.swing.*;\nimport javax.swing.filechooser.FileNameExtensionFilter;\n\nimport controller.commands.BlueComponent;\nimport controller.commands.Blur;\nimport controller.commands.Brighten;\nimport controller.commands.Command;\nimport controller.commands.Darken;\nimport controller.commands.Grayscale;\nimport controller.commands.GreenComponent;\nimport controller.commands.HFlip;\nimport controller.commands.Intensity;\nimport controller.commands.Luma;\nimport controller.commands.RedComponent;\nimport controller.commands.Sepia;\nimport controller.commands.Sharpen;\nimport controller.commands.VFlip;\nimport controller.commands.Value;\nimport model.Image;\nimport view.GUIView;\n\npublic class GUIController implements Features {\n  private Image image;\n  private GUIView view;\n\n  public GUIController() {\n    this.image = null;\n  }\n\n  public void setView(GUIView v) {\n    view = v;\n    view.addFeatures(this);\n  }\n\n  private void applyCommandAndUpdateImage(Command command) {\n    Image newImage = command.applyCommand(this.image);\n    this.view.updateImage(newImage);\n    this.updateImage(newImage);\n\n    Map<Integer, Integer> distributionOfRedValues = this.image.getRedDistribution();\n    Map<Integer, Integer> distributionOfGreenValues = this.image.getGreenDistribution();\n    Map<Integer, Integer> distributionOfBlueValues = this.image.getBlueDistribution();\n    this.view.updateRedHistogram(distributionOfRedValues);\n    this.view.updateGreenHistogram(distributionOfGreenValues);\n    this.view.updateBlueHistogram(distributionOfBlueValues);\n  }\n\n  @Override\n  public void updateImage(Image image) {\n    this.image = image;\n  }\n\n  @Override\n  public void redComp() {\n    this.applyCommandAndUpdateImage(new RedComponent());\n  }\n\n  @Override\n  public void greenComp() {\n    this.applyCommandAndUpdateImage(new GreenComponent());\n  }\n\n  @Override\n  public void blueComp() {\n    this.applyCommandAndUpdateImage(new BlueComponent());\n  }\n\n  @Override\n  public void darken() {\n    this.applyCommandAndUpdateImage(new Darken(25));\n  }\n\n  @Override\n  public void brighten() {\n    this.applyCommandAndUpdateImage(new Brighten(25));\n  }\n\n  @Override\n  public void vFlip() {\n    this.applyCommandAndUpdateImage(new VFlip());\n  }\n\n  @Override\n  public void hFlip() {\n    this.applyCommandAndUpdateImage(new HFlip());\n  }\n\n  @Override\n  public void value() {\n    this.applyCommandAndUpdateImage(new Value());\n  }\n\n  @Override\n  public void intensity() {\n    this.applyCommandAndUpdateImage(new Intensity());\n  }\n\n  @Override\n  public void luma() {\n    this.applyCommandAndUpdateImage(new Luma());\n  }\n\n  @Override\n  public void blur() {\n    this.applyCommandAndUpdateImage(new Blur());\n  }\n\n  @Override\n  public void sharpen() {\n    this.applyCommandAndUpdateImage(new Sharpen());\n  }\n\n  @Override\n  public void grayscale() {\n    this.applyCommandAndUpdateImage(new Grayscale());\n  }\n\n  @Override\n  public void sepia() {\n    this.applyCommandAndUpdateImage(new Sepia());\n  }\n\n  @Override\n  public void load() {\n    final JFileChooser fchooser = new JFileChooser(\".\");\n    FileNameExtensionFilter filter = new FileNameExtensionFilter(\n            \"jpeg\", \"jpg\", \"ppm\", \"bmp\", \"png\");\n    fchooser.setFileFilter(filter);\n\n    File f = null;\n    int retvalue = fchooser.showOpenDialog((Component) view);\n    if (retvalue == JFileChooser.APPROVE_OPTION) {\n      f = fchooser.getSelectedFile();\n      view.setOpenFilePath(f.getAbsolutePath());\n    }\n    view.updateImage(f.getAbsolutePath());\n    try {\n      this.image = ImageUtil.readImage(f.getAbsolutePath());\n    } catch (IOException e) {\n      System.out.println(\"IOException\");\n    }\n  }\n\n  @Override\n  public void save() {\n    final JFileChooser fchooser = new JFileChooser(\".\");\n    int retvalue = fchooser.showSaveDialog((Component) view);\n    File f = null;\n    if (retvalue == JFileChooser.APPROVE_OPTION) {\n      f = fchooser.getSelectedFile();\n      view.setSaveFilePath(f.getAbsolutePath());\n    }\n    try {\n      ImageUtil.saveImage(f.getAbsolutePath(), this.image);\n    } catch (IOException e) {\n      System.out.println(f.getAbsolutePath());\n    }\n  }\n\n  @Override\n  public void exit() {\n    System.exit(0);\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/controller/GUIController.java b/src/controller/GUIController.java
+--- a/src/controller/GUIController.java	(revision 24bf42838896fe4db7ff9bd6e6888e4f4ccb3338)
++++ b/src/controller/GUIController.java	(date 1655858687901)
+@@ -44,7 +44,10 @@
+     Image newImage = command.applyCommand(this.image);
+     this.view.updateImage(newImage);
+     this.updateImage(newImage);
++    this.updateHistograms();
++  }
+ 
++  private void updateHistograms() {
+     Map<Integer, Integer> distributionOfRedValues = this.image.getRedDistribution();
+     Map<Integer, Integer> distributionOfGreenValues = this.image.getGreenDistribution();
+     Map<Integer, Integer> distributionOfBlueValues = this.image.getBlueDistribution();
+@@ -141,12 +144,13 @@
+       f = fchooser.getSelectedFile();
+       view.setOpenFilePath(f.getAbsolutePath());
+     }
+-    view.updateImage(f.getAbsolutePath());
++    view.updateImage(f.getAbsolutePath()); // update image shown in view
+     try {
+-      this.image = ImageUtil.readImage(f.getAbsolutePath());
++      this.image = ImageUtil.readImage(f.getAbsolutePath()); // set this object's image
+     } catch (IOException e) {
+       System.out.println("IOException");
+     }
++    this.updateHistograms(); // update histograms
+   }
+ 
+   @Override
+Index: src/view/GUIView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view;\n\n\nimport java.util.Map;\n\nimport javax.swing.*;\n\nimport controller.Features;\nimport model.Image;\n\npublic interface GUIView {\n\n  void updateImage(String filepath);\n\n  void updateImage(Image image);\n\n  JPanel updateRedHistogram(Map<Integer, Integer> distributionOfRedValues);\n\n  JPanel updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues);\n\n  JPanel updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues);\n\n  JPanel updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues);\n\n  void addFeatures(Features features);\n\n  void setOpenFilePath(String filePath);\n\n  void setSaveFilePath(String filePath);\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/GUIView.java b/src/view/GUIView.java
+--- a/src/view/GUIView.java	(revision 24bf42838896fe4db7ff9bd6e6888e4f4ccb3338)
++++ b/src/view/GUIView.java	(date 1655859030567)
+@@ -14,13 +14,13 @@
+ 
+   void updateImage(Image image);
+ 
+-  JPanel updateRedHistogram(Map<Integer, Integer> distributionOfRedValues);
++  void updateRedHistogram(Map<Integer, Integer> distributionOfRedValues);
+ 
+-  JPanel updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues);
++  void updateGreenHistogram(Map<Integer, Integer> distributionOfGreenValues);
+ 
+-  JPanel updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues);
++  void updateBlueHistogram(Map<Integer, Integer> distributionOfBlueValues);
+ 
+-  JPanel updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues);
++  void updateIntensityHistogram(Map<Integer, Integer> distributionOfIntensityValues);
+ 
+   void addFeatures(Features features);
+ 

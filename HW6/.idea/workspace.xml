@@ -7,6 +7,7 @@
     <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/HW6_jar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/res/HW6.jar" afterDir="false" />
+    </list>
     <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="Updated visual GUI stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
