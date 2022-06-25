@@ -73,7 +73,6 @@ public class JFrameView extends JFrame implements GUIView {
     histogramsSection.add(greenHistogram);
     histogramsSection.add(blueHistogram);
     histogramsSection.add(intensityHistogram);
-    histogramsSection.setAlignmentY(Component.CENTER_ALIGNMENT);
 
     this.add(histogramsSection, BorderLayout.LINE_START);
 

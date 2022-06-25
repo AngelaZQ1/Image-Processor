@@ -4,18 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/HW6_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/HW6.jar" afterDir="false" />
-    </list>
-    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="Updated visual GUI stuff">
+    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USEME" beforeDir="false" afterPath="$PROJECT_DIR$/USEME" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/HW5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/script" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/HW6_jar/HW6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW6_jar/HW6.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/ImageProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/ImageProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/ControllerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/ControllerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/Features.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/Features.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/GUIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/ImageUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/ImageUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/MockGUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/MockGUIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/BlueComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/BlueComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Blur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Blur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Brighten.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Brighten.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Darken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Darken.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Grayscale.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Grayscale.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/GreenComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/GreenComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/HFlip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/HFlip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Intensity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Intensity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Luma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Luma.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/RedComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/RedComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sepia.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sepia.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sharpen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sharpen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/VFlip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/VFlip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Value.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Value.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/Image.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/ImageImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/ImageImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/MockImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/MockImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/Pixel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/Pixel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/PixelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/PixelImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/filters/Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/filters/Filter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/filters/FilterImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/filters/FilterImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/GUIView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/GUIView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/Histogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/Histogram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/JFrameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/JFrameView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/MockGUIView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/MockGUIView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/MockView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/MockView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/TextView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/TextView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/ControllerImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/ControllerImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/CorruptAppendable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/CorruptAppendable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/FeaturesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/FeaturesTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/FilterImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/FilterImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/ImageImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/ImageImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/PixelImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/PixelImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/TextViewTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/TextViewTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/JFrameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/JFrameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/IMG_0293.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/FeaturesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FeaturesTest.java" afterDir="false" />
     </list>
     <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,25 +81,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "/Users/lucasjang/Desktop/School Stuff/Computer Science/OOD/group/OOD/HW6",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lucasjang/Desktop/School Stuff/Computer Science/OOD/group/OOD/HW6&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="JUnit.FeaturesTest.testRedComp">
     <configuration name="ImageProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessor" />
       <module name="HW6" />
@@ -71,8 +107,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FeaturesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeaturesTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FeaturesTest.testAddFeatures" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeaturesTest" />
+      <option name="METHOD_NAME" value="testAddFeatures" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FeaturesTest.testControllerSetView" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeaturesTest" />
+      <option name="METHOD_NAME" value="testControllerSetView" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FeaturesTest.testRedComp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HW6" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeaturesTest" />
+      <option name="METHOD_NAME" value="testRedComp" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FeaturesTest.testRedComp" />
+        <item itemvalue="JUnit.FeaturesTest.testAddFeatures" />
+        <item itemvalue="JUnit.FeaturesTest.testControllerSetView" />
+        <item itemvalue="JUnit.FeaturesTest" />
         <item itemvalue="Application.ImageProcessor" />
       </list>
     </recent_temporary>
