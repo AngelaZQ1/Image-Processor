@@ -5,12 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HW6_jar/HW6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW6_jar/HW6.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/JFrameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/JFrameView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/HW6/FeaturesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/FeaturesTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/MockGUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MockGUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MockGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MockGUIView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/Amsterdam.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Archive.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Archive.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/HW6_jar/HW6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/ImageProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/ControllerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/Features.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/GUIController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/ImageUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/MockGUIController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/BlueComponent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Blur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Brighten.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Darken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Grayscale.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/GreenComponent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/HFlip.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Intensity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Luma.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/RedComponent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sepia.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sharpen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/VFlip.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Value.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/Image.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/ImageImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/MockImage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/Pixel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/PixelImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/filters/Filter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/filters/FilterImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/GUIView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/Histogram.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/JFrameView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/MockGUIView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/MockView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/TextView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/ControllerImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/CorruptAppendable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/FeaturesTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/FilterImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/ImageImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/PixelImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/HW6/TextViewTest.class" beforeDir="false" />
     </list>
     <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656196765405</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="made buttons work including saving and loading">
+      <created>1656197021116</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1656197021116</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
