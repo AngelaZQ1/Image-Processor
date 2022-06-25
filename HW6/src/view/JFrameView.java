@@ -94,7 +94,7 @@ public class JFrameView extends JFrame implements GUIView {
 
     dialogBoxesPanel.add(openFilePanel);
 
-    loadButton = new JButton("Open a file");
+    loadButton = new JButton("Load Image");
     openFilePanel.add(loadButton);
     openFilePath = new JLabel("File path will appear here");
     openFilePanel.add(openFilePath);
@@ -105,7 +105,7 @@ public class JFrameView extends JFrame implements GUIView {
 
     dialogBoxesPanel.add(saveFilePanel);
 
-    saveButton = new JButton("Save a file");
+    saveButton = new JButton("Save Image");
     saveFilePanel.add(saveButton);
     saveFilePath = new JLabel("File path will appear here");
     saveFilePanel.add(saveFilePath);

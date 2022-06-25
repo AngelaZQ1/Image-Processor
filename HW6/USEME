@@ -1,54 +1,18 @@
 Available Commands:
-Load Image: load image-path image-name
-   - Loads image, must be used for any of the following commands to work excluding quit
-   - Ex: load res/fourPixels.ppm fourPixels
-Save Image: save image-path image-name
-   - Saves image, must have loaded at least one image
-   - Ex: save res/newFourPixels.ppm fourPixels
-Red-Component: red-component image-name dest-image-name
-   - Red-scales image, must have loaded at least one image
-   - Ex: red-component fourPixels redFourPixels
-Green-Component: green-component image-name dest-image-name
-   - Green-scales image, must have loaded at least one image
-   - Ex: green-component fourPixels greenFourPixels
-Blue-Component: blue-component image-name dest-image-name
-   - Blue-scales image, must have loaded at least one image
-   - Ex: blue-component fourPixels blueFourPixels
-Value: value image-name dest-image-name
-   - Value-scales image, must have loaded at least one image
-   - Ex: value fourPixels valueFourPixels
-Luma: luma image-name dest-image-name
-   - Luma-scales image, must have loaded at least one image
-   - Ex: luma fourPixels lumaFourPixels
-Intensity: intensity image-name dest-image-name
-   - Intensity-scales image, must have loaded at least one image
-   - Ex: intensity fourPixels intensityFourPixels
-Horizontal Flip: horizontal-flip image-name dest-image-name
-   - Horizontally flips image, must have loaded at least one image
-   - Ex: horizontal-flip fourPixels horizontalFourPixels
-Vertical Flip: vertical-flip image-name dest-image-name
-   - Vertically flips image, must have loaded at least one image
-   - Ex: vertical-flip fourPixels verticalFourPixels
-Brighten: brighten increment image-name dest-image-name
-   - Brightens image, must have loaded at least one image
-   - Ex: brighten fourPixels brightenFourPixels
-Darken: darken increment image-name dest-image-name
-   - Darkens image, must have loaded at least one image
-   - Ex: darken fourPixels darkenFourPixels
-Sharpen: sharpen image-name dest-image-name
-   - Sharpens image, must have loaded at least one image
-   - Ex: sharpen fourPixels sharpenFourPixels
-Blur: blur image-name dest-image-name
-   - Blurs image, must have loaded at least one image
-   - Ex: blur fourPixels blurFourPixels
-Grayscale: grayscale image-name dest-image-name
-   - Grayscale color transformation on image, must have loaded at least one image
-   - Ex: grayscale fourPixels grayscaleFourPixels
-Sepia: sepia image-name dest-image-name
-   - Sepia color transformation on image, must have loaded at least one image
-   - Ex: sepia fourPixels sepiaFourPixels
-To Quit: q or Q
-   - Quits program
-
-Conditions:
-An image must be loaded before performing any other command. Besides that, the commands can be run in any order.
+- Load Image: Click the "Load Image" button at the top of the screen and select an image to load. Must be JPG, JPEG, PNG, PPM, or BMP.
+- Save Image: Click the "Save Image" button at the top of the screen and select the destination to save the image.
+- Red-Component: Click the "Red Component" button at the right side of the screen.
+- Green-Component: Click the "Green Component" button at the right side of the screen.
+- Blue-Component: Click the "Blue Component" button at the right side of the screen.
+- Value: Click the "Grayscale Using Value" button at the right side of the screen.
+- Luma: Click the "Grayscale Using Luma" button at the right side of the screen.
+- Intensity: Click the "Grayscale Using Intensity" button at the right side of the screen.
+- Horizontal Flip: Click the "Flip Horizontally" button at the right side of the screen.
+- Vertical Flip: Click the "Flip Vertically" button at the right side of the screen.
+- Brighten: Click the "Brighten" button at the right side of the screen.
+- Darken: Click the "Darken" button at the right side of the screen.
+- Sharpen: Click the "Sharpen" button at the right side of the screen.
+- Blur: Click the "Blur" button at the right side of the screen.
+- Grayscale: Click the "Grayscale" button at the right side of the screen.
+- Sepia: Click the "Sepia" button at the right side of the screen.
+- To Quit: Click the "Exit" button at the top of the screen.

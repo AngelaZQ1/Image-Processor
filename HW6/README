@@ -1,11 +1,21 @@
 For HW6:
 
-- features interface
-- GUIController class
-- GUIView interface
-- JFrameView class
-- controller has one image instead of a list of images
+How to use the program:
+Our program allows users to load images, save images, and manipulate the current image. To load an image, the user can press the button that says "Load Image" at the top of the screen. From there, they can select an image. To save the current image, the user can press the button that says "Save Image". They will be able to select a destination to save their image. To manipulate the current image, the user can press any of the 14 buttons on the right side of the screen. The shown image and its four histograms will update accordingly. Finally, the user can exit the program by pressing the "Exit" button at the top of the screen.
 
+
+Which parts of the program are complete:
+Every part of this program is complete. All of the buttons work correctly. The image and its histograms also update correctly.
+
+Design changes and justifications:
+For our model, the Image interface, we only added methods to get the distribution of values for the histogram. We added these methods to the existing interface because they do not represent new features and are only used to get data from the Image.
+
+For our controller, we created a Features interface and a GUIController class that implements the Features interface. Because a GUI based program is very different from a text-based program, we felt that it was necessary to create a new controller. Our controller is responsible for handling interactions between our user and the view as it contains the implementation for callback methods. One big difference between this controller and our old controller is that our current controller only contains one Image, while our old controller contained a list of images. We decided that the user should only be able to load, manipulate, and save images one at a time. This is another reason we created a new controller. Our controller also contains a GUIView rather than a View because it only makes sense for a GUI based controller to use a GUI based view and not a text-based view.
+
+As for our view, a GUI is very different from a text-based user interface; as a result, we created a new GUIView interface that contains all of the methods necessary for updating the view. Our JFrameView class implements this interface and extends JFrame in order to use a GUI based on Java Swing. We did this because it does not make sense to use a text-based interface for implementing a GUI.
+
+Image citations:
+The only image that we use is the one titled fourPixels. As the creator, Angela Zheng, I approve of this image being used for this assignment.
 
 
 Implementation details for HW5:
