@@ -42,24 +42,24 @@ public class Histogram extends JPanel {
     int barWidth = 1;
 
     // Draw y-axis of histogram
-    g.drawLine(10, height - 19, width - 10, height - 19);
+    g.drawLine(20, height - 19, width - 20, height - 19);
 
     // Draw x-axis of histogram
-    g.drawLine(10, 0, 10, height - 19);
+    g.drawLine(20, 20, 20, height - 19);
 
     g.setColor(Color.black);
     switch (this.color) {
       case "red":
-        g.drawString("Red Values", 10, height - 5);
+        g.drawString("Red Values", width - 120, 10);
         break;
       case "green":
-        g.drawString("Green Values", 10, height - 5);
+        g.drawString("Green Values", width - 120, 10);
         break;
       case "blue":
-        g.drawString("Blue Values", 10, height - 5);
+        g.drawString("Blue Values", width - 120, 10);
         break;
       case "intensity":
-        g.drawString("Intensity Values", 10, height - 5);
+        g.drawString("Intensity Values", width - 120, 10);
         break;
       default:
         // System.out.println("Color must be red, green, blue, or intensity");
@@ -71,21 +71,24 @@ public class Histogram extends JPanel {
     }
 
     // x is the start position for the first bar in the histogram
-    int x = 10;
+    int x = 20;
 
     // Get Max occurrence of any value
     int maxOccur = 0;
+    int minOccur = colors.get(0);
     for (var hue : colors.entrySet()) {
       maxOccur = Math.max(maxOccur, hue.getValue());
+      minOccur = Math.min(minOccur, hue.getValue());
     }
+
+    // X-axis labels
+    g.drawString(Integer.toString(minOccur), 8, height - 15);
+    g.drawString(Integer.toString(maxOccur), 3, 15);
 
     // Draw bars
     for (var hue : colors.entrySet()) {
       // Find the bar height
-      int barHeight = hue.getValue() / 256;
-      if ((hue.getValue() / maxOccur) > 0) {
-        // System.out.println("Percent: " + (hue.getValue() / maxOccur));
-      }
+      int barHeight = (int) (((hue.getValue() - minOccur) / ((maxOccur - minOccur) * 1.0)) * 200);
       switch (this.color) {
         case "red":
           g.setColor(Color.red);
@@ -98,12 +101,14 @@ public class Histogram extends JPanel {
           break;
         case "intensity":
           g.setColor(Color.black);
+          break;
         default:
-          System.out.println("Color must be red, green, blue, or intensity");
+          // System.out.println("Color must be red, green, blue, or intensity");
       }
-      g.drawRect(x, height - 20 - barHeight, barWidth, barHeight);
-      g.fillRect(x, height - 20 - barHeight, barWidth, barHeight);
-      x += (barWidth + 2);
+      g.drawLine(x, height - 20 - barHeight, x, height - 20);
+      // g.drawRect(x, height - 20 - barHeight, barWidth, barHeight);
+      // g.fillRect(x, height - 20 - barHeight, barWidth, barHeight);
+      x += (barWidth + 1);
     }
   }
 

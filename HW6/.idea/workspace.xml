@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
-      <change afterPath="$PROJECT_DIR$/res/IMG_0293.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Histogram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Histogram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/JFrameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/JFrameView.java" afterDir="false" />
     </list>
     <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655966735677</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="made buttons work including saving and loading">
+      <created>1656130579085</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656130579085</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

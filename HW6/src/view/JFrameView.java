@@ -54,7 +54,7 @@ public class JFrameView extends JFrame implements GUIView {
   public JFrameView(String caption) {
     super(caption);
 
-    setSize(1400, 700);
+    setSize(1800, 700);
     setLocation(0, 0);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -64,7 +64,7 @@ public class JFrameView extends JFrame implements GUIView {
     histogramsSection = new JPanel();
     histogramsSection.setBorder(BorderFactory.createTitledBorder("Histograms:"));
     histogramsSection.setLayout(new BoxLayout(histogramsSection, BoxLayout.PAGE_AXIS));
-    histogramsSection.setPreferredSize(new Dimension(800, 300));
+    histogramsSection.setPreferredSize(new Dimension(580, 300));
     redHistogram = new Histogram(null, "red");
     greenHistogram = new Histogram(null, "green");
     blueHistogram = new Histogram(null, "blue");
@@ -73,6 +73,7 @@ public class JFrameView extends JFrame implements GUIView {
     histogramsSection.add(greenHistogram);
     histogramsSection.add(blueHistogram);
     histogramsSection.add(intensityHistogram);
+    histogramsSection.setAlignmentY(Component.CENTER_ALIGNMENT);
 
     this.add(histogramsSection, BorderLayout.LINE_START);
 
@@ -124,13 +125,13 @@ public class JFrameView extends JFrame implements GUIView {
     JPanel imagePanel = new JPanel();
     //a border around the panel with a caption
     imagePanel.setBorder(BorderFactory.createTitledBorder("Current Image:"));
-    imagePanel.setSize(500, 500);
+    imagePanel.setSize(1100,1100);
     this.add(imagePanel, BorderLayout.CENTER);
 
     // the current scrollable image
     imageLabel = new JLabel(new ImageIcon());
     JScrollPane imageScrollPane = new JScrollPane(imageLabel);
-    imageScrollPane.setPreferredSize(new Dimension(500, 500));
+    imageScrollPane.setPreferredSize(new Dimension(800, 800));
     imagePanel.add(imageScrollPane);
 
     // BUTTONS
