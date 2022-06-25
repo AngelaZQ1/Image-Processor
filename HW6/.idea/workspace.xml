@@ -7,12 +7,14 @@
     <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/HW6_jar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/res/HW6.jar" afterDir="false" />
+    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="Updated visual GUI stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USEME" beforeDir="false" afterPath="$PROJECT_DIR$/USEME" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/HW5.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/res/script" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/JFrameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/JFrameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/IMG_0293.png" beforeDir="false" />
     </list>
     <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656130579085</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated visual GUI stuff">
+      <created>1656134906301</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656134906301</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +145,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Created UI, added Features interface" />
     <MESSAGE value="made buttons work including saving and loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="made buttons work including saving and loading" />
+    <MESSAGE value="Updated visual GUI stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated visual GUI stuff" />
   </component>
 </project>
