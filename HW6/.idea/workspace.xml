@@ -4,54 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="">
+    <list default="true" id="ab1bedbb-4ff1-4b27-98ad-ccbad812a4ef" name="Changes" comment="made buttons work including saving and loading">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/HW6_jar/HW6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HW6_jar/HW6.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/ImageProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/ImageProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/ControllerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/ControllerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/Features.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/Features.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/GUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/ImageUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/ImageUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/MockGUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/MockGUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/BlueComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/BlueComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Blur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Blur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Brighten.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Brighten.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Darken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Darken.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Grayscale.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Grayscale.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/GreenComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/GreenComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/HFlip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/HFlip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Intensity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Intensity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Luma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Luma.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/RedComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/RedComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sepia.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sepia.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sharpen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Sharpen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/VFlip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/VFlip.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/controller/commands/Value.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/controller/commands/Value.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/Image.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/ImageImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/ImageImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/MockImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/MockImage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/Pixel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/Pixel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/PixelImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/PixelImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/filters/Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/filters/Filter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/model/filters/FilterImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/model/filters/FilterImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/GUIView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/GUIView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/Histogram.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/Histogram.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HW6/view/JFrameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/JFrameView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/MockGUIView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/MockGUIView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/MockView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/MockView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/TextView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/TextView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW6/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW6/view/View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/HW6/ControllerImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/ControllerImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/HW6/CorruptAppendable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/CorruptAppendable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/HW6/FeaturesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/FeaturesTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/HW6/FilterImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/FilterImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/HW6/ImageImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/ImageImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/HW6/PixelImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/PixelImplTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/HW6/TextViewTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/HW6/TextViewTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/JFrameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/JFrameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FeaturesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FeaturesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/MockGUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MockGUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/MockGUIView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MockGUIView.java" afterDir="false" />
     </list>
     <list id="87508b8a-4453-43b2-b2dc-33dbbbda0611" name="Changes by lucasjang" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +58,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.FeaturesTest.testRedComp">
+  <component name="RunManager" selected="Application.ImageProcessor">
     <configuration name="ImageProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ImageProcessor" />
       <module name="HW6" />
@@ -148,11 +107,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ImageProcessor" />
+        <item itemvalue="JUnit.FeaturesTest" />
         <item itemvalue="JUnit.FeaturesTest.testRedComp" />
         <item itemvalue="JUnit.FeaturesTest.testAddFeatures" />
         <item itemvalue="JUnit.FeaturesTest.testControllerSetView" />
-        <item itemvalue="JUnit.FeaturesTest" />
-        <item itemvalue="Application.ImageProcessor" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656134906301</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="made buttons work including saving and loading">
+      <created>1656196765405</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656196765405</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,8 +190,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Created UI, added Features interface" />
-    <MESSAGE value="made buttons work including saving and loading" />
     <MESSAGE value="Updated visual GUI stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated visual GUI stuff" />
+    <MESSAGE value="made buttons work including saving and loading" />
+    <option name="LAST_COMMIT_MESSAGE" value="made buttons work including saving and loading" />
   </component>
 </project>

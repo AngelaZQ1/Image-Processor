@@ -42,4 +42,5 @@ public class MockGUIView extends JFrameView {
   public void addFeatures(Features features) {
     log.append("addFeatures");
   }
+
 }

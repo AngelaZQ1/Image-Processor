@@ -45,7 +45,7 @@ public class MockGUIController implements Features {
 
   @Override
   public void vFlip() {
-    log.append("vFLip");
+    log.append("vFlip");
   }
 
   @Override
