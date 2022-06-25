@@ -60,8 +60,9 @@ public class Histogram extends JPanel {
         break;
       case "intensity":
         g.drawString("Intensity Values", 10, height - 5);
+        break;
       default:
-        System.out.println("Color must be red, green, blue, or intensity");
+        // System.out.println("Color must be red, green, blue, or intensity");
     }
 
     if (colors == null) {
